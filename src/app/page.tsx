@@ -3,7 +3,7 @@ import "@/stylesheets/pages/home.css";
 import { ModelCard, Page } from "@/components";
 import { Metadata } from "next";
 // Home Page Constants
-const TITLE = "Toris";
+const TITLE = "Mateory";
 const DESCRIPTION =
   "Soluciona Problemas Fáciles de Teoría de Inventarios con unos Cuantos Clics";
 // Home Page Metadata

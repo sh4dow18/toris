@@ -21,13 +21,29 @@ export default function Home() {
         {/* Model Cards Lists */}
         <div>
           {/* EPQ with Deficit Model Card */}
-          <ModelCard code="epq-w-d" name="EPQ con Déficit (Con Faltantes)" />
+          <ModelCard
+            category="inventory"
+            code="epq-w-d"
+            name="EPQ con Déficit (Con Faltantes)"
+          />
           {/* EPQ without Deficit Model Card */}
-          <ModelCard code="epq-wo-d" name="EPQ sin Déficit (Sin Faltantes)" />
+          <ModelCard
+            category="inventory"
+            code="epq-wo-d"
+            name="EPQ sin Déficit (Sin Faltantes)"
+          />
           {/* EOQ with Deficit Model Card */}
-          <ModelCard code="eoq-w-d" name="EOQ con Déficit (Con Faltantes)" />
+          <ModelCard
+            category="inventory"
+            code="eoq-w-d"
+            name="EOQ con Déficit (Con Faltantes)"
+          />
           {/* EOQ without Deficit Model Card */}
-          <ModelCard code="eoq-wo-d" name="EOQ sin Déficit (Sin Faltantes)" />
+          <ModelCard
+            category="inventory"
+            code="eoq-wo-d"
+            name="EOQ sin Déficit (Sin Faltantes)"
+          />
         </div>
       </section>
     </Page>

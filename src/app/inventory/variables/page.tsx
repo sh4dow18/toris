@@ -24,7 +24,7 @@ function VariablesPage({ searchParams }: Props) {
         <h2>Establecer Valores</h2>
         {/* Variables Form */}
         <Form
-          api="result"
+          api="inventory/result"
           method="GET"
           button="Calcular"
           modal={{

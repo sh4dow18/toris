@@ -5,15 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 // Model Card Props
 type Props = {
+  category: "inventory" | "queue";
   code: string;
   name: string;
 };
 // Model Card Main Function
-function ModelCard({ code, name }: Props) {
+function ModelCard({ category, code, name }: Props) {
   // Returns Model Card Component
   return (
     // Model Card Container
-    <Link className="model-card-container" href={`/variables?model=${code}`}>
+    <Link
+      className="model-card-container"
+      href={`/${category}/variables?model=${code}`}
+    >
       {/* Main Image */}
       <Image
         src={`/${code}.png`}

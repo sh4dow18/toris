@@ -17,6 +17,10 @@ export default function RootLayout({
           <Link href="/">
             <p>Mateory</p>
           </Link>
+          <nav>
+            <Link href="/inventory">Inventarios</Link>
+            <Link href="/queue">Colas</Link>
+          </nav>
         </header>
         {/* Page Container */}
         <main>{children}</main>

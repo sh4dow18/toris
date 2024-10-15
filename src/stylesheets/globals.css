@@ -109,9 +109,31 @@ footer div p {
   /* Colors */
   color: var(--white);
 }
+body > header nav {
+  /* Display */
+  display: flex;
+  flex-wrap: wrap;
+  /* Texts */
+  font-size: 1.2rem;
+}
 
 /* Fourth Grade */
 
+body > header nav a {
+  /* Display */
+  user-select: none;
+  /* Spacers */
+  padding-inline: 1rem;
+  /* Texts */
+  text-decoration: none;
+  font-weight: bold;
+  /* Colors */
+  color: var(--white);
+}
+body > header nav a:hover {
+  /* Colors */
+  color: var(--blue);
+}
 footer div p a {
   /* Colors */
   color: var(--white);
@@ -136,6 +158,16 @@ footer div p a {
 .model-select {
   /* Display */
   display: none;
+}
+
+
+/* Second Grade */
+
+.models-cards-list-container div {
+  /* Display */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Media Queries */

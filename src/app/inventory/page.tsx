@@ -2,7 +2,7 @@
 import { ModelCard, Page } from "@/components";
 import { Metadata } from "next";
 // Home Page Constants
-const TITLE = "Mateory";
+const TITLE = "Teoría de Inventarios";
 const DESCRIPTION =
   "Soluciona Problemas Fáciles de Teoría de Inventarios con unos Cuantos Clics";
 // Home Page Metadata

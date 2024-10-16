@@ -27,22 +27,19 @@ export default function RootLayout({
         <footer>
           {/* Credits */}
           <div>
-            {/* Page built by */}
-            <p>
-              Página hecha por{" "}
-              <Link href="https://digital-me.vercel.app">Ramsés Solano</Link> en{" "}
-              <Link href="https://braitec.vercel.app">
-                Braitec: Soluciones Tecnológicas
-              </Link>
-            </p>
             {/* Braitec Copyright */}
             <p>
               Copyright ©{" "}
-              <Link href="https://braitec.vercel.app">
-                Braitec: Soluciones Tecnológicas
-              </Link>{" "}
+              <Link href="https://digital-me.vercel.app">Ramsés Solano</Link>
+              {" ("}
+              <Link href="https://github.com/sh4dow18">sh4dow18</Link>
+              {") "}
+              <Link href="https://opensource.org/license/mit">MIT License</Link>
+            </p>
+            {/* Page built by */}
+            <p>
               {/* Last Update */}
-              16 de Octubre del 2024
+              Última Actualización realizada el 16 de Octubre del 2024
             </p>
           </div>
         </footer>

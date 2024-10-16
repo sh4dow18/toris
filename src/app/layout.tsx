@@ -17,6 +17,10 @@ export default function RootLayout({
           <Link href="/">
             <p>Mateory</p>
           </Link>
+          <nav>
+            <Link href="/inventory">Inventarios</Link>
+            <Link href="/queue">Colas</Link>
+          </nav>
         </header>
         {/* Page Container */}
         <main>{children}</main>
@@ -38,7 +42,7 @@ export default function RootLayout({
                 Braitec: Soluciones Tecnológicas
               </Link>{" "}
               {/* Last Update */}
-              13 de Octubre del 2024
+              16 de Octubre del 2024
             </p>
           </div>
         </footer>

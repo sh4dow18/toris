@@ -192,8 +192,6 @@ footer div p a {
   /* Second Grade */
 
   body > header {
-    /* Display */
-    justify-content: left;
     /* Spacers */
     padding: 1rem;
   }

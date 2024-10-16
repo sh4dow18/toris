@@ -1,10 +1,12 @@
 // Home Page Requirements
 import { ModelCard, Page } from "@/components";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 // Home Page Constants
 const TITLE = "Mateory";
 const DESCRIPTION =
-  "Soluciona Problemas Fáciles de Teoría de Inventarios con unos Cuantos Clics";
+  "Soluciona Problemas Fáciles de Teorías de Matemáticas con unos Cuantos Clics";
 // Home Page Metadata
 export const metadata: Metadata = {
   title: TITLE,
@@ -17,17 +19,39 @@ export default function Home() {
     <Page title={TITLE} description={DESCRIPTION}>
       <section className="models-cards-list-container">
         {/* Available Models */}
-        <h2>Modelos Disponibles</h2>
+        <h2>Teorías Disponibles</h2>
         {/* Model Cards Lists */}
         <div>
-          {/* EPQ with Deficit Model Card */}
-          <ModelCard code="epq-w-d" name="EPQ con Déficit (Con Faltantes)" />
-          {/* EPQ without Deficit Model Card */}
-          <ModelCard code="epq-wo-d" name="EPQ sin Déficit (Sin Faltantes)" />
-          {/* EOQ with Deficit Model Card */}
-          <ModelCard code="eoq-w-d" name="EOQ con Déficit (Con Faltantes)" />
-          {/* EOQ without Deficit Model Card */}
-          <ModelCard code="eoq-wo-d" name="EOQ sin Déficit (Sin Faltantes)" />
+          <Link
+            className="model-card-container"
+            href="/inventory"
+          >
+            {/* Main Image */}
+            <Image
+              src="/inventory.png"
+              alt="Inventarios"
+              width={247}
+              height={140}
+              priority
+            />
+            {/* Main Name */}
+            <p>Teoría de Inventarios</p>
+          </Link>
+          <Link
+            className="model-card-container"
+            href="/queue"
+          >
+            {/* Main Image */}
+            <Image
+              src="/queue.png"
+              alt="Colas"
+              width={247}
+              height={140}
+              priority
+            />
+            {/* Main Name */}
+            <p>Teoría de Colas</p>
+          </Link>
         </div>
       </section>
     </Page>

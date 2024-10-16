@@ -1,5 +1,5 @@
 // Home Page Requirements
-import { ModelCard, Page } from "@/components";
+import { Card, Page } from "@/components";
 import { Metadata } from "next";
 // Home Page Constants
 const TITLE = "Teoría de Inventarios";
@@ -21,28 +21,32 @@ export default function Home() {
         {/* Model Cards Lists */}
         <div>
           {/* EPQ with Deficit Model Card */}
-          <ModelCard
-            category="inventory"
-            code="epq-w-d"
+          <Card
             name="EPQ con Déficit (Con Faltantes)"
+            image="epq-w-d"
+            href="inventory/variables"
+            model="epq-w-d"
           />
           {/* EPQ without Deficit Model Card */}
-          <ModelCard
-            category="inventory"
-            code="epq-wo-d"
+          <Card
             name="EPQ sin Déficit (Sin Faltantes)"
+            image="epq-wo-d"
+            href="inventory/variables"
+            model="epq-wo-d"
           />
           {/* EOQ with Deficit Model Card */}
-          <ModelCard
-            category="inventory"
-            code="eoq-w-d"
+          <Card
             name="EOQ con Déficit (Con Faltantes)"
+            image="eoq-w-d"
+            href="inventory/variables"
+            model="eoq-w-d"
           />
           {/* EOQ without Deficit Model Card */}
-          <ModelCard
-            category="inventory"
-            code="eoq-wo-d"
+          <Card
             name="EOQ sin Déficit (Sin Faltantes)"
+            image="eoq-wo-d"
+            href="inventory/variables"
+            model="eoq-wo-d"
           />
         </div>
       </section>

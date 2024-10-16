@@ -1,8 +1,6 @@
 // Home Page Requirements
-import { ModelCard, Page } from "@/components";
+import { Card, Page } from "@/components";
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 // Home Page Constants
 const TITLE = "Mateory";
 const DESCRIPTION =
@@ -22,36 +20,12 @@ export default function Home() {
         <h2>Teorías Disponibles</h2>
         {/* Model Cards Lists */}
         <div>
-          <Link
-            className="model-card-container"
-            href="/inventory"
-          >
-            {/* Main Image */}
-            <Image
-              src="/inventory.png"
-              alt="Inventarios"
-              width={247}
-              height={140}
-              priority
-            />
-            {/* Main Name */}
-            <p>Teoría de Inventarios</p>
-          </Link>
-          <Link
-            className="model-card-container"
-            href="/queue"
-          >
-            {/* Main Image */}
-            <Image
-              src="/queue.png"
-              alt="Colas"
-              width={247}
-              height={140}
-              priority
-            />
-            {/* Main Name */}
-            <p>Teoría de Colas</p>
-          </Link>
+          <Card
+            name="Teoría de Inventarios"
+            image="inventory"
+            href="inventory"
+          />
+          <Card name="Teoría de Colas" image="queue" href="queue" />
         </div>
       </section>
     </Page>

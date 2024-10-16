@@ -3,7 +3,7 @@
 
 /* First Grade */
 
-.model-card-container {
+.card-container {
   /* Display */
   border-radius: 1rem;
   transform: scale(1);
@@ -16,20 +16,20 @@
   color: var(--black);
   border: 1px solid var(--black);
 }
-.model-card-container:hover {
+.card-container:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
 
 /* Second Grade */
 
-.model-card-container img {
+.card-container img {
   /* Display */
   border-top-left-radius: 0.9rem;
   border-top-right-radius: 0.9rem;
 }
 
-.model-card-container p {
+.card-container p {
   /* Display */
   border-bottom-left-radius: 0.9rem;
   border-bottom-right-radius: 0.9rem;
@@ -54,7 +54,7 @@
 
   /* First Grade */
 
-  .model-card-container {
+  .card-container {
     /* Spacers */
     margin-inline: 1%;
   }
@@ -65,15 +65,15 @@
 
   /* First Grade */
 
-  .model-card-container,
-  .model-card-container img {
+  .card-container,
+  .card-container img {
     /* Display */
     width: 100%;
   }
 
   /* Second Grade */
 
-  .model-card-container img {
+  .card-container img {
     /* Display */
     height: 200px;
   }

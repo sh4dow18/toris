@@ -15,7 +15,7 @@ export default function Home() {
   // Returns Home Page
   return (
     <Page title={TITLE} description={DESCRIPTION}>
-      <section className="models-cards-list-container">
+      <section className="cards-list-container">
         {/* Available Models */}
         <h2>Teorías Disponibles</h2>
         {/* Model Cards Lists */}

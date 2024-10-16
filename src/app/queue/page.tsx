@@ -15,7 +15,7 @@ function Queue() {
   // Returns Queue Page
   return (
     <Page title={TITLE} description={DESCRIPTION}>
-      <section className="models-cards-list-container">
+      <section className="cards-list-container">
         {/* Available Queue Models */}
         <h2>Modelos Disponibles</h2>
         {/* Coming Soon */}

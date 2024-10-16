@@ -163,7 +163,7 @@ footer div p a {
 
 /* Second Grade */
 
-.models-cards-list-container div {
+.cards-list-container div {
   /* Display */
   display: flex;
   flex-wrap: wrap;

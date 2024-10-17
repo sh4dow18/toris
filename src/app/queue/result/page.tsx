@@ -3,6 +3,7 @@ import "@/stylesheets/pages/result.css";
 // Queue Result Page Requirements
 import { Metadata } from "next";
 import { Page } from "@/components";
+import { GetRo } from "@/libs/queues-formulas";
 // Queue Result Page Constants
 const TITLE = "Resultados";
 const DESCRIPTION = "Solución Encontrada al Problema Indicado";
@@ -36,9 +37,12 @@ function QueueResultPage({ searchParams }: Props) {
       : modelsRecord["mm1-fifo-inf-inf"];
   const l = GetNumberFromParam("l");
   const m = GetNumberFromParam("m");
+  // Get Results
+  const ro = GetRo(l, m, 1);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
+        {/* Data Entered Title */}
         <h2>Datos Ingresados</h2>
         <ul>
           <li>
@@ -54,6 +58,16 @@ function QueueResultPage({ searchParams }: Props) {
             {/* Average Service Rate */}
             <strong>Tasa media de Servicio (µ):</strong> {m} unidades en un
             tiempo
+          </li>
+        </ul>
+      </section>
+      <section>
+        {/* Results Obtained */}
+        <h2>Resultados Obtenidos</h2>
+        <ul>
+          <li>
+            {/* System Utilization Factor */}
+            <strong>Factor de Utilización del Sistema (ρ):</strong> {ro}
           </li>
         </ul>
       </section>

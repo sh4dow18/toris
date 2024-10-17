@@ -94,7 +94,7 @@ function QueueVariablesPage({ searchParams }: Props) {
             />
             {/* Units of time in Queue Input */}
             <Input
-              label="Unidades de tiempo en el Cola (t2)"
+              label="Unidades de tiempo en Cola (t2)"
               type="text"
               name="t2"
               example="20"

@@ -93,12 +93,12 @@ function QueueResultPage({ searchParams }: Props) {
           <li>
             {/* Units of time in the system */}
             <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
-            unidades en un tiempo
+            unidades de tiempo
           </li>
           <li>
             {/* Units of time in Queue */}
-            <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades en
-            un tiempo
+            <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades de
+            tiempo
           </li>
         </ul>
       </section>

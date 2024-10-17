@@ -67,21 +67,39 @@ function QueueVariablesPage({ searchParams }: Props) {
             />
             {/* Number of Clients in the System Input */}
             <Input
-              label="Número de Clientes en el Sistema (n)"
+              label="Número de Clientes en el Sistema (n1)"
               type="text"
-              name="n"
+              name="n1"
               example="0"
               help="Números Positivos Solamente"
-              validation="number"
+              validation="numberWithZero"
+            />
+            {/* Number of Clients in Queue Input */}
+            <Input
+              label="Número de Clientes en Cola (n2)"
+              type="text"
+              name="n2"
+              example="4"
+              help="Números Positivos Solamente"
+              validation="numberWithZero"
             />
             {/* Units of time in the system Input */}
             <Input
-              label="Unidades de tiempo en el sistema (t)"
+              label="Unidades de tiempo en el sistema (t1)"
               type="text"
-              name="t"
+              name="t1"
               example="10"
               help="Números Positivos Solamente"
-              validation="number"
+              validation="numberWithZero"
+            />
+            {/* Units of time in Queue Input */}
+            <Input
+              label="Unidades de tiempo en el Cola (t2)"
+              type="text"
+              name="t2"
+              example="20"
+              help="Números Positivos Solamente"
+              validation="numberWithZero"
             />
           </div>
         </Form>

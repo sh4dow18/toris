@@ -47,18 +47,20 @@ function QueueResultPage({ searchParams }: Props) {
       : modelsRecord["mm1-fifo-inf-inf"];
   const l = GetNumberFromParam("l");
   const m = GetNumberFromParam("m");
-  const n = GetNumberFromParam("n");
-  const t = GetNumberFromParam("t");
+  const n1 = GetNumberFromParam("n1");
+  const n2 = GetNumberFromParam("n2");
+  const t1 = GetNumberFromParam("t1");
+  const t2 = GetNumberFromParam("t2");
   // Get Results
   const ro = GetRo(l, m, 1);
   const Ls = GetLs(l, m);
   const Lq = GetLq(l, m);
   const Ws = GetWs(l, m);
   const Wq = GetWq(l, m);
-  const Pn = GetPn(ro, n);
-  const PWs = GetPWs(m, ro, t);
-  const PWq = GetPWq(m, ro, t);
-  const PLs = GetPLs(ro, n);
+  const Pn = GetPn(ro, n1);
+  const PWs = GetPWs(m, ro, t1);
+  const PWq = GetPWq(m, ro, t2);
+  const PLs = GetPLs(ro, n2 - 1);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -79,6 +81,25 @@ function QueueResultPage({ searchParams }: Props) {
             <strong>Tasa media de Servicio (µ):</strong> {m} unidades en un
             tiempo
           </li>
+          <li>
+            {/* Number of Clients in the System */}
+            <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
+            clientes
+          </li>
+          <li>
+            {/* Number of Clients in Queue */}
+            <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
+          </li>
+          <li>
+            {/* Units of time in the system */}
+            <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
+            unidades en un tiempo
+          </li>
+          <li>
+            {/* Units of time in Queue */}
+            <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades en
+            un tiempo
+          </li>
         </ul>
       </section>
       <section>
@@ -98,7 +119,7 @@ function QueueResultPage({ searchParams }: Props) {
           </li>
           <li>
             {/* Expected number of customers in queue */}
-            <strong>Número Esperado de Clientes en la Cola (Lq):</strong> {Lq}{" "}
+            <strong>Número Esperado de Clientes en Cola (Lq):</strong> {Lq}{" "}
             Clientes
           </li>
           <li>
@@ -116,31 +137,32 @@ function QueueResultPage({ searchParams }: Props) {
           <li>
             {/* Probability of n customers in the system  */}
             <strong>
-              Probabilidad de {n} clientes en el sistema (P(n)):
+              Probabilidad de {n1} clientes en el sistema (P(n1)):
             </strong>{" "}
             {Pn} ({Pn * 100}%) de Probabilidad
           </li>
           <li>
             {/* Probability that it is more than t units of time in the system  */}
             <strong>
-              Probabilidad de que este más de {t} unidades de tiempo en el
-              sistema (P({`Ws > t`})):
+              Probabilidad de que este más de {t1} unidades de tiempo en el
+              sistema (P({`Ws > t1`})):
             </strong>{" "}
             {PWs} ({PWs * 100}%) de Probabilidad
           </li>
           <li>
             {/* Probability that it is more than t units of time in queue  */}
             <strong>
-              Probabilidad de que este más de {t} unidedes de tiempo en cola (P(
-              {`Wq > t`})):
+              Probabilidad de que este más de {t2} unidades de tiempo en cola
+              (P(
+              {`Wq > t2`})):
             </strong>{" "}
             {PWq} ({PWq * 100}%) de Probabilidad
           </li>
           <li>
             {/* Probability that it is more than t units of time in queue  */}
             <strong>
-              Probabilidad de tener una cola de más de {n} clientes (P(
-              {`Ls > n`})):
+              Probabilidad de tener una cola de más de {n2 - 1} clientes (P(
+              {`Ls > n2`})):
             </strong>{" "}
             {PLs} ({PLs * 100}%) de Probabilidad
           </li>

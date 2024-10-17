@@ -45,3 +45,8 @@ export function GetPWs(m: number, ro: number, t: number) {
   const RESULT = Math.pow(Math.E, -1 * m * (1 - ro) * t);
   return FixResult(RESULT, 4);
 }
+// Get Probability that it is more than t units of time in queue (P(Wq)) function
+export function GetPWq(m: number, ro: number, t: number) {
+  const RESULT = ro * Math.pow(Math.E, -1 * m * (1 - ro) * t);
+  return FixResult(RESULT, 4);
+}

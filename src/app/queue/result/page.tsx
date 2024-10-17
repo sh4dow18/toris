@@ -7,6 +7,7 @@ import {
   GetLq,
   GetLs,
   GetPn,
+  GetPWq,
   GetPWs,
   GetRo,
   GetWq,
@@ -55,6 +56,7 @@ function QueueResultPage({ searchParams }: Props) {
   const Wq = GetWq(l, m);
   const Pn = GetPn(ro, n);
   const PWs = GetPWs(m, ro, t);
+  const PWq = GetPWq(m, ro, t);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -123,6 +125,14 @@ function QueueResultPage({ searchParams }: Props) {
               sistema (P({`Ws > t`})):
             </strong>{" "}
             {PWs} ({PWs * 100}%) de Probabilidad
+          </li>
+          <li>
+            {/* Probability that it is more than t units of time in queue  */}
+            <strong>
+              Probabilidad de que este más de {t} unidedes de tiempo en cola (P(
+              {`Wq > t`})):
+            </strong>{" "}
+            {PWq} ({PWq * 100}%) de Probabilidad
           </li>
         </ul>
       </section>

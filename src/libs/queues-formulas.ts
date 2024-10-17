@@ -25,3 +25,8 @@ export function GetLq(l: number, m: number) {
   const RESULT = Math.pow(l, 2) / (m * (m - l));
   return FixResult(RESULT, 4);
 }
+// Get Expected time of customers in the system (Ws) function
+export function GetWs(l: number, m: number) {
+  const RESULT = 1 / (m - l);
+  return FixResult(RESULT, 4);
+}

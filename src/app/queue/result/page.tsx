@@ -7,6 +7,7 @@ import {
   GetLq,
   GetLs,
   GetPn,
+  GetPWs,
   GetRo,
   GetWq,
   GetWs,
@@ -45,6 +46,7 @@ function QueueResultPage({ searchParams }: Props) {
   const l = GetNumberFromParam("l");
   const m = GetNumberFromParam("m");
   const n = GetNumberFromParam("n");
+  const t = GetNumberFromParam("t");
   // Get Results
   const ro = GetRo(l, m, 1);
   const Ls = GetLs(l, m);
@@ -52,6 +54,7 @@ function QueueResultPage({ searchParams }: Props) {
   const Ws = GetWs(l, m);
   const Wq = GetWq(l, m);
   const Pn = GetPn(ro, n);
+  const PWs = GetPWs(m, ro, t);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -112,6 +115,14 @@ function QueueResultPage({ searchParams }: Props) {
               Probabilidad de {n} clientes en el sistema (P(n)):
             </strong>{" "}
             {Pn} ({Pn * 100}%) de Probabilidad
+          </li>
+          <li>
+            {/* Probability that it is more than t units of time in the system  */}
+            <strong>
+              Probabilidad de que este más de {t} unidades de tiempo en el
+              sistema (P({`Ws > t`})):
+            </strong>{" "}
+            {PWs} ({PWs * 100}%) de Probabilidad
           </li>
         </ul>
       </section>

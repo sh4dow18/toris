@@ -74,6 +74,15 @@ function QueueVariablesPage({ searchParams }: Props) {
               help="Números Positivos Solamente"
               validation="number"
             />
+            {/* Units of time in the system Input */}
+            <Input
+              label="Unidades de tiempo en el sistema (t)"
+              type="text"
+              name="t"
+              example="10"
+              help="Números Positivos Solamente"
+              validation="number"
+            />
           </div>
         </Form>
       </section>

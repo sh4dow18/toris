@@ -40,3 +40,8 @@ export function GetPn(ro: number, n: number) {
   const RESULT = (1 - ro) * Math.pow(ro, n);
   return FixResult(RESULT, 4);
 }
+// Get Probability that it is more than t units of time in the system (P(Ws)) function
+export function GetPWs(m: number, ro: number, t: number) {
+  const RESULT = Math.pow(Math.E, -1 * m * (1 - ro) * t);
+  return FixResult(RESULT, 4);
+}

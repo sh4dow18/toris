@@ -50,3 +50,8 @@ export function GetPWq(m: number, ro: number, t: number) {
   const RESULT = ro * Math.pow(Math.E, -1 * m * (1 - ro) * t);
   return FixResult(RESULT, 4);
 }
+// Get Probability of having a queue of more than n customers (P(Ls)) function
+export function GetPLs(ro: number, n: number) {
+  const RESULT = Math.pow(ro, n + 1);
+  return FixResult(RESULT, 4);
+}

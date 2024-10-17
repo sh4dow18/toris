@@ -30,3 +30,8 @@ export function GetWs(l: number, m: number) {
   const RESULT = 1 / (m - l);
   return FixResult(RESULT, 4);
 }
+// Get Expected time of customers in queue (Wq) function
+export function GetWq(l: number, m: number) {
+  const RESULT = l / (m * (m - l));
+  return FixResult(RESULT, 4);
+}

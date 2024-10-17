@@ -3,7 +3,7 @@ import "@/stylesheets/pages/result.css";
 // Queue Result Page Requirements
 import { Metadata } from "next";
 import { Page } from "@/components";
-import { GetLq, GetLs, GetRo, GetWs } from "@/libs/queues-formulas";
+import { GetLq, GetLs, GetRo, GetWq, GetWs } from "@/libs/queues-formulas";
 // Queue Result Page Constants
 const TITLE = "Resultados";
 const DESCRIPTION = "Solución Encontrada al Problema Indicado";
@@ -42,6 +42,7 @@ function QueueResultPage({ searchParams }: Props) {
   const Ls = GetLs(l, m);
   const Lq = GetLq(l, m);
   const Ws = GetWs(l, m);
+  const Wq = GetWq(l, m);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -90,6 +91,11 @@ function QueueResultPage({ searchParams }: Props) {
               Tiempo esperado de clientes en el sistema (Ws):
             </strong>{" "}
             {Ws} unidades de tiempo
+          </li>
+          <li>
+            {/* Expected time of customers in queue */}
+            <strong>Tiempo esperado de clientes en cola (Wq):</strong> {Wq}{" "}
+            unidades de tiempo
           </li>
         </ul>
       </section>

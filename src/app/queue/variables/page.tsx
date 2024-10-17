@@ -65,6 +65,15 @@ function QueueVariablesPage({ searchParams }: Props) {
               help="Números Positivos Solamente"
               validation="number"
             />
+            {/* Number of Clients in the System Input */}
+            <Input
+              label="Número de Clientes en el Sistema (n)"
+              type="text"
+              name="n"
+              example="0"
+              help="Números Positivos Solamente"
+              validation="number"
+            />
           </div>
         </Form>
       </section>

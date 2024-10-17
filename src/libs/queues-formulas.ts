@@ -35,3 +35,8 @@ export function GetWq(l: number, m: number) {
   const RESULT = l / (m * (m - l));
   return FixResult(RESULT, 4);
 }
+// Get Probability of n customers in the system (Pn) function
+export function GetPn(ro: number, n: number) {
+  const RESULT = (1 - ro) * Math.pow(ro, n);
+  return FixResult(RESULT, 4);
+}

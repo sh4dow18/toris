@@ -3,7 +3,14 @@ import "@/stylesheets/pages/result.css";
 // Queue Result Page Requirements
 import { Metadata } from "next";
 import { Page } from "@/components";
-import { GetLq, GetLs, GetRo, GetWq, GetWs } from "@/libs/queues-formulas";
+import {
+  GetLq,
+  GetLs,
+  GetPn,
+  GetRo,
+  GetWq,
+  GetWs,
+} from "@/libs/queues-formulas";
 // Queue Result Page Constants
 const TITLE = "Resultados";
 const DESCRIPTION = "Solución Encontrada al Problema Indicado";
@@ -37,12 +44,14 @@ function QueueResultPage({ searchParams }: Props) {
       : modelsRecord["mm1-fifo-inf-inf"];
   const l = GetNumberFromParam("l");
   const m = GetNumberFromParam("m");
+  const n = GetNumberFromParam("n");
   // Get Results
   const ro = GetRo(l, m, 1);
   const Ls = GetLs(l, m);
   const Lq = GetLq(l, m);
   const Ws = GetWs(l, m);
   const Wq = GetWq(l, m);
+  const Pn = GetPn(ro, n);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -96,6 +105,13 @@ function QueueResultPage({ searchParams }: Props) {
             {/* Expected time of customers in queue */}
             <strong>Tiempo esperado de clientes en cola (Wq):</strong> {Wq}{" "}
             unidades de tiempo
+          </li>
+          <li>
+            {/* Probability of n customers in the system  */}
+            <strong>
+              Probabilidad de {n} clientes en el sistema (P(n)):
+            </strong>{" "}
+            {Pn} ({Pn * 100}%) de Probabilidad
           </li>
         </ul>
       </section>

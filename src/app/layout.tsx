@@ -27,7 +27,7 @@ export default function RootLayout({
         <footer>
           {/* Credits */}
           <div>
-            {/* Braitec Copyright */}
+            {/* Page built by */}
             <p>
               Copyright ©{" "}
               <Link href="https://digital-me.vercel.app">Ramsés Solano</Link>
@@ -36,10 +36,9 @@ export default function RootLayout({
               {") "}
               <Link href="https://opensource.org/license/mit">MIT License</Link>
             </p>
-            {/* Page built by */}
             <p>
               {/* Last Update */}
-              Última Actualización realizada el 16 de Octubre del 2024
+              Última Actualización realizada el 17 de Octubre del 2024
             </p>
           </div>
         </footer>

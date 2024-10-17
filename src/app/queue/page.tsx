@@ -1,5 +1,5 @@
 // Queue Page Requirements
-import { Page } from "@/components";
+import { Card, Page } from "@/components";
 import { Metadata } from "next";
 // Queue Page Constants
 const TITLE = "Teoría de Colas";
@@ -18,9 +18,14 @@ function Queue() {
       <section className="cards-list-container">
         {/* Available Queue Models */}
         <h2>Modelos Disponibles</h2>
-        {/* Coming Soon */}
+        {/* Model Cards Lists */}
         <div>
-          <p>Próximamente</p>
+          <Card
+            name="M/M/1 : FIFO/∞/∞"
+            image="mm1-fifo-inf-inf"
+            href="queue/variables"
+            model="mm1-fifo-inf-inf"
+          />
         </div>
       </section>
     </Page>

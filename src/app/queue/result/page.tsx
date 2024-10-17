@@ -3,7 +3,7 @@ import "@/stylesheets/pages/result.css";
 // Queue Result Page Requirements
 import { Metadata } from "next";
 import { Page } from "@/components";
-import { GetRo } from "@/libs/queues-formulas";
+import { GetLs, GetRo } from "@/libs/queues-formulas";
 // Queue Result Page Constants
 const TITLE = "Resultados";
 const DESCRIPTION = "Solución Encontrada al Problema Indicado";
@@ -39,6 +39,7 @@ function QueueResultPage({ searchParams }: Props) {
   const m = GetNumberFromParam("m");
   // Get Results
   const ro = GetRo(l, m, 1);
+  const Ls = GetLs(l, m);
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -68,6 +69,13 @@ function QueueResultPage({ searchParams }: Props) {
           <li>
             {/* System Utilization Factor */}
             <strong>Factor de Utilización del Sistema (ρ):</strong> {ro}
+          </li>
+          <li>
+            {/* Expected number of customers in the system */}
+            <strong>
+              Número Esperado de Clientes en el Sistema (Ls):
+            </strong>{" "}
+            {Ls} Clientes
           </li>
         </ul>
       </section>

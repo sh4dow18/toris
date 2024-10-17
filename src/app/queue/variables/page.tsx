@@ -29,7 +29,7 @@ function QueueVariablesPage({ searchParams }: Props) {
         <h2>Establecer Valores</h2>
         {/* Variables Form */}
         <Form
-          api="inventory/result"
+          api="queue/result"
           method="GET"
           button="Calcular"
           modal={{
@@ -60,8 +60,8 @@ function QueueVariablesPage({ searchParams }: Props) {
             <Input
               label="Tasa media de Servicio (µ)"
               type="text"
-              name="l"
-              example="90"
+              name="m"
+              example="120"
               help="Números Positivos Solamente"
               validation="number"
             />

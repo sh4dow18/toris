@@ -20,3 +20,8 @@ export function GetLs(l: number, m: number) {
   const RESULT = l / (m - l);
   return FixResult(RESULT, 4);
 }
+// Get Expected number of customers in queue (Lq) function
+export function GetLq(l: number, m: number) {
+  const RESULT = Math.pow(l, 2) / (m * (m - l));
+  return FixResult(RESULT, 4);
+}

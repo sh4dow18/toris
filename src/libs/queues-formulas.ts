@@ -108,9 +108,26 @@ export function GetPn(
   return FixResult(result, 4);
 }
 // Get Probability that it is more than t units of time in the system (P(Ws)) function
-export function GetPWs(m: number, ro: number, t: number) {
-  const RESULT = Math.pow(Math.E, -1 * m * (1 - ro) * t);
-  return FixResult(RESULT, 4);
+export function GetPWs(
+  m: number,
+  ro: number,
+  t: number,
+  l: number,
+  s: number,
+  P0?: number
+) {
+  let result = 0;
+  if (P0) {
+    const FIRST_PART = P0 * Math.pow(l / m, s);
+    const SECOND_PART = 1 - Math.pow(Math.E, -1 * m * (s - 1 - (l / m) * t));
+    const THIRD_PART = Factorial(s) * (1 - ro) * (s - 1 - l / m);
+    result =
+      Math.pow(Math.E, -1 * m * t) *
+      (1 + (FIRST_PART * SECOND_PART) / THIRD_PART);
+  } else {
+    result = Math.pow(Math.E, -1 * m * (1 - ro) * t);
+  }
+  return FixResult(result, 4);
 }
 // Get Probability that it is more than t units of time in queue (P(Wq)) function
 export function GetPWq(m: number, ro: number, t: number) {

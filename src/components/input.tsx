@@ -18,7 +18,11 @@ const REGEX: Record<string, RegExp> = {
   // Only Positive Numbers
   // Example: 8000 or 0.20
   number: /^[1-9]\d*(\.\d+)?$|^0\.\d*[1-9]\d*$/,
+  // Only Positive Numbers and Cero
+  // Example: 43450 or 0
   numberWithZero: /^[0-9]\d*(\.\d+)?$|^0\.\d*[0-9]\d*$/,
+  // Only Positive Numbers from number 2 onwards
+  servers: /^(?!1$)([1-9]\d*)$/,
 };
 // Input Section Main Function
 function Input({

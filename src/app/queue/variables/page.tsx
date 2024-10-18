@@ -101,6 +101,18 @@ function QueueVariablesPage({ searchParams }: Props) {
               help="Números Positivos Solamente"
               validation="numberWithZero"
             />
+            {/* If it is the M/M/S model, display servers amount input */}
+            {MODEL.startsWith("mms") && (
+              // Servers Amount Input
+              <Input
+                label="Cantidad de Servidores (s)"
+                type="text"
+                name="s"
+                example="2"
+                help="Números Positivos Solamente"
+                validation="servers"
+              />
+            )}
           </div>
         </Form>
       </section>

@@ -28,9 +28,25 @@ export function GetLs(l: number, m: number) {
   return FixResult(RESULT, 4);
 }
 // Get Expected number of customers in queue (Lq) function
-export function GetLq(l: number, m: number) {
-  const RESULT = Math.pow(l, 2) / (m * (m - l));
-  return FixResult(RESULT, 4);
+export function GetLq(
+  model: string,
+  l: number,
+  m: number,
+  s: number,
+  ro: number,
+  P0?: number
+) {
+  let result = 0;
+  if (P0) {
+    if (model.startsWith("M/M/s")) {
+      const FIRST_PART = Math.pow(l / m, s) * ro;
+      const SECOND_PART = Factorial(s) * Math.pow(1 - ro, 2);
+      result = (FIRST_PART / SECOND_PART) * P0;
+    }
+  } else {
+    result = Math.pow(l, 2) / (m * (m - l));
+  }
+  return FixResult(result, 4);
 }
 // Get Expected time of customers in the system (Ws) function
 export function GetWs(l: number, m: number) {

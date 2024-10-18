@@ -54,14 +54,17 @@ export function GetLq(
   m: number,
   s: number,
   ro: number,
+  k: number,
   P0?: number
 ) {
   let result = 0;
   if (P0) {
-    if (model.startsWith("M/M/s")) {
+    if (k === 0) {
       const FIRST_PART = Math.pow(l / m, s) * ro;
       const SECOND_PART = Factorial(s) * Math.pow(1 - ro, 2);
       result = (FIRST_PART / SECOND_PART) * P0;
+    } else {
+      result = GetLs(l, m, k, ro) - (1 - P0);
     }
   } else {
     result = Math.pow(l, 2) / (m * (m - l));

@@ -54,9 +54,14 @@ export function GetLq(
   return FixResult(result, 4);
 }
 // Get Expected time of customers in the system (Ws) function
-export function GetWs(l: number, m: number) {
-  const RESULT = 1 / (m - l);
-  return FixResult(RESULT, 4);
+export function GetWs(l: number, m: number, Wq?: number) {
+  let result = 0;
+  if (Wq) {
+    result = Wq + 1 / m;
+  } else {
+    result = 1 / (m - l);
+  }
+  return FixResult(result, 4);
 }
 // Get Expected time of customers in queue (Wq) function
 export function GetWq(l: number, m: number, Lq?: number) {

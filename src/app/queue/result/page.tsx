@@ -6,6 +6,7 @@ import { Page } from "@/components";
 import {
   GetLq,
   GetLs,
+  GetMMSP0,
   GetPLs,
   GetPn,
   GetPWq,
@@ -57,12 +58,13 @@ function QueueResultPage({ searchParams }: Props) {
   const t1 = GetNumberFromParam("t1");
   const t2 = GetNumberFromParam("t2");
   // Get Results
-  const ro = GetRo(l, m, 1);
+  const ro = GetRo(l, m, s);
+  const P0 = model.startsWith("M/M/s") ? GetMMSP0(l, m, s, ro) : undefined;
   const Ls = GetLs(l, m);
   const Lq = GetLq(l, m);
   const Ws = GetWs(l, m);
   const Wq = GetWq(l, m);
-  const Pn = GetPn(ro, n1);
+  const Pn = GetPn(ro, n1, l, m, s, P0);
   const PWs = GetPWs(m, ro, t1);
   const PWq = GetPWq(m, ro, t2);
   const PLs = GetPLs(ro, n2 - 1);

@@ -35,6 +35,7 @@ export const dynamic = "force-dynamic";
 const modelsRecord: Record<string, string> = {
   "mm1-fifo-inf-inf": "M/M/1 : FIFO/∞/∞",
   "mms-fifo-inf-inf": "M/M/s : FIFO/∞/∞",
+  "mm1-fifo-k-inf": "M/M/1 : FIFO/k/∞",
 };
 function QueueResultPage({ searchParams }: Props) {
   // Transform String Param to Number
@@ -59,6 +60,7 @@ function QueueResultPage({ searchParams }: Props) {
   const n2 = GetNumberFromParam("n2");
   const t1 = GetNumberFromParam("t1");
   const t2 = GetNumberFromParam("t2");
+  const k = GetNumberFromParam("k");
   // Get Results
   const ro = GetRo(l, m, s);
   const P0 = model.startsWith("M/M/s") ? GetMMSP0(l, m, s, ro) : undefined;
@@ -92,29 +94,39 @@ function QueueResultPage({ searchParams }: Props) {
             <strong>Tasa media de Servicio (µ):</strong> {m} unidades en un
             tiempo
           </li>
-          <li>
-            {/* Servers Amount */}
-            <strong>Cantidad de Servidores (s):</strong> {s} servidores
-          </li>
-          <li>
-            {/* Number of Clients in the System */}
-            <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
-            clientes
-          </li>
-          <li>
-            {/* Number of Clients in Queue */}
-            <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
-          </li>
-          <li>
-            {/* Units of time in the system */}
-            <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
-            unidades de tiempo
-          </li>
-          <li>
-            {/* Units of time in Queue */}
-            <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades de
-            tiempo
-          </li>
+          {model.includes("k") && (
+            <li>
+              {/* Servers Amount */}
+              <strong>Tamaño de la Cola (k):</strong> {k} espacios
+            </li>
+          )}
+          {!model.includes("k") && (
+            <>
+              <li>
+                {/* Servers Amount */}
+                <strong>Cantidad de Servidores (s):</strong> {s} servidores
+              </li>
+              <li>
+                {/* Number of Clients in the System */}
+                <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
+                clientes
+              </li>
+              <li>
+                {/* Number of Clients in Queue */}
+                <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
+              </li>
+              <li>
+                {/* Units of time in the system */}
+                <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
+                unidades de tiempo
+              </li>
+              <li>
+                {/* Units of time in Queue */}
+                <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades
+                de tiempo
+              </li>
+            </>
+          )}
         </ul>
       </section>
       <section>

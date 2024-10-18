@@ -9,6 +9,7 @@ import {
   GetMMSP0,
   GetPLs,
   GetPn,
+  GetPw,
   GetPWq,
   GetPWs,
   GetRo,
@@ -68,6 +69,7 @@ function QueueResultPage({ searchParams }: Props) {
   const PWs = GetPWs(m, ro, t1, l, s, P0);
   const PWq = GetPWq(m, ro, t2);
   const PLs = GetPLs(ro, n2 - 1);
+  const Pw = P0 ? GetPw(l, m, s, ro, P0) : undefined;
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -177,6 +179,15 @@ function QueueResultPage({ searchParams }: Props) {
             </strong>{" "}
             {PLs} ({PLs * 100}%) de Probabilidad
           </li>
+          {Pw && (
+            <li>
+              {/* Probability that the customer will have to wait  */}
+              <strong>
+                Probabilidad de que el cliente tenga que esperar (P(w))
+              </strong>{" "}
+              {Pw} ({Pw * 100}%) de Probabilidad
+            </li>
+          )}
         </ul>
       </section>
     </Page>

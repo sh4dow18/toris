@@ -139,3 +139,8 @@ export function GetPLs(ro: number, n: number) {
   const RESULT = Math.pow(ro, n + 1);
   return FixResult(RESULT, 4);
 }
+// Get Probability that the customer will have to wait (Pw) function
+export function GetPw(l: number, m: number, s: number, ro: number, P0: number) {
+  const RESULT = (Math.pow(l / m, s) / (Factorial(s) * (1 - ro))) * P0;
+  return FixResult(RESULT, 4);
+}

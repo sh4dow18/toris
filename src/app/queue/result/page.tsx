@@ -79,8 +79,8 @@ function QueueResultPage({ searchParams }: Props) {
   const PWs = GetPWs(m, ro, t1, l, s, P0);
   const PWq = GetPWq(m, ro, t2);
   const PLs = GetPLs(ro, n2 - 1);
-  const Pw = P0 ? GetPw(l, m, s, ro, P0) : undefined;
-  const US = P0 ? GetUS(ro, s) : undefined;
+  const Pw = !model.endsWith("k/∞") && P0 ? GetPw(l, m, s, ro, P0) : undefined;
+  const US = !model.endsWith("k/∞") && P0 ? GetUS(ro, s) : undefined;
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -108,16 +108,18 @@ function QueueResultPage({ searchParams }: Props) {
             </li>
           )}
           {!model.includes("k") && (
+            <li>
+              {/* Servers Amount */}
+              <strong>Cantidad de Servidores (s):</strong> {s} servidores
+            </li>
+          )}
+          <li>
+            {/* Number of Clients in the System */}
+            <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
+            clientes
+          </li>
+          {!model.includes("k") && (
             <>
-              <li>
-                {/* Servers Amount */}
-                <strong>Cantidad de Servidores (s):</strong> {s} servidores
-              </li>
-              <li>
-                {/* Number of Clients in the System */}
-                <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
-                clientes
-              </li>
               <li>
                 {/* Number of Clients in Queue */}
                 <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
@@ -175,31 +177,35 @@ function QueueResultPage({ searchParams }: Props) {
             </strong>{" "}
             {Pn} ({Pn * 100}%) de Probabilidad
           </li>
-          <li>
-            {/* Probability that it is more than t units of time in the system  */}
-            <strong>
-              Probabilidad de que este más de {t1} unidades de tiempo en el
-              sistema (P({`Ws > t1`})):
-            </strong>{" "}
-            {PWs} ({PWs * 100}%) de Probabilidad
-          </li>
-          <li>
-            {/* Probability that it is more than t units of time in queue  */}
-            <strong>
-              Probabilidad de que este más de {t2} unidades de tiempo en cola
-              (P(
-              {`Wq > t2`})):
-            </strong>{" "}
-            {PWq} ({PWq * 100}%) de Probabilidad
-          </li>
-          <li>
-            {/* Probability that it is more than t units of time in queue  */}
-            <strong>
-              Probabilidad de tener una cola de más de {n2 - 1} clientes (P(
-              {`Ls > n2`})):
-            </strong>{" "}
-            {PLs} ({PLs * 100}%) de Probabilidad
-          </li>
+          {!model.endsWith("k/∞") && (
+            <>
+              <li>
+                {/* Probability that it is more than t units of time in the system  */}
+                <strong>
+                  Probabilidad de que este más de {t1} unidades de tiempo en el
+                  sistema (P({`Ws > t1`})):
+                </strong>{" "}
+                {PWs} ({PWs * 100}%) de Probabilidad
+              </li>
+              <li>
+                {/* Probability that it is more than t units of time in queue  */}
+                <strong>
+                  Probabilidad de que este más de {t2} unidades de tiempo en
+                  cola (P(
+                  {`Wq > t2`})):
+                </strong>{" "}
+                {PWq} ({PWq * 100}%) de Probabilidad
+              </li>
+              <li>
+                {/* Probability that it is more than t units of time in queue  */}
+                <strong>
+                  Probabilidad de tener una cola de más de {n2 - 1} clientes (P(
+                  {`Ls > n2`})):
+                </strong>{" "}
+                {PLs} ({PLs * 100}%) de Probabilidad
+              </li>
+            </>
+          )}
           {Pw && (
             <li>
               {/* Probability that the customer will have to wait */}

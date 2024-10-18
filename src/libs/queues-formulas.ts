@@ -144,3 +144,8 @@ export function GetPw(l: number, m: number, s: number, ro: number, P0: number) {
   const RESULT = (Math.pow(l / m, s) / (Factorial(s) * (1 - ro))) * P0;
   return FixResult(RESULT, 4);
 }
+// Get Average number of unoccupied stations (US) function
+export function GetUS(ro: number, s: number) {
+  const RESULT = (1 - ro) * s;
+  return FixResult(RESULT, 4);
+}

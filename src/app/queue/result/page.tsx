@@ -13,6 +13,7 @@ import {
   GetPWq,
   GetPWs,
   GetRo,
+  GetUS,
   GetWq,
   GetWs,
 } from "@/libs/queues-formulas";
@@ -70,6 +71,7 @@ function QueueResultPage({ searchParams }: Props) {
   const PWq = GetPWq(m, ro, t2);
   const PLs = GetPLs(ro, n2 - 1);
   const Pw = P0 ? GetPw(l, m, s, ro, P0) : undefined;
+  const US = P0 ? GetUS(ro, s) : undefined;
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -181,11 +183,18 @@ function QueueResultPage({ searchParams }: Props) {
           </li>
           {Pw && (
             <li>
-              {/* Probability that the customer will have to wait  */}
+              {/* Probability that the customer will have to wait */}
               <strong>
                 Probabilidad de que el cliente tenga que esperar (P(w))
               </strong>{" "}
               {Pw} ({Pw * 100}%) de Probabilidad
+            </li>
+          )}
+          {US && (
+            <li>
+              {/* Average number of unoccupied stations */}
+              <strong>Número medio de estaciones desocupadas (US)</strong> {US}{" "}
+              estaciones
             </li>
           )}
         </ul>

@@ -91,10 +91,14 @@ export function GetWs(
   return FixResult(result, 4);
 }
 // Get Expected time of customers in queue (Wq) function
-export function GetWq(l: number, m: number, Lq?: number) {
+export function GetWq(l: number, m: number, Lq?: number, Pk?: number) {
   let result = 0;
   if (Lq) {
-    result = Lq / l;
+    if (Pk) {
+      result = Lq / (l * (1 - Pk));
+    } else {
+      result = Lq / l;
+    }
   } else {
     result = l / (m * (m - l));
   }

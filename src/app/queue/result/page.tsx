@@ -68,7 +68,7 @@ function QueueResultPage({ searchParams }: Props) {
     model === "M/M/1 : FIFO/k/∞" ? GetPn(ro, k, l, m, s, k, P0) : undefined;
   const Lq = GetLq(model, l, m, s, ro, k, P0);
   const Ls = GetLs(l, m, k, ro, model.startsWith("M/M/s") ? Lq : undefined);
-  const Wq = GetWq(l, m, model.startsWith("M/M/s") ? Lq : undefined);
+  const Wq = GetWq(l, m, model !== "M/M/1 : FIFO/∞/∞" ? Lq : undefined, Pk);
   const Ws = GetWs(
     l,
     m,

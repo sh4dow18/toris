@@ -59,9 +59,14 @@ export function GetWs(l: number, m: number) {
   return FixResult(RESULT, 4);
 }
 // Get Expected time of customers in queue (Wq) function
-export function GetWq(l: number, m: number) {
-  const RESULT = l / (m * (m - l));
-  return FixResult(RESULT, 4);
+export function GetWq(l: number, m: number, Lq?: number) {
+  let result = 0;
+  if (Lq) {
+    result = Lq / l;
+  } else {
+    result = l / (m * (m - l));
+  }
+  return FixResult(result, 4);
 }
 // Get Probability of 0 customers in the system (Pn) function for M/M/s:FIFO/∞/∞ model
 export function GetMMSP0(l: number, m: number, s: number, ro: number) {

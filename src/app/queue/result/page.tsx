@@ -63,7 +63,7 @@ function QueueResultPage({ searchParams }: Props) {
   const Lq = GetLq(model, l, m, s, ro, P0);
   const Ls = GetLs(l, m, model.startsWith("M/M/s") ? Lq : undefined);
   const Ws = GetWs(l, m);
-  const Wq = GetWq(l, m);
+  const Wq = GetWq(l, m, model.startsWith("M/M/s") ? Lq : undefined);
   const Pn = GetPn(ro, n1, l, m, s, P0);
   const PWs = GetPWs(m, ro, t1);
   const PWq = GetPWq(m, ro, t2);

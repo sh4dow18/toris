@@ -6,11 +6,14 @@ import { Page } from "@/components";
 import {
   GetLq,
   GetLs,
+  GetMMSP0,
   GetPLs,
   GetPn,
+  GetPw,
   GetPWq,
   GetPWs,
   GetRo,
+  GetUS,
   GetWq,
   GetWs,
 } from "@/libs/queues-formulas";
@@ -31,6 +34,7 @@ export const dynamic = "force-dynamic";
 // Model Record to display the model name using the submitted model code
 const modelsRecord: Record<string, string> = {
   "mm1-fifo-inf-inf": "M/M/1 : FIFO/∞/∞",
+  "mms-fifo-inf-inf": "M/M/s : FIFO/∞/∞",
 };
 function QueueResultPage({ searchParams }: Props) {
   // Transform String Param to Number
@@ -47,20 +51,27 @@ function QueueResultPage({ searchParams }: Props) {
       : modelsRecord["mm1-fifo-inf-inf"];
   const l = GetNumberFromParam("l");
   const m = GetNumberFromParam("m");
+  const s =
+    typeof searchParams["s"] === "string"
+      ? Number.parseFloat(searchParams["s"])
+      : 1;
   const n1 = GetNumberFromParam("n1");
   const n2 = GetNumberFromParam("n2");
   const t1 = GetNumberFromParam("t1");
   const t2 = GetNumberFromParam("t2");
   // Get Results
-  const ro = GetRo(l, m, 1);
-  const Ls = GetLs(l, m);
-  const Lq = GetLq(l, m);
-  const Ws = GetWs(l, m);
-  const Wq = GetWq(l, m);
-  const Pn = GetPn(ro, n1);
-  const PWs = GetPWs(m, ro, t1);
+  const ro = GetRo(l, m, s);
+  const P0 = model.startsWith("M/M/s") ? GetMMSP0(l, m, s, ro) : undefined;
+  const Lq = GetLq(model, l, m, s, ro, P0);
+  const Ls = GetLs(l, m, model.startsWith("M/M/s") ? Lq : undefined);
+  const Wq = GetWq(l, m, model.startsWith("M/M/s") ? Lq : undefined);
+  const Ws = GetWs(l, m, model.startsWith("M/M/s") ? Wq : undefined);
+  const Pn = GetPn(ro, n1, l, m, s, P0);
+  const PWs = GetPWs(m, ro, t1, l, s, P0);
   const PWq = GetPWq(m, ro, t2);
   const PLs = GetPLs(ro, n2 - 1);
+  const Pw = P0 ? GetPw(l, m, s, ro, P0) : undefined;
+  const US = P0 ? GetUS(ro, s) : undefined;
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -80,6 +91,10 @@ function QueueResultPage({ searchParams }: Props) {
             {/* Average Service Rate */}
             <strong>Tasa media de Servicio (µ):</strong> {m} unidades en un
             tiempo
+          </li>
+          <li>
+            {/* Servers Amount */}
+            <strong>Cantidad de Servidores (s):</strong> {s} servidores
           </li>
           <li>
             {/* Number of Clients in the System */}
@@ -166,6 +181,22 @@ function QueueResultPage({ searchParams }: Props) {
             </strong>{" "}
             {PLs} ({PLs * 100}%) de Probabilidad
           </li>
+          {Pw && (
+            <li>
+              {/* Probability that the customer will have to wait */}
+              <strong>
+                Probabilidad de que el cliente tenga que esperar (P(w))
+              </strong>{" "}
+              {Pw} ({Pw * 100}%) de Probabilidad
+            </li>
+          )}
+          {US && (
+            <li>
+              {/* Average number of unoccupied stations */}
+              <strong>Número medio de estaciones desocupadas (US)</strong> {US}{" "}
+              estaciones
+            </li>
+          )}
         </ul>
       </section>
     </Page>

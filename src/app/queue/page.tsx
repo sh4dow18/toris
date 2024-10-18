@@ -26,6 +26,12 @@ function Queue() {
             href="queue/variables"
             model="mm1-fifo-inf-inf"
           />
+          <Card
+            name="M/M/s : FIFO/∞/∞"
+            image="mms-fifo-inf-inf"
+            href="queue/variables"
+            model="mms-fifo-inf-inf"
+          />
         </div>
       </section>
     </Page>

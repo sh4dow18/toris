@@ -23,9 +23,14 @@ export function GetRo(l: number, m: number, s?: number) {
   return FixResult(RESULT, 4);
 }
 // Get Expected number of customers in the system (Ls) Function
-export function GetLs(l: number, m: number) {
-  const RESULT = l / (m - l);
-  return FixResult(RESULT, 4);
+export function GetLs(l: number, m: number, Lq?: number) {
+  let result = 0;
+  if (Lq) {
+    result = Lq + l / m;
+  } else {
+    result = l / (m - l);
+  }
+  return FixResult(result, 4);
 }
 // Get Expected number of customers in queue (Lq) function
 export function GetLq(

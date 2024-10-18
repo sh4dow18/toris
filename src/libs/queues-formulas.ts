@@ -23,10 +23,25 @@ export function GetRo(l: number, m: number, s?: number) {
   return FixResult(RESULT, 4);
 }
 // Get Expected number of customers in the system (Ls) Function
-export function GetLs(l: number, m: number, Lq?: number) {
+export function GetLs(
+  l: number,
+  m: number,
+  k: number,
+  ro: number,
+  Lq?: number
+) {
   let result = 0;
   if (Lq) {
     result = Lq + l / m;
+  } else if (k !== 0) {
+    if (ro === 1) {
+      result = k / 2;
+    } else {
+      const FIRST_PART = ro / (1 - ro);
+      const SECOND_PART = (k + 1) * Math.pow(ro, k + 1);
+      const THIRD_PART = 1 - Math.pow(ro, k + 1);
+      result = FIRST_PART - SECOND_PART / THIRD_PART;
+    }
   } else {
     result = l / (m - l);
   }

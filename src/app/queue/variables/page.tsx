@@ -74,33 +74,50 @@ function QueueVariablesPage({ searchParams }: Props) {
               help="Números Positivos Solamente"
               validation="numberWithZero"
             />
-            {/* Number of Clients in Queue Input */}
-            <Input
-              label="Número de Clientes en Cola (n2)"
-              type="text"
-              name="n2"
-              example="4"
-              help="Números Positivos Solamente"
-              validation="numberWithZero"
-            />
-            {/* Units of time in the system Input */}
-            <Input
-              label="Unidades de tiempo en el sistema (t1)"
-              type="text"
-              name="t1"
-              example="10"
-              help="Números Positivos Solamente"
-              validation="numberWithZero"
-            />
-            {/* Units of time in Queue Input */}
-            <Input
-              label="Unidades de tiempo en Cola (t2)"
-              type="text"
-              name="t2"
-              example="20"
-              help="Números Positivos Solamente"
-              validation="numberWithZero"
-            />
+            {MODEL.includes("k") && (
+              <>
+                {/* Queue Size Input */}
+                <Input
+                  label="Tamaño de la Cola (k)"
+                  type="text"
+                  name="k"
+                  example="14"
+                  help="Números Positivos Solamente"
+                  validation="number"
+                />
+              </>
+            )}
+            {!MODEL.includes("k") && (
+              <>
+                {/* Number of Clients in Queue Input */}
+                <Input
+                  label="Número de Clientes en Cola (n2)"
+                  type="text"
+                  name="n2"
+                  example="4"
+                  help="Números Positivos Solamente"
+                  validation="numberWithZero"
+                />
+                {/* Units of time in the system Input */}
+                <Input
+                  label="Unidades de tiempo en el sistema (t1)"
+                  type="text"
+                  name="t1"
+                  example="10"
+                  help="Números Positivos Solamente"
+                  validation="numberWithZero"
+                />
+                {/* Units of time in Queue Input */}
+                <Input
+                  label="Unidades de tiempo en Cola (t2)"
+                  type="text"
+                  name="t2"
+                  example="20"
+                  help="Números Positivos Solamente"
+                  validation="numberWithZero"
+                />
+              </>
+            )}
             {/* If it is the M/M/S model, display servers amount input */}
             {MODEL.startsWith("mms") && (
               // Servers Amount Input

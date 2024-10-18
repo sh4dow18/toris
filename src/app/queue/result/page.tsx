@@ -6,7 +6,7 @@ import { Page } from "@/components";
 import {
   GetLq,
   GetLs,
-  GetMMSP0,
+  GetP0,
   GetPLs,
   GetPn,
   GetPw,
@@ -35,6 +35,7 @@ export const dynamic = "force-dynamic";
 const modelsRecord: Record<string, string> = {
   "mm1-fifo-inf-inf": "M/M/1 : FIFO/∞/∞",
   "mms-fifo-inf-inf": "M/M/s : FIFO/∞/∞",
+  "mm1-fifo-k-inf": "M/M/1 : FIFO/k/∞",
 };
 function QueueResultPage({ searchParams }: Props) {
   // Transform String Param to Number
@@ -59,19 +60,27 @@ function QueueResultPage({ searchParams }: Props) {
   const n2 = GetNumberFromParam("n2");
   const t1 = GetNumberFromParam("t1");
   const t2 = GetNumberFromParam("t2");
+  const k = GetNumberFromParam("k");
   // Get Results
   const ro = GetRo(l, m, s);
-  const P0 = model.startsWith("M/M/s") ? GetMMSP0(l, m, s, ro) : undefined;
-  const Lq = GetLq(model, l, m, s, ro, P0);
-  const Ls = GetLs(l, m, model.startsWith("M/M/s") ? Lq : undefined);
-  const Wq = GetWq(l, m, model.startsWith("M/M/s") ? Lq : undefined);
-  const Ws = GetWs(l, m, model.startsWith("M/M/s") ? Wq : undefined);
-  const Pn = GetPn(ro, n1, l, m, s, P0);
+  const P0 = model !== "M/M/1 : FIFO/∞/∞" ? GetP0(l, m, s, ro, k) : undefined;
+  const Pk =
+    model === "M/M/1 : FIFO/k/∞" ? GetPn(ro, k, l, m, s, k, P0) : undefined;
+  const Lq = GetLq(model, l, m, s, ro, k, P0);
+  const Ls = GetLs(l, m, k, ro, model.startsWith("M/M/s") ? Lq : undefined);
+  const Wq = GetWq(l, m, model !== "M/M/1 : FIFO/∞/∞" ? Lq : undefined, Pk);
+  const Ws = GetWs(
+    l,
+    m,
+    model.startsWith("M/M/s") ? Wq : undefined,
+    Pk ? { Ls, Pk } : undefined
+  );
+  const Pn = GetPn(ro, n1, l, m, s, k, P0);
   const PWs = GetPWs(m, ro, t1, l, s, P0);
   const PWq = GetPWq(m, ro, t2);
   const PLs = GetPLs(ro, n2 - 1);
-  const Pw = P0 ? GetPw(l, m, s, ro, P0) : undefined;
-  const US = P0 ? GetUS(ro, s) : undefined;
+  const Pw = !model.endsWith("k/∞") && P0 ? GetPw(l, m, s, ro, P0) : undefined;
+  const US = !model.endsWith("k/∞") && P0 ? GetUS(ro, s) : undefined;
   return (
     <Page className="results-container" title={TITLE} description={DESCRIPTION}>
       <section>
@@ -92,29 +101,41 @@ function QueueResultPage({ searchParams }: Props) {
             <strong>Tasa media de Servicio (µ):</strong> {m} unidades en un
             tiempo
           </li>
-          <li>
-            {/* Servers Amount */}
-            <strong>Cantidad de Servidores (s):</strong> {s} servidores
-          </li>
+          {model.includes("k") && (
+            <li>
+              {/* Servers Amount */}
+              <strong>Tamaño de la Cola (k):</strong> {k} espacios
+            </li>
+          )}
+          {!model.includes("k") && (
+            <li>
+              {/* Servers Amount */}
+              <strong>Cantidad de Servidores (s):</strong> {s} servidores
+            </li>
+          )}
           <li>
             {/* Number of Clients in the System */}
             <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
             clientes
           </li>
-          <li>
-            {/* Number of Clients in Queue */}
-            <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
-          </li>
-          <li>
-            {/* Units of time in the system */}
-            <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
-            unidades de tiempo
-          </li>
-          <li>
-            {/* Units of time in Queue */}
-            <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades de
-            tiempo
-          </li>
+          {!model.includes("k") && (
+            <>
+              <li>
+                {/* Number of Clients in Queue */}
+                <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
+              </li>
+              <li>
+                {/* Units of time in the system */}
+                <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
+                unidades de tiempo
+              </li>
+              <li>
+                {/* Units of time in Queue */}
+                <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades
+                de tiempo
+              </li>
+            </>
+          )}
         </ul>
       </section>
       <section>
@@ -156,31 +177,35 @@ function QueueResultPage({ searchParams }: Props) {
             </strong>{" "}
             {Pn} ({Pn * 100}%) de Probabilidad
           </li>
-          <li>
-            {/* Probability that it is more than t units of time in the system  */}
-            <strong>
-              Probabilidad de que este más de {t1} unidades de tiempo en el
-              sistema (P({`Ws > t1`})):
-            </strong>{" "}
-            {PWs} ({PWs * 100}%) de Probabilidad
-          </li>
-          <li>
-            {/* Probability that it is more than t units of time in queue  */}
-            <strong>
-              Probabilidad de que este más de {t2} unidades de tiempo en cola
-              (P(
-              {`Wq > t2`})):
-            </strong>{" "}
-            {PWq} ({PWq * 100}%) de Probabilidad
-          </li>
-          <li>
-            {/* Probability that it is more than t units of time in queue  */}
-            <strong>
-              Probabilidad de tener una cola de más de {n2 - 1} clientes (P(
-              {`Ls > n2`})):
-            </strong>{" "}
-            {PLs} ({PLs * 100}%) de Probabilidad
-          </li>
+          {!model.endsWith("k/∞") && (
+            <>
+              <li>
+                {/* Probability that it is more than t units of time in the system  */}
+                <strong>
+                  Probabilidad de que este más de {t1} unidades de tiempo en el
+                  sistema (P({`Ws > t1`})):
+                </strong>{" "}
+                {PWs} ({PWs * 100}%) de Probabilidad
+              </li>
+              <li>
+                {/* Probability that it is more than t units of time in queue  */}
+                <strong>
+                  Probabilidad de que este más de {t2} unidades de tiempo en
+                  cola (P(
+                  {`Wq > t2`})):
+                </strong>{" "}
+                {PWq} ({PWq * 100}%) de Probabilidad
+              </li>
+              <li>
+                {/* Probability that it is more than t units of time in queue  */}
+                <strong>
+                  Probabilidad de tener una cola de más de {n2 - 1} clientes (P(
+                  {`Ls > n2`})):
+                </strong>{" "}
+                {PLs} ({PLs * 100}%) de Probabilidad
+              </li>
+            </>
+          )}
           {Pw && (
             <li>
               {/* Probability that the customer will have to wait */}

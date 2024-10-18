@@ -23,10 +23,25 @@ export function GetRo(l: number, m: number, s?: number) {
   return FixResult(RESULT, 4);
 }
 // Get Expected number of customers in the system (Ls) Function
-export function GetLs(l: number, m: number, Lq?: number) {
+export function GetLs(
+  l: number,
+  m: number,
+  k: number,
+  ro: number,
+  Lq?: number
+) {
   let result = 0;
   if (Lq) {
     result = Lq + l / m;
+  } else if (k !== 0) {
+    if (ro === 1) {
+      result = k / 2;
+    } else {
+      const FIRST_PART = ro / (1 - ro);
+      const SECOND_PART = (k + 1) * Math.pow(ro, k + 1);
+      const THIRD_PART = 1 - Math.pow(ro, k + 1);
+      result = FIRST_PART - SECOND_PART / THIRD_PART;
+    }
   } else {
     result = l / (m - l);
   }
@@ -39,14 +54,17 @@ export function GetLq(
   m: number,
   s: number,
   ro: number,
+  k: number,
   P0?: number
 ) {
   let result = 0;
   if (P0) {
-    if (model.startsWith("M/M/s")) {
+    if (k === 0) {
       const FIRST_PART = Math.pow(l / m, s) * ro;
       const SECOND_PART = Factorial(s) * Math.pow(1 - ro, 2);
       result = (FIRST_PART / SECOND_PART) * P0;
+    } else {
+      result = GetLs(l, m, k, ro) - (1 - P0);
     }
   } else {
     result = Math.pow(l, 2) / (m * (m - l));
@@ -54,35 +72,57 @@ export function GetLq(
   return FixResult(result, 4);
 }
 // Get Expected time of customers in the system (Ws) function
-export function GetWs(l: number, m: number, Wq?: number) {
+export function GetWs(
+  l: number,
+  m: number,
+  Wq?: number,
+  model3?: { Ls: number; Pk: number }
+) {
   let result = 0;
   if (Wq) {
     result = Wq + 1 / m;
   } else {
-    result = 1 / (m - l);
+    if (model3) {
+      result = model3.Ls / (l * (1 - model3.Pk));
+    } else {
+      result = 1 / (m - l);
+    }
   }
   return FixResult(result, 4);
 }
 // Get Expected time of customers in queue (Wq) function
-export function GetWq(l: number, m: number, Lq?: number) {
+export function GetWq(l: number, m: number, Lq?: number, Pk?: number) {
   let result = 0;
   if (Lq) {
-    result = Lq / l;
+    if (Pk) {
+      result = Lq / (l * (1 - Pk));
+    } else {
+      result = Lq / l;
+    }
   } else {
     result = l / (m * (m - l));
   }
   return FixResult(result, 4);
 }
 // Get Probability of 0 customers in the system (Pn) function for M/M/s:FIFO/∞/∞ model
-export function GetMMSP0(l: number, m: number, s: number, ro: number) {
-  let sum = 0;
-  for (let i = 0; i < s; i++) {
-    sum = sum + Math.pow(l / m, i) / Factorial(i);
+export function GetP0(l: number, m: number, s: number, ro: number, k: number) {
+  let result = 0;
+  if (k !== 0) {
+    if (ro === 1) {
+      result = 1 / (k + 1);
+    } else {
+      result = (1 - ro) / (1 - Math.pow(ro, k + 1));
+    }
+  } else {
+    let sum = 0;
+    for (let i = 0; i < s; i++) {
+      sum = sum + Math.pow(l / m, i) / Factorial(i);
+    }
+    const FIRST_PART = Math.pow(l / m, s) / Factorial(s);
+    const SECOND_PART = 1 / (1 - ro);
+    result = 1 / (FIRST_PART * SECOND_PART + sum);
   }
-  const FIRST_PART = Math.pow(l / m, s) / Factorial(s);
-  const SECOND_PART = 1 / (1 - ro);
-  const RESULT = 1 / (FIRST_PART * SECOND_PART + sum);
-  return FixResult(RESULT, 4);
+  return FixResult(result, 4);
 }
 // Get Probability of n customers in the system (Pn) function
 export function GetPn(
@@ -91,16 +131,26 @@ export function GetPn(
   l: number,
   m: number,
   s: number,
+  k: number,
   P0?: number
 ) {
   let result = 0;
   if (P0) {
     if (n === 0) {
       result = P0;
-    } else if (n <= s) {
-      result = (Math.pow(l / m, n) / Factorial(n)) * P0;
+    } else if (k === 0) {
+      if (n <= s) {
+        result = (Math.pow(l / m, n) / Factorial(n)) * P0;
+      } else {
+        result =
+          (Math.pow(l / m, n) / (Factorial(s) * Math.pow(s, n - s))) * P0;
+      }
     } else {
-      result = (Math.pow(l / m, n) / (Factorial(s) * Math.pow(s, n - s))) * P0;
+      if (ro === 1) {
+        result = P0;
+      } else {
+        result = ((1 - ro) * Math.pow(ro, n)) / (1 - Math.pow(ro, k + 1));
+      }
     }
   } else {
     result = (1 - ro) * Math.pow(ro, n);

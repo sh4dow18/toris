@@ -72,12 +72,21 @@ export function GetLq(
   return FixResult(result, 4);
 }
 // Get Expected time of customers in the system (Ws) function
-export function GetWs(l: number, m: number, Wq?: number) {
+export function GetWs(
+  l: number,
+  m: number,
+  Wq?: number,
+  model3?: { Ls: number; Pk: number }
+) {
   let result = 0;
   if (Wq) {
     result = Wq + 1 / m;
   } else {
-    result = 1 / (m - l);
+    if (model3) {
+      result = model3.Ls / (l * (1 - model3.Pk));
+    } else {
+      result = 1 / (m - l);
+    }
   }
   return FixResult(result, 4);
 }

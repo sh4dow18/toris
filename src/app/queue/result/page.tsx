@@ -64,10 +64,17 @@ function QueueResultPage({ searchParams }: Props) {
   // Get Results
   const ro = GetRo(l, m, s);
   const P0 = model !== "M/M/1 : FIFO/∞/∞" ? GetP0(l, m, s, ro, k) : undefined;
+  const Pk =
+    model === "M/M/1 : FIFO/k/∞" ? GetPn(ro, k, l, m, s, k, P0) : undefined;
   const Lq = GetLq(model, l, m, s, ro, k, P0);
   const Ls = GetLs(l, m, k, ro, model.startsWith("M/M/s") ? Lq : undefined);
   const Wq = GetWq(l, m, model.startsWith("M/M/s") ? Lq : undefined);
-  const Ws = GetWs(l, m, model.startsWith("M/M/s") ? Wq : undefined);
+  const Ws = GetWs(
+    l,
+    m,
+    model.startsWith("M/M/s") ? Wq : undefined,
+    Pk ? { Ls, Pk } : undefined
+  );
   const Pn = GetPn(ro, n1, l, m, s, k, P0);
   const PWs = GetPWs(m, ro, t1, l, s, P0);
   const PWq = GetPWq(m, ro, t2);

@@ -31,6 +31,7 @@ export const dynamic = "force-dynamic";
 // Model Record to display the model name using the submitted model code
 const modelsRecord: Record<string, string> = {
   "mm1-fifo-inf-inf": "M/M/1 : FIFO/∞/∞",
+  "mms-fifo-inf-inf": "M/M/s : FIFO/∞/∞",
 };
 function QueueResultPage({ searchParams }: Props) {
   // Transform String Param to Number
@@ -47,6 +48,10 @@ function QueueResultPage({ searchParams }: Props) {
       : modelsRecord["mm1-fifo-inf-inf"];
   const l = GetNumberFromParam("l");
   const m = GetNumberFromParam("m");
+  const s =
+    typeof searchParams["s"] === "string"
+      ? Number.parseFloat(searchParams["s"])
+      : 1;
   const n1 = GetNumberFromParam("n1");
   const n2 = GetNumberFromParam("n2");
   const t1 = GetNumberFromParam("t1");
@@ -80,6 +85,10 @@ function QueueResultPage({ searchParams }: Props) {
             {/* Average Service Rate */}
             <strong>Tasa media de Servicio (µ):</strong> {m} unidades en un
             tiempo
+          </li>
+          <li>
+            {/* Servers Amount */}
+            <strong>Cantidad de Servidores (s):</strong> {s} servidores
           </li>
           <li>
             {/* Number of Clients in the System */}

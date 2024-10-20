@@ -138,7 +138,7 @@
 /* Media Queries */
 /* Sorted by Max Width */
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 830px) {
   /* Main Classes Styles */
   /* Sorted Alphabetically */
 
@@ -149,7 +149,7 @@
     width: auto;
   }
 }
-@media screen and (max-width: 703px) {
+@media screen and (max-width: 812px) {
   /* Main Classes Styles */
   /* Sorted Alphabetically */
 

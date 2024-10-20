@@ -114,25 +114,38 @@ function QueueResultPage({ searchParams }: Props) {
             </li>
           )}
           <li>
-            {/* Number of Clients in the System */}
-            <strong>Número de Clientes en el Sistema (n1):</strong> {n1}{" "}
-            clientes
+            {/* Number of Customers to Obtain Probability of n customers in the system */}
+            <strong>
+              Número de Clientes para Obtener Probabilidad de n clientes en el
+              sistema (n1):
+            </strong>{" "}
+            {n1} clientes
           </li>
           {!model.includes("k") && (
             <>
               <li>
-                {/* Number of Clients in Queue */}
-                <strong>Número de Clientes en Cola (n2):</strong> {n2} clientes
+                {/* Number of Customers to Obtain Probability of a Queue of more than n Customers */}
+                <strong>
+                  Número de Clientes para Obtener Probabilidad de una Cola de
+                  más de n Clientes (n2):
+                </strong>{" "}
+                {n2} clientes
               </li>
               <li>
-                {/* Units of time in the system */}
-                <strong>Unidades de tiempo en el sistema (t1):</strong> {t1}{" "}
-                unidades de tiempo
+                {/* Time units to Obtain Probability that it is more than t time units in System */}
+                <strong>
+                  Unidades de tiempo para Obtener Probabilidad de que este más
+                  de t unidades de tiempo en Sistema (t1):
+                </strong>{" "}
+                {t1} unidades de tiempo
               </li>
               <li>
-                {/* Units of time in Queue */}
-                <strong>Unidades de tiempo en Cola (t2):</strong> {t2} unidades
-                de tiempo
+                {/* Time units to Obtain Probability that it is more than t time units in Queue */}
+                <strong>
+                  Unidades de tiempo para Obtener Probabilidad de que este más
+                  de t unidades de tiempo en Cola (t2):
+                </strong>{" "}
+                {t2} unidades de tiempo
               </li>
             </>
           )}

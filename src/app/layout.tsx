@@ -38,7 +38,7 @@ export default function RootLayout({
             </p>
             <p>
               {/* Last Update */}
-              Última Actualización realizada el 18 de Octubre del 2024
+              Última Actualización realizada el 19 de Octubre del 2024
             </p>
           </div>
         </footer>

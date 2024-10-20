@@ -65,9 +65,9 @@ function QueueVariablesPage({ searchParams }: Props) {
               help="Números Positivos Solamente"
               validation="number"
             />
-            {/* Number of Clients in the System Input */}
+            {/* Number of Customers to Obtain Probability of n customers in the system Input */}
             <Input
-              label="Número de Clientes en el Sistema (n1)"
+              label="Número de Clientes para Obtener Probabilidad de n clientes en el sistema (n1)"
               type="text"
               name="n1"
               example="0"
@@ -89,27 +89,27 @@ function QueueVariablesPage({ searchParams }: Props) {
             )}
             {!MODEL.includes("k") && (
               <>
-                {/* Number of Clients in Queue Input */}
+                {/* Number of Customers to Obtain Probability of a Queue of more than n Customers Input */}
                 <Input
-                  label="Número de Clientes en Cola (n2)"
+                  label="Número de Clientes para Obtener Probabilidad de una Cola de más de n Clientes (n2)"
                   type="text"
                   name="n2"
                   example="4"
                   help="Números Positivos Solamente"
                   validation="numberWithZero"
                 />
-                {/* Units of time in the system Input */}
+                {/* Time units to Obtain Probability that it is more than t time units in System Input */}
                 <Input
-                  label="Unidades de tiempo en el sistema (t1)"
+                  label="Unidades de tiempo para Obtener Probabilidad de que este más de t unidades de tiempo en Sistema (t1)"
                   type="text"
                   name="t1"
                   example="10"
                   help="Números Positivos Solamente"
                   validation="numberWithZero"
                 />
-                {/* Units of time in Queue Input */}
+                {/* Time units to Obtain Probability that it is more than t time units in Queue Input */}
                 <Input
-                  label="Unidades de tiempo en Cola (t2)"
+                  label="Unidades de tiempo para Obtener Probabilidad de que este más de t unidades de tiempo en Cola (t2)"
                   type="text"
                   name="t2"
                   example="20"

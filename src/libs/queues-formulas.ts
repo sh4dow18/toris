@@ -58,7 +58,7 @@ export function GetLq(
   P0?: number
 ) {
   let result = 0;
-  if (P0) {
+  if (P0 !== undefined) {
     if (k === 0) {
       const FIRST_PART = Math.pow(l / m, s) * ro;
       const SECOND_PART = Factorial(s) * Math.pow(1 - ro, 2);
@@ -135,7 +135,7 @@ export function GetPn(
   P0?: number
 ) {
   let result = 0;
-  if (P0) {
+  if (P0 !== undefined) {
     if (n === 0) {
       result = P0;
     } else if (k === 0) {
@@ -167,7 +167,7 @@ export function GetPWs(
   P0?: number
 ) {
   let result = 0;
-  if (P0) {
+  if (P0 !== undefined) {
     const FIRST_PART = P0 * Math.pow(l / m, s);
     const SECOND_PART = 1 - Math.pow(Math.E, -1 * m * (s - 1 - (l / m) * t));
     const THIRD_PART = Factorial(s) * (1 - ro) * (s - 1 - l / m);

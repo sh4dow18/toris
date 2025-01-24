@@ -1,6 +1,12 @@
+/* Tailwind CSS Imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Add Inter Font to use with Tailwind CSS */
+@font-face {
+  font-family: "inter";
+  src: url(/fonts/Inter.ttf) format('truetype');
+}
 
 /* Main Variables */
 
@@ -25,8 +31,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  /* Text */
-  font-family: Arial, Helvetica, sans-serif;
 }
 footer {
   /* Spacers */
@@ -41,21 +45,6 @@ main {
 }
 
 /* Second Grade */
-
-body > header {
-  /* Display */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  /* Spacers */
-  padding: 1.5rem 10%;
-  /* Text */
-  font-family: Arial, Helvetica, sans-serif;
-  /* Colors */
-  background-color: var(--black);
-  color: var(--white);
-}
 
 main h2 {
   /* Spacers */
@@ -81,28 +70,6 @@ main > div {
 
 /* Third Grade */
 
-body > header a {
-  /* Display */
-  transform: scale(1);
-  transition: transform 0.3s ease;
-  /* Texts */
-  text-decoration: none;
-  /* Colors */
-  color: var(--white);
-}
-body > header a:hover {
-  /* Display */
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
-body > header p {
-  /* Spacers */
-  margin: 0;
-  /* Texts */
-  font-size: 1.35rem;
-  font-weight: bold;
-}
-
 footer div p {
   /* Spacers */
   padding-block: 0.2rem;
@@ -113,31 +80,9 @@ footer div p {
   /* Colors */
   color: var(--white);
 }
-body > header nav {
-  /* Display */
-  display: flex;
-  flex-wrap: wrap;
-  /* Texts */
-  font-size: 1.2rem;
-}
 
 /* Fourth Grade */
 
-body > header nav a {
-  /* Display */
-  user-select: none;
-  /* Spacers */
-  padding-inline: 1rem;
-  /* Texts */
-  text-decoration: none;
-  font-weight: bold;
-  /* Colors */
-  color: var(--white);
-}
-body > header nav a:hover {
-  /* Colors */
-  color: var(--blue);
-}
 footer div p a {
   /* Colors */
   color: var(--white);
@@ -189,24 +134,6 @@ footer div p a {
   }
 }
 
-@media screen and (max-width: 1235px) {
-  /* Main Tag Styles */
-  /* Sorted Alphabetically */
-
-  /* Second Grade */
-
-  body > header {
-    /* Spacers */
-    padding: 1rem;
-  }
-
-  /* Third Grade */
-
-  body header > p {
-    /* Texts */
-    font-size: 1.5rem;
-  }
-}
 @media screen and (max-width: 635px) {
   /* Main Classes Styles */
   /* Sorted Alphabetically */

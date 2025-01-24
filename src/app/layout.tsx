@@ -2,6 +2,7 @@
 import "@/stylesheets/globals.css";
 // Main Layout Requirements
 import Link from "next/link";
+import { Nav } from "@/components";
 // Main Layout Main Function
 export default function RootLayout({
   children,
@@ -10,17 +11,10 @@ export default function RootLayout({
 }>) {
   // Returns Main Layout
   return (
-    <html lang="es">
+    <html lang="es" className="font-inter">
       <body>
         <header>
-          {/* Project Name */}
-          <Link href="/">
-            <p>Mateory</p>
-          </Link>
-          <nav>
-            <Link href="/inventory">Inventarios</Link>
-            <Link href="/queue">Colas</Link>
-          </nav>
+          <Nav />
         </header>
         {/* Page Container */}
         <main>{children}</main>

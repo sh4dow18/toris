@@ -32,13 +32,6 @@ body {
   flex-direction: column;
   height: 100dvh;
 }
-footer {
-  /* Spacers */
-  padding: 1rem;
-  /* Colors */
-  background-color: #222;
-  border-top: 1px solid var(--white);
-}
 main {
   /* Display */
   flex: 1;
@@ -66,26 +59,6 @@ main > div {
   /* Spacers */
   padding: 0 2rem 1rem 2rem;
   margin-inline: auto;
-}
-
-/* Third Grade */
-
-footer div p {
-  /* Spacers */
-  padding-block: 0.2rem;
-  /* Texts */
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  /* Colors */
-  color: var(--white);
-}
-
-/* Fourth Grade */
-
-footer div p a {
-  /* Colors */
-  color: var(--white);
 }
 
 /* Main Classes Styles */
@@ -153,49 +126,5 @@ footer div p a {
     padding: 0.5rem;
     /* Texts */
     font-size: 1rem;
-  }
-}
-@media screen and (max-width: 587px) {
-  /* Main Tag Styles */
-  /* Sorted Alphabetically */
-
-  /* Third Grade */
-
-  footer div p {
-    /* Texts */
-    font-size: 0.8rem;
-  }
-}
-@media screen and (max-width: 476px) {
-  /* Main Tag Styles */
-  /* Sorted Alphabetically */
-
-  /* Third Grade */
-
-  footer div p {
-    /* Texts */
-    font-size: 0.7rem;
-  }
-}
-@media screen and (max-width: 420px) {
-  /* Main Tag Styles */
-  /* Sorted Alphabetically */
-
-  /* Third Grade */
-
-  footer div p {
-    /* Texts */
-    font-size: 0.6rem;
-  }
-}
-@media screen and (max-width: 365px) {
-  /* Main Tag Styles */
-  /* Sorted Alphabetically */
-
-  /* Third Grade */
-
-  footer div p {
-    /* Texts */
-    font-size: 0.5rem;
   }
 }

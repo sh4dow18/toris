@@ -70,7 +70,7 @@ function Nav() {
       </div>
       {/* Mobile Nav */}
       <div
-        className={`flex flex-col text-white absolute bg-gray-900 w-full py-2 md:hidden ${
+        className={`flex flex-col text-white absolute bg-gray-900 w-full py-2 z-20 md:hidden ${
           open ? "" : "hidden"
         }`.trimEnd()}
       >

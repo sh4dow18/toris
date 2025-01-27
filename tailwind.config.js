@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['inter']
+        inter: ["inter"],
+      },
+      colors: {
+        mateoryPurple: "#A72DBC",
+        mateoryPurpleLight: "#A54AB5"
       },
     },
   },

@@ -18,7 +18,7 @@ export default function RootLayout({
           <Nav />
         </header>
         {/* Page Container */}
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <footer className="bg-gray-950 text-gray-400 text-center py-8 sm:flex sm:place-content-between sm:items-center sm:px-8">
           {/* Logos Container */}
           <div className="flex justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">

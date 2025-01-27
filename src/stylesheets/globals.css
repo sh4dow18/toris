@@ -32,34 +32,6 @@ body {
   flex-direction: column;
   height: 100dvh;
 }
-main {
-  /* Display */
-  flex: 1;
-}
-
-/* Second Grade */
-
-main h2 {
-  /* Spacers */
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-  /* Texts */
-  font-size: 2rem;
-  font-weight: bold;
-  font-style: italic;
-  font-variant: small-caps;
-  text-align: center;
-  /* Colors */
-  border-bottom: 2px solid var(--black);
-}
-main > div {
-  /* Display */
-  width: 75rem;
-  /* Spacers */
-  padding: 0 2rem 1rem 2rem;
-  margin-inline: auto;
-}
 
 /* Main Classes Styles */
 /* Sorted Alphabetically */
@@ -94,18 +66,6 @@ main > div {
 
 /* Media Queries */
 /* Sorted by Max Width */
-
-@media screen and (max-width: 1263px) {
-  /* Main Classes Styles */
-  /* Sorted Alphabetically */
-
-  /* Second Grade */
-
-  main > div {
-    /* Display */
-    width: auto;
-  }
-}
 
 @media screen and (max-width: 635px) {
   /* Main Classes Styles */

@@ -10,8 +10,9 @@ function Card({ name, value, disabled }: Props) {
   return (
     // Card Container
     <article
-      aria-disabled={disabled}
-      className="flex flex-col gap-2 bg-gray-800 p-4 rounded-lg aria-disabled:bg-gray-900"
+      className={`flex flex-col gap-2 p-4 rounded-lg ${
+        disabled ? "bg-gray-900" : "bg-gray-800"
+      }`.trimEnd()}
     >
       {/* Card Title */}
       <p

@@ -5,86 +5,10 @@
 /* Add Inter Font to use with Tailwind CSS */
 @font-face {
   font-family: "inter";
-  src: url(/fonts/Inter.ttf) format('truetype');
+  src: url(/fonts/Inter.ttf) format("truetype");
 }
-
-/* Main Variables */
-
-:root {
-  --black: #0a0a0a;
-  --white: #fafafa;
-  --primary: #c79200;
-}
-
-/* Main Tag Styles */
-/* Sorted Alphabetically */
-
-/* First Grade */
-
-* {
-  /* Spacers */
-  margin: 0;
-  padding: 0;
-}
-body {
-  /* Display */
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-}
-
-/* Main Classes Styles */
-/* Sorted Alphabetically */
-
-/* First Grade */
-
-.invisible {
-  /* Display */
-  display: none;
-}
-.model-cards-list {
-  /* Display */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.model-select {
-  /* Display */
-  display: none;
-}
-
-
-/* Second Grade */
-
-.cards-list-container div {
-  /* Display */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Media Queries */
-/* Sorted by Max Width */
-
-@media screen and (max-width: 635px) {
-  /* Main Classes Styles */
-  /* Sorted Alphabetically */
-
-  /* First Grade */
-  
-  .model-cards-list {
-    /* Display */
-    display: none;
-  }
-  .model-select {
-    /* Display */
-    display: block;
-    width: 100%;
-    border-radius: 0.5rem;
-    /* Spacers */
-    padding: 0.5rem;
-    /* Texts */
-    font-size: 1rem;
-  }
+/* Change Autocomplete styles in Chrome */
+input:-webkit-autofill {
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
 }

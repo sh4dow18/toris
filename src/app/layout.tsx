@@ -13,7 +13,7 @@ export default function RootLayout({
   // Returns Main Layout
   return (
     <html lang="es" className="font-inter">
-      <body>
+      <body className="flex flex-col h-dvh">
         <header>
           <Nav />
         </header>

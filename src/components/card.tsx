@@ -1,35 +1,33 @@
-// Model Card Stylesheets
-import "@/stylesheets/components/card.css";
-// Model Card Requirements
-import Image from "next/image";
-import Link from "next/link";
-// Model Card Props
-type Props = {
+// Card Props
+interface Props {
   name: string;
-  image: string;
-  href: string;
-  model?: string;
-};
-// Model Card Main Function
-function Card({ name, image, href, model }: Props) {
-  // Returns Model Card Component
+  value: number | string;
+  disabled?: boolean;
+}
+// Card Main Function
+function Card({ name, value, disabled }: Props) {
+  // Return Card Component
   return (
-    // Model Card Container
-    <Link
-      className="card-container"
-      href={`/${href}${model ? `?model=${model}` : ""}`.trimEnd()}
+    // Card Container
+    <article
+      aria-disabled={disabled}
+      className="flex flex-col gap-2 bg-gray-800 p-4 rounded-lg aria-disabled:bg-gray-900"
     >
-      {/* Main Image */}
-      <Image
-        src={`/${image}.png`}
-        alt={name}
-        width={247}
-        height={140}
-        priority
-      />
-      {/* Main Name */}
-      <p>{name}</p>
-    </Link>
+      {/* Card Title */}
+      <p
+        aria-disabled={disabled}
+        className="text-sm aria-disabled:text-gray-500"
+      >
+        {name}
+      </p>
+      {/* Card Value */}
+      <p
+        aria-disabled={disabled}
+        className="font-bold text-2xl text-white aria-disabled:text-gray-500"
+      >
+        {disabled === true ? "No Aplica" : value}
+      </p>
+    </article>
   );
 }
 

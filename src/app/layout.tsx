@@ -2,7 +2,7 @@
 import "@/stylesheets/globals.css";
 // Main Layout Requirements
 import Link from "next/link";
-import { Nav } from "@/components";
+import { Light, Nav } from "@/components";
 import Image from "next/image";
 // Main Layout Main Function
 export default function RootLayout({
@@ -18,7 +18,11 @@ export default function RootLayout({
           <Nav />
         </header>
         {/* Page Container */}
-        <main className="flex-1">{children}</main>
+        <main className="bg-gray-950 flex flex-1">
+          <Light direction="tl" />
+          {children}
+          <Light direction="br" />
+        </main>
         <footer className="bg-gray-950 text-gray-400 text-center py-8 sm:flex sm:place-content-between sm:items-center sm:px-8">
           {/* Logos Container */}
           <div className="flex justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">

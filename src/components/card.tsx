@@ -1,18 +1,21 @@
+import { CheckNumber } from "@/libs/general";
+
 // Card Props
 interface Props {
   name: string;
   value: number | string;
   disabled?: boolean;
+  staticWidth?: boolean;
 }
 // Card Main Function
-function Card({ name, value, disabled }: Props) {
+function Card({ name, value, disabled, staticWidth }: Props) {
   // Return Card Component
   return (
     // Card Container
     <article
       className={`flex flex-col gap-2 p-4 rounded-lg ${
         disabled ? "bg-gray-900" : "bg-gray-800"
-      }`.trimEnd()}
+      } ${staticWidth === true ? "md:w-[21rem]" : undefined}`.trimEnd()}
     >
       {/* Card Title */}
       <p
@@ -26,7 +29,11 @@ function Card({ name, value, disabled }: Props) {
         aria-disabled={disabled}
         className="font-bold text-2xl text-white aria-disabled:text-gray-500"
       >
-        {disabled === true ? "No Aplica" : value}
+        {disabled === true
+          ? "No Aplica"
+          : typeof value === "string"
+          ? value
+          : CheckNumber(value)}
       </p>
     </article>
   );

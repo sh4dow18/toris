@@ -17,3 +17,34 @@ export function FormatNumberToAccounting(
 export function GetValueFromString(value: string) {
   return Number.parseFloat(value);
 }
+// Gets a Float Value from a String or Undefined
+export function GetValueFromPossibleEmptyString(value: string) {
+  return value !== "" ? Number.parseFloat(value) : undefined;
+}
+// Get Factorial of a Number
+export function Factorial(number: number): number {
+  if (number === 0 || number === 1) {
+    return 1;
+  }
+  return number * Factorial(number - 1);
+}
+// Get Percentage from a Probability
+export function Percentage(number: number) {
+  if (Number.isNaN(number)) {
+    return "Sin Definir";
+  }
+  const RESULT = (number * 100).toFixed(2);
+  return `${RESULT}%`;
+}
+export function CheckNumber(number: number) {
+  // If Number is undefined, return Undefined
+  if (Number.isNaN(number)) {
+    return "Sin Definir";
+  }
+  // If Number is Infinite, returns Infinite Symbol
+  else if (!Number.isFinite(number)) {
+    return "∞"
+  }
+  // Else, return number
+  return number
+}

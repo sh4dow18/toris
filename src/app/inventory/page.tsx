@@ -19,10 +19,6 @@ import {
   GetTotalProductionUnitCost,
 } from "@/libs/inventory";
 import { FormEvent, useState } from "react";
-// Inventory Page Constants
-const TITLE = "Teoría de Inventarios";
-const DESCRIPTION =
-  "Soluciona Problemas Fáciles de Teoría de Inventarios con unos Cuantos Clics";
 // Inventory Page Main Function
 function Inventory() {
   // Inventory Page Constants

@@ -208,199 +208,199 @@ function Inventory() {
   };
   // Returns Inventory Page
   return (
-    <div className="flex flex-col justify-center text-gray-400 z-10 px-8 mx-auto my-5">
-      {/* Main Section with Page Title and Description */}
-      <section className="flex flex-col gap-5">
-        <h1 className="text-white text-5xl font-bold">{TITLE}</h1>
-        <p>{DESCRIPTION}</p>
-      </section>
-      {/* Page Important Content */}
-      <div className="min-[1440px]:flex min-[1440px]:gap-10">
-        {/* Inventory Form */}
-        <Form submitButton="Obtener Resultados" OnSubmit={Submit}>
-          {/* Select Model Form Section */}
-          <Section
-            title="Modelos Disponibles"
-            description="Aquí se presentan los modelos disponibles sobre teoría de inventarios que afectaran a las variables necesarias"
-            contentClassName="flex flex-col gap-4 justify-center min-[372px]:flex-row min-[372px]:flex-wrap"
-          >
-            {MODELS_LIST.map((model) => (
-              // When the button is clicked, change the selected model and set the results to their initial values
-              <button
-                key={model.id}
-                type="button"
-                onClick={() => {
-                  SetSelectedModel(model.id);
-                  SetResults(INIT_RESULTS_VALUES);
-                }}
-                className={`py-2 px-3 font-medium rounded-md text-center min-[372px]:w-[9.1rem] ${
-                  selectedModel === model.id
-                    ? "bg-mateoryPurple text-white"
-                    : "bg-gray-700 cursor-pointer"
-                }`}
-              >
-                {model.name}
-              </button>
-            ))}
-          </Section>
-          {/* Variables Form Section */}
-          <Section
-            title="Variables"
-            description="Aquí se toman los datos necesarios para calcular los resultados"
-          >
-            {/* Constant Production Ratio Input */}
-            <Input
-              label="Razón de Producción Constante"
-              name="constantProductionRatio"
-              placeholder="8000"
-              help="Números Positivos Solamente"
-              validation="number"
-              disabled={selectedModel === 3 || selectedModel === 4}
-            />
-            {/* Constant Demand */}
-            <Input
-              label="Demanda Constante"
-              name="demand"
-              placeholder="3000"
-              help="Números Positivos Solamente"
-              validation="number"
-            />
-            {/* Unit Production Cost */}
-            <Input
-              label="Costo Unitario de Producción"
-              name="unitProductionCost"
-              placeholder="4"
-              help="Números Positivos Solamente"
-              validation="number"
-            />
-            {/* Inventory Cost */}
-            <Input
-              label="Costo por Mantener en Inventario"
-              name="inventoryCost"
-              placeholder="3"
-              help="Números Positivos Solamente"
-              validation="number"
-            />
-            {/* Release Cost */}
-            <Input
-              label="Costo de Lanzamiento"
-              name="releaseCost"
-              placeholder="100"
-              help="Números Positivos Solamente"
-              validation="number"
-            />
-            {/* Deficit Cost */}
-            <Input
-              label="Costo por Déficit"
-              name="deficitCost"
-              placeholder="2"
-              help="Números Positivos Solamente"
-              validation="number"
-              disabled={selectedModel === 1 || selectedModel === 3}
-            />
-          </Section>
-          {/* Settings Form Section */}
-          <Section
-            title="Configuración"
-            description="Aquí se configura los valores para los resultados obtenidos con base a los variables"
-          >
-            {/* Number of Decimals */}
-            <Input
-              label="Cantidad de Decimales"
-              name="decimals"
-              placeholder="2"
-              help="Números del 1 al 10 Solamente"
-              validation="numberWithOneDigit"
-            />
-            {/* Currency Type */}
-            <Select
-              label="Tipo de Moneda"
-              name="currency"
-              optionsList={COINS_LIST}
-            />
-          </Section>
-        </Form>
-        {/* Results Section */}
+    <Section
+      title="Teoría de Inventarios"
+      description="Soluciona Problemas Fáciles de Teoría de Inventarios con unos Cuantos Clics"
+      main
+    >
+      {/* Inventory Form */}
+      <Form submitButton="Obtener Resultados" OnSubmit={Submit}>
+        {/* Select Model Form Section */}
         <Section
-          title="Resultados"
-          description="Aquí se muestran los resultados obtenidos con base a lo puesto anteriormente"
-          contentClassName="flex flex-col gap-4 min-[768px]:grid min-[768px]:grid-cols-2"
+          title="Modelos Disponibles"
+          description="Aquí se presentan los modelos disponibles de inventarios"
+          contentClassName="flex flex-col gap-4 justify-center min-[372px]:flex-row min-[372px]:flex-wrap"
+          small
         >
-          {/* Optimal Production Lot Size Card */}
-          <Card
-            name="Tamaño óptimo del Lote de Producción"
-            value={results.optimalProductionLotSize}
-          />
-          {/* Time between 2 Production Runs Card */}
-          <Card
-            name="Tiempo entre 2 Corridas de Producción"
-            value={results.timeBetweenTwoProductionRuns}
-          />
-          {/* Frequency between 2 Production Runs Card */}
-          <Card
-            name="Frecuencia entre 2 Corridas de Producción"
-            value={results.frequencyBetweenTwoProductionRuns}
-          />
-          {/* Max Deficit Card */}
-          <Card
-            name="Déficit Máximo"
-            value={results.maxDeficit}
-            disabled={selectedModel === 1 || selectedModel === 3}
-          />
-          {/* Max Inventory Level Card */}
-          <Card
-            name="Nivel de Inventario Máximo"
-            value={results.maxInventoryLevel}
-          />
-          {/* First Time Interval Card */}
-          <Card
-            name="Primer Intervalo de Tiempo"
-            value={results.firstTimeInterval}
-          />
-          {/* Second Time Interval Card */}
-          <Card
-            name="Segundo Intervalo de Tiempo"
-            value={results.secondTimeInterval}
-            disabled={selectedModel === 3}
-          />
-          {/* Third Time Interval Card */}
-          <Card
-            name="Tercer Intervalo de Tiempo"
-            value={results.thirdTimeInterval}
-            disabled={selectedModel !== 2}
-          />
-          {/* Fourth Time Interval Card */}
-          <Card
-            name="Cuarto Intervalo de Tiempo"
-            value={results.fourthTimeInterval}
-            disabled={selectedModel !== 2}
-          />
-          {/* Total Holding Inventory Cost Card */}
-          <Card
-            name="Costo Total por Mantener en Inventario"
-            value={results.totalHoldingInventoryCost}
-          />
-          {/* Total Deficit Cost Card */}
-          <Card
-            name="Costo Total por Déficit"
-            value={results.totalDeficitCost}
-            disabled={selectedModel === 1 || selectedModel === 3}
-          />
-          {/* Total Production Cost Card */}
-          <Card
-            name="Costo Total por Producción"
-            value={results.totalProductionCost}
-          />
-          {/* Total Unit Production Cost Card */}
-          <Card
-            name="Costo Total por Unidad de Producción"
-            value={results.totalProductionUnitCost}
-          />
-          {/* Total Cost Card */}
-          <Card name="Costo Total" value={results.totalCost} />
+          {MODELS_LIST.map((model) => (
+            // When the button is clicked, change the selected model and set the results to their initial values
+            <button
+              key={model.id}
+              type="button"
+              onClick={() => {
+                SetSelectedModel(model.id);
+                SetResults(INIT_RESULTS_VALUES);
+              }}
+              className={`py-2 px-3 font-medium rounded-md text-center min-[372px]:w-[9.1rem] ${
+                selectedModel === model.id
+                  ? "bg-mateoryPurple text-white"
+                  : "bg-gray-700 cursor-pointer"
+              }`}
+            >
+              {model.name}
+            </button>
+          ))}
         </Section>
-      </div>
-    </div>
+        {/* Variables Form Section */}
+        <Section
+          title="Variables"
+          description="Aquí se toman los datos necesarios para calcular los resultados"
+          small
+        >
+          {/* Constant Production Ratio Input */}
+          <Input
+            label="Razón de Producción Constante"
+            name="constantProductionRatio"
+            placeholder="8000"
+            help="Números Positivos Solamente"
+            validation="number"
+            disabled={selectedModel === 3 || selectedModel === 4}
+          />
+          {/* Constant Demand */}
+          <Input
+            label="Demanda Constante"
+            name="demand"
+            placeholder="3000"
+            help="Números Positivos Solamente"
+            validation="number"
+          />
+          {/* Unit Production Cost */}
+          <Input
+            label="Costo Unitario de Producción"
+            name="unitProductionCost"
+            placeholder="4"
+            help="Números Positivos Solamente"
+            validation="number"
+          />
+          {/* Inventory Cost */}
+          <Input
+            label="Costo por Mantener en Inventario"
+            name="inventoryCost"
+            placeholder="3"
+            help="Números Positivos Solamente"
+            validation="number"
+          />
+          {/* Release Cost */}
+          <Input
+            label="Costo de Lanzamiento"
+            name="releaseCost"
+            placeholder="100"
+            help="Números Positivos Solamente"
+            validation="number"
+          />
+          {/* Deficit Cost */}
+          <Input
+            label="Costo por Déficit"
+            name="deficitCost"
+            placeholder="2"
+            help="Números Positivos Solamente"
+            validation="number"
+            disabled={selectedModel === 1 || selectedModel === 3}
+          />
+        </Section>
+        {/* Settings Form Section */}
+        <Section
+          title="Configuración"
+          description="Aquí se configuran los valores para los resultados"
+          small
+        >
+          {/* Number of Decimals */}
+          <Input
+            label="Cantidad de Decimales"
+            name="decimals"
+            placeholder="2"
+            help="Números del 1 al 10 Solamente"
+            validation="numberWithOneDigit"
+          />
+          {/* Currency Type */}
+          <Select
+            label="Tipo de Moneda"
+            name="currency"
+            optionsList={COINS_LIST}
+          />
+        </Section>
+      </Form>
+      {/* Results Section */}
+      <Section
+        title="Resultados"
+        description="Aquí se muestran los resultados obtenidos con base a lo puesto anteriormente"
+        contentClassName="flex flex-col gap-4 min-[768px]:grid min-[768px]:grid-cols-2"
+        small
+      >
+        {/* Optimal Production Lot Size Card */}
+        <Card
+          name="Tamaño óptimo del Lote de Producción"
+          value={results.optimalProductionLotSize}
+        />
+        {/* Time between 2 Production Runs Card */}
+        <Card
+          name="Tiempo entre 2 Corridas de Producción"
+          value={results.timeBetweenTwoProductionRuns}
+        />
+        {/* Frequency between 2 Production Runs Card */}
+        <Card
+          name="Frecuencia entre 2 Corridas de Producción"
+          value={results.frequencyBetweenTwoProductionRuns}
+        />
+        {/* Max Deficit Card */}
+        <Card
+          name="Déficit Máximo"
+          value={results.maxDeficit}
+          disabled={selectedModel === 1 || selectedModel === 3}
+        />
+        {/* Max Inventory Level Card */}
+        <Card
+          name="Nivel de Inventario Máximo"
+          value={results.maxInventoryLevel}
+        />
+        {/* First Time Interval Card */}
+        <Card
+          name="Primer Intervalo de Tiempo"
+          value={results.firstTimeInterval}
+        />
+        {/* Second Time Interval Card */}
+        <Card
+          name="Segundo Intervalo de Tiempo"
+          value={results.secondTimeInterval}
+          disabled={selectedModel === 3}
+        />
+        {/* Third Time Interval Card */}
+        <Card
+          name="Tercer Intervalo de Tiempo"
+          value={results.thirdTimeInterval}
+          disabled={selectedModel !== 2}
+        />
+        {/* Fourth Time Interval Card */}
+        <Card
+          name="Cuarto Intervalo de Tiempo"
+          value={results.fourthTimeInterval}
+          disabled={selectedModel !== 2}
+        />
+        {/* Total Holding Inventory Cost Card */}
+        <Card
+          name="Costo Total por Mantener en Inventario"
+          value={results.totalHoldingInventoryCost}
+        />
+        {/* Total Deficit Cost Card */}
+        <Card
+          name="Costo Total por Déficit"
+          value={results.totalDeficitCost}
+          disabled={selectedModel === 1 || selectedModel === 3}
+        />
+        {/* Total Production Cost Card */}
+        <Card
+          name="Costo Total por Producción"
+          value={results.totalProductionCost}
+        />
+        {/* Total Unit Production Cost Card */}
+        <Card
+          name="Costo Total por Unidad de Producción"
+          value={results.totalProductionUnitCost}
+        />
+        {/* Total Cost Card */}
+        <Card name="Costo Total" value={results.totalCost} />
+      </Section>
+    </Section>
   );
 }
 

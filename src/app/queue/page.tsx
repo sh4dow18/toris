@@ -223,220 +223,218 @@ function Queue() {
   };
   // Returns Queue Page
   return (
-    <div className="flex flex-col justify-center text-gray-400 z-10 px-8 mx-auto my-5">
-      {/* Main Section with Page Title and Description */}
-      <section className="flex flex-col gap-5">
-        <h1 className="text-white text-5xl font-bold">Teorias de Colas</h1>
-        <p>
-          Soluciona Problemas Fáciles de Teoría de Colas con unos Cuantos Clíhcs
-        </p>
-      </section>
-      {/* Page Important Content */}
-      <div className="min-[1440px]:flex min-[1440px]:gap-10">
-        {/* Inventory Form */}
-        <Form submitButton="Obtener Resultados" OnSubmit={Submit}>
-          {/* Select Model Form Section */}
-          <Section
-            title="Modelos Disponibles"
-            description="Aquí se presentan los modelos disponibles sobre teoría de colas que afectarán a las variables necesarias"
-            contentClassName="flex flex-col gap-4 justify-center min-[405px]:flex-row min-[405px]:flex-wrap"
-          >
-            {MODELS_LIST.map((model) => (
-              // When the button is clicked, change the selected model and set the results to their initial values
-              <button
-                key={model.id}
-                type="button"
-                onClick={() => {
-                  SetSelectedModel(model.id);
-                  SetResults(INIT_RESULTS_VALUES);
-                }}
-                className={`py-2 px-3 font-medium rounded-md text-center ${
-                  selectedModel === model.id
-                    ? "bg-mateoryPurple text-white"
-                    : "bg-gray-700 cursor-pointer"
-                }`}
-              >
-                {model.name}
-              </button>
-            ))}
-          </Section>
-          {/* Variables Form Section */}
-          <Section
-            title="Variables"
-            description="Aquí se toman los datos necesarios para calcular los resultados"
-          >
-            {/* Arrival Distribution Rate Input */}
-            <Input
-              label="Tasa de Distribución de Llegada"
-              name="arrivalDistributionRate"
-              placeholder="90"
-              help="Números Positivos Solamente"
-              validation="number"
-            />
-            {/* Average Service Rate Input */}
-            <Input
-              label="Tasa media de Servicio"
-              name="averageServiceRate"
-              placeholder="120"
-              help="Números Positivos Solamente"
-              validation="number"
-            />
-            {/* Number of Clients for (1) Input */}
-            <Input
-              label="Número de Clientes para (1)"
-              name="numberOfClientsTo1"
-              placeholder="0"
-              help="Números Positivos Solamente, incluido Cero"
-              validation="numberWithZero"
-            />
-            {/* Number of Clients for (2) Input */}
-            <Input
-              label="Número de Clientes para (2)"
-              name="numberOfClientsTo2"
-              placeholder="4"
-              help="Números Positivos Solamente, incluido Cero"
-              validation="number"
-              disabled={selectedModel !== 1}
-            />
-            {/* Time Units for (3) Input */}
-            <Input
-              label="Unidades de Tiempo para (3)"
-              name="amountTimeTo3"
-              placeholder="10"
-              help="Números Positivos Solamente, incluido Cero"
-              validation="numberWithZero"
-              disabled={selectedModel === 3}
-            />
-            {/* Time Units for (4) Input */}
-            <Input
-              label="Unidades de Tiempo para (4)"
-              name="amountTimeTo4"
-              placeholder="20"
-              help="Números Positivos Solamente, incluido Cero"
-              validation="numberWithZero"
-              disabled={selectedModel !== 1}
-            />
-            {/* Number of Servers Input */}
-            <Input
-              label="Cantidad de Servidores"
-              name="numberOfServers"
-              placeholder="2"
-              help="Números Mayores que 2 Solamente"
-              validation="servers"
-              disabled={selectedModel !== 2}
-            />
-            {/* Queue Size Input */}
-            <Input
-              label="Tamaño de la Cola"
-              name="queueSize"
-              placeholder="100"
-              help="Números Positivos Solamente, incluido Cero"
-              validation="numberWithZero"
-              disabled={selectedModel !== 3}
-            />
-          </Section>
-          {/* Settings Form Section */}
-          <Section
-            title="Configuración"
-            description="Aquí se configura los valores para los resultados obtenidos con base a los variables"
-          >
-            {/* Number of Decimals */}
-            <Input
-              label="Cantidad de Decimales"
-              name="decimals"
-              placeholder="2"
-              help="Números del 1 al 10 Solamente"
-              validation="numberWithOneDigit"
-            />
-          </Section>
-        </Form>
-        {/* Results Section */}
+    <Section
+      title="Teorias de Colas"
+      description="Soluciona Problemas Fáciles de Teoría de Colas con unos Cuantos Clícs"
+      main
+    >
+      {/* Inventory Form */}
+      <Form submitButton="Obtener Resultados" OnSubmit={Submit}>
+        {/* Select Model Form Section */}
         <Section
-          title="Resultados"
-          description="Aquí se muestran los resultados obtenidos con base a lo puesto anteriormente"
-          contentClassName="flex flex-col gap-4 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:mx-auto"
+          title="Modelos Disponibles"
+          description="Aquí se presentan los modelos disponibles de colas"
+          contentClassName="flex flex-col gap-4 justify-center min-[405px]:flex-row min-[405px]:flex-wrap"
+          small
         >
-          {/* System Utilization Factor Card */}
-          <Card
-            name="Factor de Utilización del Sistema"
-            value={results.sysUtilFactor}
-            staticWidth
+          {MODELS_LIST.map((model) => (
+            // When the button is clicked, change the selected model and set the results to their initial values
+            <button
+              key={model.id}
+              type="button"
+              onClick={() => {
+                SetSelectedModel(model.id);
+                SetResults(INIT_RESULTS_VALUES);
+              }}
+              className={`py-2 px-3 font-medium rounded-md text-center ${
+                selectedModel === model.id
+                  ? "bg-mateoryPurple text-white"
+                  : "bg-gray-700 cursor-pointer"
+              }`}
+            >
+              {model.name}
+            </button>
+          ))}
+        </Section>
+        {/* Variables Form Section */}
+        <Section
+          title="Variables"
+          description="Aquí se toman los datos necesarios para calcular los resultados"
+          small
+        >
+          {/* Arrival Distribution Rate Input */}
+          <Input
+            label="Tasa de Distribución de Llegada"
+            name="arrivalDistributionRate"
+            placeholder="90"
+            help="Números Positivos Solamente"
+            validation="number"
           />
-          {/* Expected Clients in System Card */}
-          <Card
-            name="Número Esperado de Clientes en el Sistema"
-            value={results.clientsSys}
-            staticWidth
+          {/* Average Service Rate Input */}
+          <Input
+            label="Tasa media de Servicio"
+            name="averageServiceRate"
+            placeholder="120"
+            help="Números Positivos Solamente"
+            validation="number"
           />
-          {/* Expected Clients in Queue Card */}
-          <Card
-            name="Número Esperado de Clientes en Cola"
-            value={results.clientsQueue}
-            staticWidth
+          {/* Number of Clients for (1) Input */}
+          <Input
+            label="Número de Clientes para (1)"
+            name="numberOfClientsTo1"
+            placeholder="0"
+            help="Números Positivos Solamente, incluido Cero"
+            validation="numberWithZero"
           />
-          {/* Time of Clients In System Card */}
-          <Card
-            name="Tiempo esperado de clientes en el sistema (1)"
-            value={results.timeClientsSys}
-            staticWidth
-          />
-          {/* Time of Clients in Queue Card */}
-          <Card
-            name="Tiempo esperado de clientes en cola"
-            value={results.timeClientsQueue}
-            staticWidth
-          />
-          {/* Probability of N Clients in System Card */}
-          <Card
-            name="Probabilidad de n clientes en el sistema (1)"
-            value={Percentage(results.probClientsSys)}
-            staticWidth
-          />
-          {/* Probability of Having Queue of More than N Customers Card */}
-          <Card
-            name="Probabilidad de tener una cola de más de n clientes (2)"
-            value={Percentage(results.probQueueMoreClients)}
-            staticWidth
+          {/* Number of Clients for (2) Input */}
+          <Input
+            label="Número de Clientes para (2)"
+            name="numberOfClientsTo2"
+            placeholder="4"
+            help="Números Positivos Solamente, incluido Cero"
+            validation="number"
             disabled={selectedModel !== 1}
           />
-          {/* Probability that it's more than N Time in System Card */}
-          <Card
-            name="Probabilidad de que este más de n unidades de tiempo en el sistema (3)"
-            value={Percentage(results.probMoreTimeSys)}
-            staticWidth
+          {/* Time Units for (3) Input */}
+          <Input
+            label="Unidades de Tiempo para (3)"
+            name="amountTimeTo3"
+            placeholder="10"
+            help="Números Positivos Solamente, incluido Cero"
+            validation="numberWithZero"
             disabled={selectedModel === 3}
           />
-          {/* Probability that it's more than N Time in Queue Card */}
-          <Card
-            name="Probabilidad de que este más de n unidades de tiempo en cola (4)"
-            value={Percentage(results.probMoreTimeQueue)}
-            staticWidth
+          {/* Time Units for (4) Input */}
+          <Input
+            label="Unidades de Tiempo para (4)"
+            name="amountTimeTo4"
+            placeholder="20"
+            help="Números Positivos Solamente, incluido Cero"
+            validation="numberWithZero"
             disabled={selectedModel !== 1}
           />
-          {/* Probability that the Client will have to wait Card */}
-          <Card
-            name="Probabilidad de que el cliente tenga que esperar"
-            value={Percentage(results.probWait)}
-            staticWidth
+          {/* Number of Servers Input */}
+          <Input
+            label="Cantidad de Servidores"
+            name="numberOfServers"
+            placeholder="2"
+            help="Números Mayores que 2 Solamente"
+            validation="servers"
             disabled={selectedModel !== 2}
           />
-          {/* Average Number of Unoccupied Servers Card */}
-          <Card
-            name="Cantidad promedio de servidores que se encuentran desocupados en el sistema"
-            value={results.avgUnoccupiedServers}
-            staticWidth
-            disabled={selectedModel !== 2}
-          />
-          {/* Probability that there are the maximum number of clients that the queue supports in the system Card */}
-          <Card
-            name="Probabilidad de que estén el máximo de clientes que soporta la cola en el sistema"
-            value={Percentage(results.probQueueClientsSys)}
-            staticWidth
+          {/* Queue Size Input */}
+          <Input
+            label="Tamaño de la Cola"
+            name="queueSize"
+            placeholder="100"
+            help="Números Positivos Solamente, incluido Cero"
+            validation="numberWithZero"
             disabled={selectedModel !== 3}
           />
         </Section>
-      </div>
-    </div>
+        {/* Settings Form Section */}
+        <Section
+          title="Configuración"
+          description="Aquí se configuran los valores para los resultados"
+          small
+        >
+          {/* Number of Decimals */}
+          <Input
+            label="Cantidad de Decimales"
+            name="decimals"
+            placeholder="2"
+            help="Números del 1 al 10 Solamente"
+            validation="numberWithOneDigit"
+          />
+        </Section>
+      </Form>
+      {/* Results Section */}
+      <Section
+        title="Resultados"
+        description="Aquí se muestran los resultados obtenidos con base a lo puesto anteriormente"
+        contentClassName="flex flex-col gap-4 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:mx-auto"
+        small
+      >
+        {/* System Utilization Factor Card */}
+        <Card
+          name="Factor de Utilización del Sistema"
+          value={results.sysUtilFactor}
+          staticWidth
+        />
+        {/* Expected Clients in System Card */}
+        <Card
+          name="Número Esperado de Clientes en el Sistema"
+          value={results.clientsSys}
+          staticWidth
+        />
+        {/* Expected Clients in Queue Card */}
+        <Card
+          name="Número Esperado de Clientes en Cola"
+          value={results.clientsQueue}
+          staticWidth
+        />
+        {/* Time of Clients In System Card */}
+        <Card
+          name="Tiempo esperado de clientes en el sistema (1)"
+          value={results.timeClientsSys}
+          staticWidth
+        />
+        {/* Time of Clients in Queue Card */}
+        <Card
+          name="Tiempo esperado de clientes en cola"
+          value={results.timeClientsQueue}
+          staticWidth
+        />
+        {/* Probability of N Clients in System Card */}
+        <Card
+          name="Probabilidad de n clientes en el sistema (1)"
+          value={Percentage(results.probClientsSys)}
+          staticWidth
+        />
+        {/* Probability of Having Queue of More than N Customers Card */}
+        <Card
+          name="Probabilidad de tener una cola de más de n clientes (2)"
+          value={Percentage(results.probQueueMoreClients)}
+          staticWidth
+          disabled={selectedModel !== 1}
+        />
+        {/* Probability that it's more than N Time in System Card */}
+        <Card
+          name="Probabilidad de que este más de n unidades de tiempo en el sistema (3)"
+          value={Percentage(results.probMoreTimeSys)}
+          staticWidth
+          disabled={selectedModel === 3}
+        />
+        {/* Probability that it's more than N Time in Queue Card */}
+        <Card
+          name="Probabilidad de que este más de n unidades de tiempo en cola (4)"
+          value={Percentage(results.probMoreTimeQueue)}
+          staticWidth
+          disabled={selectedModel !== 1}
+        />
+        {/* Probability that the Client will have to wait Card */}
+        <Card
+          name="Probabilidad de que el cliente tenga que esperar"
+          value={Percentage(results.probWait)}
+          staticWidth
+          disabled={selectedModel !== 2}
+        />
+        {/* Average Number of Unoccupied Servers Card */}
+        <Card
+          name="Cantidad promedio de servidores que se encuentran desocupados en el sistema"
+          value={results.avgUnoccupiedServers}
+          staticWidth
+          disabled={selectedModel !== 2}
+        />
+        {/* Probability that there are the maximum number of clients that the queue supports in the system Card */}
+        <Card
+          name="Probabilidad de que estén el máximo de clientes que soporta la cola en el sistema"
+          value={Percentage(results.probQueueClientsSys)}
+          staticWidth
+          disabled={selectedModel !== 3}
+        />
+      </Section>
+    </Section>
   );
 }
 

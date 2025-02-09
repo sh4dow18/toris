@@ -43,7 +43,7 @@ function Section({
       >
         {/* Helper Span */}
         {preTitle && (
-          <span className="text-mateoryPurpleLight font-semibold mb-1">
+          <span className="text-mateoryPurpleLight font-semibold mb-1 text-center">
             {preTitle}
           </span>
         )}
@@ -61,7 +61,7 @@ function Section({
           <TITLE
             className={`text-gray-300 ${
               main
-                ? "text-5xl font-bold min-[378px]:text-6xl"
+                ? "text-[2.5rem] leading-none font-bold min-[330px]:text-5xl min-[378px]:text-6xl"
                 : small
                 ? "text-3xl font-semibold"
                 : "text-4xl font-bold md:text-5xl"

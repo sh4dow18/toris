@@ -79,7 +79,8 @@ function Section({
           <div
             className={
               main
-                ? "min-[1440px]:flex min-[1440px]:justify-center min-[1440px]:gap-10"
+                ? contentClassName ||
+                  "min-[1440px]:flex min-[1440px]:justify-center min-[1440px]:gap-10"
                 : contentClassName ||
                   "flex flex-col gap-3 min-[768px]:flex-row min-[768px]:flex-wrap min-[768px]:justify-center min-[768px]:gap-5"
             }

@@ -8,6 +8,8 @@ import {
   SetReportsMade,
   SetReportsMadeDate,
 } from "@/libs/session";
+import Image from "next/image";
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 // Report Bug Necessary types
 type ModalSettings = {
@@ -81,6 +83,7 @@ function ReportBug() {
       <Section
         title="Reporta un Problema"
         description="Ayuda a tener el sistema al día reportando los problemas que encuentres en Mateory"
+        contentClassName="flex flex-col justify-center gap-5"
         main
       >
         {/* Report Bug Form */}
@@ -120,6 +123,28 @@ function ReportBug() {
             maxLength={500}
           />
         </Form>
+        {/* Or Separation */}
+        <div className="flex items-center">
+          <div className="flex-grow border-t border-gray-500" />
+          <span className="mx-4">ó</span>
+          <div className="flex-grow border-t border-gray-500" />
+        </div>
+        {/* Report on Github Button */}
+        <Link
+          href="https://github.com/sh4dow18/mateory/issues/new"
+          target="_blank"
+        >
+          <div className="flex gap-2 place-content-center bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700">
+            <Image
+              src="/logos/github.svg"
+              alt="Github Logo"
+              width={25}
+              height={25}
+              className="filter brightness-150"
+            />
+            <span>Reportar en Github</span>
+          </div>
+        </Link>
       </Section>
       {/* Form Modal */}
       <Modal

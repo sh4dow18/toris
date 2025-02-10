@@ -11,6 +11,8 @@ interface Props {
   help: string;
   validation: string;
   disabled?: boolean;
+  autoComplete?: string;
+  maxLength?: number;
 }
 // Input Regular Expressions to use in Validations
 const REGEX: Record<string, RegExp> = {
@@ -25,6 +27,12 @@ const REGEX: Record<string, RegExp> = {
   numberWithOneDigit: /^[1-9]$/,
   // Only Positive Numbers from number 2 onwards
   servers: /^(?!1$)([1-9]\d*)$/,
+  // Only valid names
+  // Example: Ramsés Solano or John Smith
+  name: /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ']+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ']+)*$/,
+  // Only valid e-mails
+  // Example: sh4dow18@mateory.com or example@example.com
+  email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 };
 // Input Main Function
 function Input({
@@ -34,6 +42,8 @@ function Input({
   help,
   validation,
   disabled,
+  autoComplete,
+  maxLength,
 }: Props) {
   // Input Hooks
   const [state, SetState] = useState<"Valid" | "Neutral" | "Invalid">(
@@ -84,6 +94,8 @@ function Input({
           onChange={OnChange}
           aria-invalid={state !== "Neutral" ? state === "Invalid" : undefined}
           disabled={disabled}
+          autoComplete={autoComplete || "on"}
+          maxLength={maxLength || 10}
           className="bg-transparent outline-none text-white disabled:placeholder:text-gray-600 disabled:text-gray-600"
         />
         {/* Input Validation Icon */}

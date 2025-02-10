@@ -9,4 +9,5 @@ export { default as Section } from "./section";
 export { default as Select } from "./select";
 export { default as Light } from "./light";
 export { default as Benefit } from "./benefit";
-export { default as Logo } from "./logo"
+export { default as Logo } from "./logo";
+export { default as Textarea } from "./textarea";

@@ -1,13 +1,12 @@
 // Set this component as a client component
 "use client";
-// Modal Stylesheets
-import "@/stylesheets/components/modal.css";
 // Modal Requirements
-import Image from "next/image";
+import { ArrowPathIcon, CheckIcon, XMarkIcon } from "@heroicons/react/16/solid";
 // Modal Props
 type Props = {
+  open: boolean;
   status: "success" | "error" | "loading";
-  children: string;
+  message: string;
   Close: () => void;
 };
 // Status Titles Record
@@ -17,24 +16,45 @@ const STATUS_TITLES: Record<string, string> = {
   loading: "Cargando...",
 };
 // Modal Main Function
-function Modal({ status, Close, children }: Props) {
+function Modal({ open, status, message, Close }: Props) {
   // Returns Modal Component
   return (
-    <dialog className={`modal-container ${status}`} open>
-      {/* Modal Main Image */}
-      <Image
-        src={`/modal/${status}.gif`}
-        alt={`Imagen de ${STATUS_TITLES[status]}`}
-        width={120}
-        height={120}
-      />
-      {/* Modal Title */}
-      <h3>{STATUS_TITLES[status]}</h3>
-      {/* Modal Message */}
-      <p>{children}</p>
-      {/* Close Button */}
-      <button onClick={Close}>Cerrar</button>
-    </dialog>
+    // Modal Main Container
+    <div
+      className={
+        open ? "fixed top-0 left-0 w-full h-full z-20 bg-gray-900/50" : "hidden"
+      }
+    >
+      {/* Modal Dialog */}
+      <dialog
+        open={open}
+        className="fixed inset-0 m-auto w-72 z-30 flex flex-col gap-5 text-center bg-gray-800 text-gray-300 px-3 pt-6 pb-3 rounded-lg sm:w-96"
+      >
+        {/* Modal Main Image */}
+        {status === "success" ? (
+          <CheckIcon className="w-14 h-14 mx-auto bg-mateoryPurple rounded-full p-2" />
+        ) : status === "error" ? (
+          <XMarkIcon className="w-14 h-14 mx-auto bg-red-800 rounded-full p-2" />
+        ) : (
+          <ArrowPathIcon className="w-14 h-14 mx-auto animate-spin" />
+        )}
+        {/* Modal Information */}
+        <div className="flex flex-col gap-1 px-3">
+          {/* Modal Title */}
+          <span className="text-white font-bold">{STATUS_TITLES[status]}</span>
+          {/* Modal Message */}
+          <p className="text-sm">{message}</p>
+        </div>
+        {/* Modal Close Button */}
+        <button
+          onClick={Close}
+          disabled={status === "loading"}
+          className="bg-mateoryPurple text-white py-2 rounded-md disabled:bg-gray-600 disabled:text-gray-400"
+        >
+          Cerrar
+        </button>
+      </dialog>
+    </div>
   );
 }
 

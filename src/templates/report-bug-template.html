@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bug Reported in Mateory-->
+    <title>Problema Reportado de Mateory</title>
+  </head>
+  <!-- Inline styles, because the email manager understands it better -->
+  <body
+    style="margin: 0; padding: 40px; color: #9ca3af; background-color: #030712"
+  >
+    <!-- Mateory Logo -->
+    <header>
+      <img
+        src="https://mateory.vercel.app/logo.svg"
+        alt="Mateory Logo"
+        style="width: auto; height: 30px"
+      />
+    </header>
+    <!-- Bug Reported -->
+    <main style="margin-block: 40px">
+      <p>Hola Técnico de <strong>Mateory</strong>,</p>
+      <p style="line-height: 1">
+        El usuario <strong>{{name}}</strong> con el correo electrónico
+        <strong>{{email}}</strong> acaba de reportar un problema a través de la
+        página de Mateory. El problema describe lo siguiente:
+      </p>
+      <p style="margin-block: 25px">"<strong>{{message}}</strong>"</p>
+      <p>
+        Recuerda que el problema se debe
+        <a
+          href="https://github.com/sh4dow18/mateory/issues/new"
+          style="text-decoration: none; font-weight: bold; color: #a54ab5"
+          >Reportar como un Issue en el Repositorio de Github de Mateory</a
+        >
+      </p>
+      <p style="margin-bottom: 0">Atentamente,</p>
+      <p style="margin-top: 5px">
+        Sistema de Reportes de Problemas de <strong>Mateory</strong>
+      </p>
+    </main>
+    <!-- Do not anwser this email section -->
+    <footer style="background-color: #030712">
+      <p>
+        <strong
+          >Este correo es de tipo informativo, por favor no responda a este
+          mensaje</strong
+        >
+      </p>
+    </footer>
+  </body>
+</html>

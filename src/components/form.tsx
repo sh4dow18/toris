@@ -7,9 +7,10 @@ interface Props {
   children: React.ReactNode;
   submitButton: string;
   OnSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  className?: string;
 }
 // Form Main Function
-function Form({ children, submitButton, OnSubmit }: Props) {
+function Form({ children, submitButton, OnSubmit, className }: Props) {
   // Button Disabled State that always starts with true
   const [disabled, SetDisabled] = useState<boolean>(true);
   // Form Reference
@@ -26,7 +27,7 @@ function Form({ children, submitButton, OnSubmit }: Props) {
         const inputsList = Array.from(
           REFERENCE.current.querySelectorAll<
             HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-          >("input")
+          >("input, textarea")
         )
           .filter((input) => !input.disabled)
           .map((input) => [
@@ -64,7 +65,7 @@ function Form({ children, submitButton, OnSubmit }: Props) {
   // Returns Form Component
   return (
     <form
-      className="min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"
+      className={className || "min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"}
       ref={REFERENCE}
       onSubmit={OnSubmit}
     >

@@ -16,6 +16,7 @@ function Nav() {
     { href: "/", name: "Inicio" },
     { href: "/inventory", name: "Inventarios" },
     { href: "/queue", name: "Colas" },
+    { href: "/report-bug", name: "Reportar Problema" }
   ];
   // Function that Sets the Opposite Value in Open Hook to Open and Close the Burger Menu
   const OnClickButton = () => {

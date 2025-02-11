@@ -11,3 +11,4 @@ export { default as Light } from "./light";
 export { default as Benefit } from "./benefit";
 export { default as Logo } from "./logo";
 export { default as Textarea } from "./textarea";
+export { default as UploadFiles } from "./upload-files"

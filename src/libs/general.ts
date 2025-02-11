@@ -1,3 +1,5 @@
+import sharp from "sharp";
+
 // Fix Results Function to have a Number with the decimals that the user specifies
 export function FixResult(result: number, decimals: number) {
   return Number.parseFloat(result.toFixed(decimals));

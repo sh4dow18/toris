@@ -1,7 +1,14 @@
 // Set this component as a client page
 "use client";
 // Report Bug Page Requirements
-import { Form, Input, Modal, Section, Textarea } from "@/components";
+import {
+  Form,
+  Input,
+  Modal,
+  Section,
+  Textarea,
+  UploadFiles,
+} from "@/components";
 import {
   CheckOneDayHasPassed,
   GetReportsMade,
@@ -34,8 +41,6 @@ function ReportBug() {
     event.preventDefault();
     // Create a Form Data with actual form
     const FORM = new FormData(event.currentTarget);
-    // Get the data form every input in form
-    const DATA = Object.fromEntries(FORM.entries());
     // If the Reports Made are 3, do the following
     if (GetReportsMade() === "3") {
       // Check that a day has passed, if true, init reports values
@@ -59,13 +64,10 @@ function ReportBug() {
       ...modalSettings,
       open: true,
     });
-    // Make a request to project api to make something
+    // Make a request to project's api to send an email
     const RESPONSE = await fetch("/api/emails", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(DATA),
+      body: FORM,
     });
     // Change the modal info to success info if response is ok, otherwise set error info
     SetModalSettings({
@@ -73,7 +75,7 @@ function ReportBug() {
       status: RESPONSE.ok ? "success" : "error",
       message: RESPONSE.ok
         ? "El Mensaje se ha reportado con Éxito."
-        : "El Mensaje no se ha podido enviar, inténtelo nuevamente.",
+        : await RESPONSE.text(),
     });
   };
   // Returns Report Bug Page
@@ -121,6 +123,12 @@ function ReportBug() {
             help="Describe el problema encontrado"
             placeholder="No me deja ingresar los datos en el formulario."
             maxLength={500}
+          />
+          {/* Upload Files Drag and Drop Input */}
+          <UploadFiles
+            label="Evidencia"
+            name="files"
+            help="Solo Archivos PNG, JPG y JPEG menores a 10 MB"
           />
         </Form>
         {/* Or Separation */}

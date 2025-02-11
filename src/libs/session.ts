@@ -1,7 +1,12 @@
 // Session Requirements
 import Cookies from "js-cookie";
+// Session Types
+interface CookieConfig {
+  sameSite: "Strict" | "None";
+  secure: boolean;
+}
 // Session Constants
-const COOKIES_CONFIGURATION: {} = { sameSite: "Strict", secure: true };
+const COOKIES_CONFIGURATION: CookieConfig = { sameSite: "Strict", secure: true };
 // Set Reports Made Function
 export function SetReportsMade(reportsDone: number) {
   Cookies.set("reportsMade", `${reportsDone}`, COOKIES_CONFIGURATION);

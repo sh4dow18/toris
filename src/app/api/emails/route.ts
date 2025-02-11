@@ -5,7 +5,7 @@ import fs from "fs";
 import { Attachment } from "nodemailer/lib/mailer";
 import sharp from "sharp";
 // Check if the file sent is an image
-export async function IsValidImage(file: File): Promise<boolean> {
+async function IsValidImage(file: File): Promise<boolean> {
   try {
     // Convert the file to a binary data buffer
     const buffer = await file.arrayBuffer();

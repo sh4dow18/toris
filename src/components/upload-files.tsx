@@ -77,7 +77,7 @@ function UploadFiles({ label, name, help }: Props) {
             ? REFERENCE.current?.click()
             : undefined;
         }}
-        className={`cursor-pointer text-center rounded-md outline outline-2 py-8 px-1 min-[344px]:px-3 ${
+        className={`cursor-pointer text-center rounded-md outline-2 py-8 px-1 min-[344px]:px-3 ${
           files.length > 0
             ? validateFiles(files)
               ? "bg-gray-700"

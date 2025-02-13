@@ -13,7 +13,7 @@ async function IsValidImage(file: File): Promise<boolean> {
     await sharp(Buffer.from(buffer)).metadata();
     // If the image is valid, return true
     return true;
-  } catch (error) {
+  } catch (_) {
     // If the image is invalid, return false
     return false;
   }
@@ -33,26 +33,49 @@ export async function POST(request: Request) {
   const MESSAGE = formData.get("message");
   const FILES = formData.getAll("files") as File[];
   let invalidFiles = false;
+  // // Check if all files sent are real images, if not, throw an error
+  // await Promise.all(FILES.map(IsValidImage))
+  //   .then((results) => {
+  //     const INVALID_FILES_LIST = FILES.filter((_, index) => !results[index]);
+  //     if (INVALID_FILES_LIST.length !== 0) {
+  //       invalidFiles = true;
+  //     }
+  //   })
+  //   // If catch an error, sends an email with the error and returns a internal server error response
+  //   .catch((error) => {
+  //     emailTemplate = emailTemplate
+  //       .replace("{{name}}", "Sistema de Reportes de Problemas de Mateory")
+  //       .replace("{{email}}", "(No Posee)")
+  //       .replace("{{message}}", error.message);
+  //     SendEmail(emailTemplate);
+  //     return new Response(
+  //       "El Mensaje no se ha podido enviar, inténtelo nuevamente.",
+  //       { status: 500 }
+  //     );
+  //   });
   // Check if all files sent are real images, if not, throw an error
-  await Promise.all(FILES.map(IsValidImage))
-    .then((results) => {
-      const INVALID_FILES_LIST = FILES.filter((_, index) => !results[index]);
-      if (INVALID_FILES_LIST.length !== 0) {
-        invalidFiles = true;
-      }
-    })
-    // If catch an error, sends an email with the error and returns a internal server error response
-    .catch((error) => {
-      emailTemplate = emailTemplate
-        .replace("{{name}}", "Sistema de Reportes de Problemas de Mateory")
-        .replace("{{email}}", "(No Posee)")
-        .replace("{{message}}", error.message);
-      SendEmail(emailTemplate);
-      return new Response(
-        "El Mensaje no se ha podido enviar, inténtelo nuevamente.",
-        { status: 500 }
-      );
-    });
+  try {
+    const VALID_IMAGES_LIST = await Promise.all(FILES.map(IsValidImage));
+    const INVALID_FILES_LIST = FILES.filter(
+      (_, index) => !VALID_IMAGES_LIST[index]
+    );
+    if (INVALID_FILES_LIST.length !== 0) {
+      invalidFiles = true;
+    }
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Error desconocido";
+    emailTemplate = emailTemplate
+      .replace("{{name}}", "Sistema de Reportes de Problemas de Mateory")
+      .replace("{{email}}", "(No Posee)")
+      .replace("{{message}}", errorMessage);
+
+    SendEmail(emailTemplate);
+    return new Response(
+      "El Mensaje no se ha podido enviar, inténtelo nuevamente.",
+      { status: 500 }
+    );
+  }
   // If invalidFiles is true, returns a bad request error response
   if (invalidFiles) {
     return new Response("Uno de los Archivos no es una Imagen", {

@@ -3,7 +3,7 @@
 <section>
   <!-- REPO INFORMATION -->
   <a href="https://github.com/sh4dow18/mateory">
-    <img src="https://img.shields.io/badge/0.14.2-00AA00?style=for-the-badge&logo=github&labelColor=gray" alt="RELEASE" />
+    <img src="https://img.shields.io/badge/0.15.0-00AA00?style=for-the-badge&logo=github&labelColor=gray" alt="RELEASE" />
   </a>
   <a href="https://github.com/sh4dow18/mateory/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/MIT%20LICENSE-0066AA?style=for-the-badge&labelColor=gray" alt="LICENSE" />
@@ -20,6 +20,9 @@
   </a>
   <a href="https://www.typescriptlang.org">
     <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=gray" alt="Typescript" />
+  </a>
+  <a href="https://tailwindcss.com">
+    <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=gray" alt="Tailwind CSS" />
   </a>
 </section>
 
@@ -46,13 +49,16 @@ If you want to know about this license, click
 [NEXTJS_URL]: https://nextjs.org
 [TYPESCRIPT_IMAGE]: https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=gray
 [TYPESCRIPT_URL]: https://www.typescriptlang.org
+[TAILWIND_IMAGE]: https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=gray
+[TAILWIND_URL]: https://tailwindcss.com
 
-| Tech                                              | Description                                                    | Used for                                   |
-| ------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------ |
-| [![NODEJS][NODE_IMAGE]][NODE_URL]                 | Server-Side JavaScript Runtime Environment                     | Execute NextJS and install it dependencies |
-| [![REACTJS][REACT_IMAGE]][REACT_URL]              | JavaScript library for building user interfaces                | UI Components                              |
-| [![NEXTJS][NEXTJS_IMAGE]][NEXTJS_URL]             | React framework for server-rendered applications               | Website                                    |
-| [![TYPESCRIPT][TYPESCRIPT_IMAGE]][TYPESCRIPT_URL] | Typed superset of JavaScript that compiles to plain JavaScript | Variables Types                            |
+| Tech                                              | Description                                                          | Used for                                   |
+| ------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------ |
+| [![NODEJS][NODE_IMAGE]][NODE_URL]                 | Server-Side JavaScript Runtime Environment                           | Execute NextJS and install it dependencies |
+| [![REACTJS][REACT_IMAGE]][REACT_URL]              | JavaScript library for building user interfaces                      | UI Components                              |
+| [![NEXTJS][NEXTJS_IMAGE]][NEXTJS_URL]             | React framework for server-rendered applications                     | Front-end and Back-end                     |
+| [![TYPESCRIPT][TYPESCRIPT_IMAGE]][TYPESCRIPT_URL] | Typed superset of JavaScript that compiles to plain JavaScript       | Variables Types                            |
+| [![TAILWIND][TAILWIND_IMAGE]][TAILWIND_URL]       | Utility-first CSS framework for fast and customizable UI development | Styles                                     |
 
 ## <img src="https://emojiapi.dev/api/v1/rocket/32.jpg" alt="STARTED" height="20"/> Full Documentation
 

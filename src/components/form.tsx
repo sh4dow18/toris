@@ -1,71 +1,20 @@
 // Set this component as a client component
 "use client";
-// Form Stylesheets
-import "@/stylesheets/components/form.css";
 // Form Requirements
 import { FormEvent, useEffect, useRef, useState } from "react";
-import Modal from "./modal";
-// Modal Settings Type
-type ModalSettings = {
-  open: boolean;
-  status: "success" | "error" | "loading";
-  message: string;
-};
 // Form Props
-type Props = {
-  api: string;
-  method: "GET" | "POST" | "PUT";
-  button: string;
-  modal: {
-    success: string;
-    error: string;
-    loading: string;
-  };
+interface Props {
   children: React.ReactNode;
-};
+  submitButton: string;
+  OnSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  className?: string;
+}
 // Form Main Function
-function Form({ api, method, button, modal, children }: Props) {
-  // Init and Default Modal Settings
-  const INIT_MODAL_SETTINGS: ModalSettings = {
-    open: false,
-    status: "loading",
-    message: modal.loading,
-  };
+function Form({ children, submitButton, OnSubmit, className }: Props) {
   // Button Disabled State that always starts with true
   const [disabled, SetDisabled] = useState<boolean>(true);
-  // Modal Init Settings
-  const [modalSettings, SetModalSettings] =
-    useState<ModalSettings>(INIT_MODAL_SETTINGS);
   // Form Reference
   const REFERENCE = useRef<HTMLFormElement | null>(null);
-  // Form Submit Function
-  const Submit = async (event: FormEvent<HTMLFormElement>) => {
-    // Avoid refreshing the page
-    event.preventDefault();
-    // Create a Form Data with actual form
-    const FORM = new FormData(event.currentTarget);
-    // Get the data form every input in form
-    const DATA = Object.fromEntries(FORM.entries());
-    // Open Modal
-    SetModalSettings({
-      ...modalSettings,
-      open: true,
-    });
-    // Make a request to project api to make something
-    const RESPONSE = await fetch(`/api/${api}`, {
-      method: method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(DATA),
-    });
-    // Change the modal info to success info if response is ok, otherwise set error info
-    SetModalSettings({
-      open: true,
-      status: RESPONSE.ok ? "success" : "error",
-      message: RESPONSE.ok ? modal.success : modal.error,
-    });
-  };
   // Form Main Use Effect Hook
   useEffect(() => {
     // Update Disable Attribute in Submit Button
@@ -74,19 +23,17 @@ function Form({ api, method, button, modal, children }: Props) {
       if (REFERENCE.current) {
         // First, get every Input, Textarea and Select in the Form
         // Later, create a new key-value array with input name and aria-invalid attribute
-        // Finally, remove any element with the key name "model" or "rounded"
         // Example: [ ["name", true], ["email", false] ]
         const inputsList = Array.from(
           REFERENCE.current.querySelectorAll<
             HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-          >("input, textarea, select")
+          >("input, textarea")
         )
+          .filter((input) => !input.disabled)
           .map((input) => [
             input.name,
             input.getAttribute("aria-invalid") === "false",
-          ])
-          .filter((input) => input[0] !== "model")
-          .filter((input) => input[0] !== "rounded")
+          ]);
         // Create a new object from a key-value array
         // Example: From [ ["name", true], ["email", false] ] to { name: true, email: false }
         const FORM_OBJECT = Object.fromEntries(inputsList);
@@ -102,11 +49,12 @@ function Form({ api, method, button, modal, children }: Props) {
     const ARIA_INVALID_OBSERVER = new MutationObserver(UpdateButton);
     // If the Reference Exists, continue
     if (REFERENCE.current) {
-      // Aria Invalid Observer can observe attributes and subtrees, but focuses on the aria-invalid attribute
+      // Aria Invalid Observer can observe attributes and subtrees, but focuses on the aria-invalid attribute and its children
       ARIA_INVALID_OBSERVER.observe(REFERENCE.current, {
         attributes: true,
         subtree: true,
-        attributeFilter: ["aria-invalid"],
+        attributeFilter: ["aria-invalid", "disabled"],
+        childList: true,
       });
     }
     // When useEffect finishes, unmount the observer
@@ -114,33 +62,24 @@ function Form({ api, method, button, modal, children }: Props) {
       ARIA_INVALID_OBSERVER.disconnect();
     };
   }, []);
-  // Return Form Component
+  // Returns Form Component
   return (
-    <>
-      {/* Main Form */}
-      <form
-        className="form-container"
-        ref={REFERENCE}
-        onSubmit={method !== "GET" ? Submit : undefined}
-        action={method === "GET" ? `/${api}` : undefined}
+    <form
+      className={className || "min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"}
+      ref={REFERENCE}
+      onSubmit={OnSubmit}
+    >
+      {/* Form Body */}
+      {children}
+      {/* Form Submit Button */}
+      <button
+        type="submit"
+        disabled={disabled}
+        className="w-full mt-5 py-2 px-3 font-medium rounded-md text-center text-white bg-mateoryPurple cursor-pointer hover:bg-mateoryPurpleLight disabled:bg-gray-500 disabled:cursor-not-allowed"
       >
-        {/* Inputs and Textarea Components */}
-        {children}
-        {/* Sent Message Button */}
-        <button type="submit" disabled={disabled}>
-          {button}
-        </button>
-      </form>
-      {/* If the modal settings has the value open to true, display modal, if not, hide it */}
-      {modalSettings.open && (
-        <Modal
-          status={modalSettings.status}
-          Close={() => SetModalSettings(INIT_MODAL_SETTINGS)}
-        >
-          {modalSettings.message}
-        </Modal>
-      )}
-    </>
+        {submitButton}
+      </button>
+    </form>
   );
 }
 

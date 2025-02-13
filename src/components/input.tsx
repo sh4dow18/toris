@@ -1,19 +1,20 @@
 // Set this component as a client component
 "use client";
-// Input Section Requirements
+// Input Requirements
+import { CheckIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import { ChangeEvent, useState } from "react";
-// Input Section Props
-type Props = {
+// Input Props
+interface Props {
   label: string;
-  type: string;
+  placeholder: string;
   name: string;
-  example: string;
   help: string;
+  validation: string;
+  disabled?: boolean;
   autoComplete?: string;
-  maxLenght?: number;
-  validation?: string;
-};
-// Input Section Regular Expressions
+  maxLength?: number;
+}
+// Input Regular Expressions to use in Validations
 const REGEX: Record<string, RegExp> = {
   // Only Positive Numbers
   // Example: 8000 or 0.20
@@ -21,21 +22,30 @@ const REGEX: Record<string, RegExp> = {
   // Only Positive Numbers and Cero
   // Example: 43450 or 0
   numberWithZero: /^[0-9]\d*(\.\d+)?$|^0\.\d*[0-9]\d*$/,
+  // Only Positive Numbers Between Cero and Nine
+  // Example: 1 or 9
+  numberWithOneDigit: /^[1-9]$/,
   // Only Positive Numbers from number 2 onwards
   servers: /^(?!1$)([1-9]\d*)$/,
+  // Only valid names
+  // Example: Ramsés Solano or John Smith
+  name: /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ']+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñ']+)*$/,
+  // Only valid e-mails
+  // Example: sh4dow18@mateory.com or example@example.com
+  email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 };
-// Input Section Main Function
+// Input Main Function
 function Input({
   label,
-  type,
+  placeholder,
   name,
-  example,
   help,
-  autoComplete,
-  maxLenght,
   validation,
+  disabled,
+  autoComplete,
+  maxLength,
 }: Props) {
-  // Set a valid input state
+  // Input Hooks
   const [state, SetState] = useState<"Valid" | "Neutral" | "Invalid">(
     "Neutral"
   );
@@ -58,24 +68,65 @@ function Input({
       SetState("Invalid");
     }
   };
-  // Returns Input Section Component
+  // Returns Input Component
   return (
-    <section>
-      <label htmlFor={name}>{label}</label>
-      <input
-        id={name}
-        type={type}
-        name={name}
-        placeholder={example}
-        autoComplete={autoComplete || "on"}
-        maxLength={maxLenght}
-        onChange={OnChange}
-        aria-invalid={state !== "Neutral" ? state === "Invalid" : undefined}
-        required
-      />
-      {/* Help means advice to the user on what the input should be like */}
-      <small>{help}</small>
-    </section>
+    // Input Container
+    <div className="flex flex-col gap-1">
+      {/* Input Label */}
+      <label
+        htmlFor={name}
+        aria-disabled={disabled}
+        className="text-white font-medium aria-disabled:text-gray-700"
+      >
+        {label}
+      </label>
+      {/* Input Content Container */}
+      <div
+        aria-disabled={disabled}
+        className="flex place-content-between rounded-md outline outline-2 py-2 px-1 bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple aria-disabled:bg-gray-900 aria-disabled:outline-gray-900 min-[344px]:px-3"
+      >
+        {/* Main Input */}
+        <input
+          id={name}
+          name={name}
+          type="text"
+          placeholder={`Ejemplo: ${placeholder}`}
+          onChange={OnChange}
+          aria-invalid={state !== "Neutral" ? state === "Invalid" : undefined}
+          disabled={disabled}
+          autoComplete={autoComplete || "on"}
+          maxLength={maxLength || 10}
+          className="bg-transparent outline-hidden text-white disabled:placeholder:text-gray-600 disabled:text-gray-600"
+        />
+        {/* Input Validation Icon */}
+        {state === "Neutral" ? (
+          <div className="hidden min-[360px]:block min-[360px]:w-6 min-[360px]:h-6" />
+        ) : state === "Valid" ? (
+          <CheckIcon
+            aria-disabled={disabled}
+            className="hidden min-[360px]:block min-[360px]:w-6 aria-disabled:opacity-0"
+          />
+        ) : (
+          <XMarkIcon
+            aria-disabled={disabled}
+            className="hidden min-[360px]:block min-[360px]:w-6 min-[360px]:fill-red-500 aria-disabled:opacity-0"
+          />
+        )}
+      </div>
+      {/* Input Help Message */}
+      <small
+        aria-disabled={disabled}
+        className={`aria-disabled:text-gray-600 ${
+          state !== "Neutral"
+            ? state === "Invalid"
+              ? "text-red-500"
+              : undefined
+            : undefined
+        }`}
+      >
+        {help}
+      </small>
+    </div>
   );
 }
 

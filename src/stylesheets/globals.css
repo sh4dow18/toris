@@ -1,7 +1,12 @@
 /* Tailwind CSS Imports */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-inter: inter;
+  --color-mateoryPurple: #a72dbc;
+  --color-mateoryPurpleLight: #a54ab5;
+}
+
 /* Add Inter Font to use with Tailwind CSS */
 @font-face {
   font-family: "inter";

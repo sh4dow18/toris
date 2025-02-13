@@ -96,7 +96,7 @@ function Input({
           disabled={disabled}
           autoComplete={autoComplete || "on"}
           maxLength={maxLength || 10}
-          className="bg-transparent outline-none text-white disabled:placeholder:text-gray-600 disabled:text-gray-600"
+          className="bg-transparent outline-hidden text-white disabled:placeholder:text-gray-600 disabled:text-gray-600"
         />
         {/* Input Validation Icon */}
         {state === "Neutral" ? (

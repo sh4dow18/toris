@@ -133,9 +133,9 @@ function ReportBug() {
         </Form>
         {/* Or Separation */}
         <div className="flex items-center">
-          <div className="flex-grow border-t border-gray-500" />
+          <div className="grow border-t border-gray-500" />
           <span className="mx-4">ó</span>
-          <div className="flex-grow border-t border-gray-500" />
+          <div className="grow border-t border-gray-500" />
         </div>
         {/* Report on Github Button */}
         <Link

@@ -13,7 +13,7 @@ function Light({ direction }: Props) {
     >
       {/* Polygon container for light */}
       <div
-        className={`relative aspect-[1155/678] w-[36.125rem] bg-gradient-to-tr from-[#f8a13c] to-mateoryPurple opacity-50 ${
+        className={`relative aspect-1155/678 w-[36.125rem] bg-linear-to-tr from-[#f8a13c] to-mateoryPurple opacity-50 ${
           direction === "br"
             ? "translate-x-20"
             : "-translate-x-3/4 min-[500px]:-translate-x-1/2 md:-translate-x-1/4"

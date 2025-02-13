@@ -33,7 +33,7 @@ function Nav() {
       >
         {/* Burger Menu Button to Mobile Nav */}
         <button
-          className="w-10 h-10 place-content-center text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white min-[837px]:hidden"
+          className="w-10 h-10 place-content-center text-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-white min-[837px]:hidden"
           onClick={OnClickButton}
         >
           {/* If the burger menu is closed, it shows the bars icon; if open, shows the X Mark icon */}

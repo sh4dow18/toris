@@ -37,7 +37,7 @@ function Textarea({ label, name, placeholder, help, maxLength, rows }: Props) {
         {label}
       </label>
       {/* Textarea Second Container */}
-      <div className="rounded-md outline outline-2 py-2 px-1 bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple min-[344px]:px-3">
+      <div className="rounded-md outline-2 py-2 px-1 bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple min-[344px]:px-3">
         {/* Main Textarea */}
         <textarea
           id={name}
@@ -47,7 +47,7 @@ function Textarea({ label, name, placeholder, help, maxLength, rows }: Props) {
           rows={rows || 4}
           onChange={OnChange}
           aria-invalid={state === "Valid" ? false : undefined}
-          className="w-full resize-none text-white bg-transparent outline-none"
+          className="w-full resize-none text-white bg-transparent outline-hidden"
         />
         {/* Textarea Chars Container */}
         <div className="text-right mr-2">

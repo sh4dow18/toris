@@ -128,32 +128,39 @@ function HowItWorks() {
           </Section>
         </Section>
         {/* How to solve problems about math theories pictures container */}
-        <div className="mx-auto flex flex-col gap-16 mt-16 min-[875px]:grid min-[875px]:grid-cols-2 min-[1351px]:flex min-[1351px]:flex-col">
-          <Picture
-            src="/how-it-works/inventory-form-blank.png"
-            alt="Inventory Form Blank"
-            caption="Formulario de Teorías de Inventarios en blanco listo para ser llenado"
-          />
-          <Picture
-            src="/how-it-works/inventory-form-full.png"
-            alt="Inventory Form Full"
-            caption="Formulario de Teorías de Inventarios completado con datos del primer modelo"
-          />
-          <Picture
-            src="/how-it-works/inventory-form-diff-model-full.png"
-            alt="Inventory Form Full with Diff Model"
-            caption="Formulario de Teorías de Inventarios completado con datos de un modelo diferente"
-          />
-          <Picture
-            src="/how-it-works/queue-form-blank.png"
-            alt="Queue Form Blank"
-            caption="Formulario de Teorías de Colas en blanco listo para ser llenado"
-          />
-          <Picture
-            src="/how-it-works/queue-form-full.png"
-            alt="Queue Form Full"
-            caption="Formulario de Teorías de Colas completado con datos del primer modelo"
-          />
+        <div className="flex flex-col gap-3 mx-auto mt-16">
+          <span className="text-center">
+            <strong>
+              Puede hacer clíc a las imágenes para verlas más grandes
+            </strong>
+          </span>
+          <div className="flex flex-col gap-16 min-[875px]:grid min-[875px]:grid-cols-2 min-[1351px]:flex min-[1351px]:flex-col">
+            <Picture
+              src="/how-it-works/inventory-form-blank.png"
+              alt="Inventory Form Blank"
+              caption="Formulario de Teorías de Inventarios en blanco listo para ser llenado"
+            />
+            <Picture
+              src="/how-it-works/inventory-form-full.png"
+              alt="Inventory Form Full"
+              caption="Formulario de Teorías de Inventarios completado con datos del primer modelo"
+            />
+            <Picture
+              src="/how-it-works/inventory-form-diff-model-full.png"
+              alt="Inventory Form Full with Diff Model"
+              caption="Formulario de Teorías de Inventarios completado con datos de un modelo diferente"
+            />
+            <Picture
+              src="/how-it-works/queue-form-blank.png"
+              alt="Queue Form Blank"
+              caption="Formulario de Teorías de Colas en blanco listo para ser llenado"
+            />
+            <Picture
+              src="/how-it-works/queue-form-full.png"
+              alt="Queue Form Full"
+              caption="Formulario de Teorías de Colas completado con datos del primer modelo"
+            />
+          </div>
         </div>
       </div>
       {/* How to report a problem in Mateory main container */}
@@ -253,27 +260,34 @@ function HowItWorks() {
           </Section>
         </Section>
         {/* How to report a problem in Mateory pictures container */}
-        <div className="mx-auto flex flex-col gap-16 mt-16 min-[875px]:grid min-[875px]:grid-cols-2 min-[1351px]:flex min-[1351px]:flex-col">
-          <Picture
-            src="/how-it-works/report-bug-form-blank.png"
-            alt="Report Bug Form Blank"
-            caption="Formulario de Reportar Problema en blanco listo para ser llenado"
-          />
-          <Picture
-            src="/how-it-works/report-bug-form-full.png"
-            alt="Report Bug Form Full"
-            caption="Formulario de Reportar Problema completado con datos de un problema"
-          />
-          <Picture
-            src="/how-it-works/report-bug-github-form-blank.png"
-            alt="Report Issue Form Blank"
-            caption="Formulario de Reportar una Issue de Github en blanco listo para ser llenado"
-          />
-          <Picture
-            src="/how-it-works/report-bug-github-form-full.png"
-            alt="Report Issue Form Full"
-            caption="Formulario de Reportar una Issue de Github completado con datos de un problema"
-          />
+        <div className="flex flex-col gap-3 mx-auto mt-16">
+          <span className="text-center">
+            <strong>
+              Puede hacer clíc a las imágenes para verlas más grandes
+            </strong>
+          </span>
+          <div className="flex flex-col gap-16 min-[875px]:grid min-[875px]:grid-cols-2 min-[1351px]:flex min-[1351px]:flex-col">
+            <Picture
+              src="/how-it-works/report-bug-form-blank.png"
+              alt="Report Bug Form Blank"
+              caption="Formulario de Reportar Problema en blanco listo para ser llenado"
+            />
+            <Picture
+              src="/how-it-works/report-bug-form-full.png"
+              alt="Report Bug Form Full"
+              caption="Formulario de Reportar Problema completado con datos de un problema"
+            />
+            <Picture
+              src="/how-it-works/report-bug-github-form-blank.png"
+              alt="Report Issue Form Blank"
+              caption="Formulario de Reportar una Issue de Github en blanco listo para ser llenado"
+            />
+            <Picture
+              src="/how-it-works/report-bug-github-form-full.png"
+              alt="Report Issue Form Full"
+              caption="Formulario de Reportar una Issue de Github completado con datos de un problema"
+            />
+          </div>
         </div>
       </div>
     </Section>

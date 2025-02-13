@@ -9,6 +9,8 @@ interface Props {
   preTitle?: string;
   small?: boolean;
   main?: boolean;
+  addMargin?: boolean;
+  h3?: boolean;
 }
 // Section Main Function
 function Section({
@@ -19,16 +21,22 @@ function Section({
   preTitle,
   small,
   main,
+  addMargin,
+  h3,
 }: Props) {
   // Section Constants
-  const TITLE = main ? "h1" : "h2";
+  const TITLE = main ? "h1" : h3 ? "h3" : "h2";
   const WRAPPER = !small && !main ? "div" : React.Fragment;
   // Returns Section Component
   return (
     // Section Container if it is a Normal Section
     <WRAPPER
       {...(!small && !main
-        ? { className: "mx-5 my-16 min-[570px]:mx-10" }
+        ? {
+            className: `${addMargin ? "mx-5" : ""} ${
+              h3 ? "" : "mt-16"
+            } md:mx-10`.trimStart(),
+          }
         : {})}
     >
       {/* Second Section Container */}
@@ -64,6 +72,8 @@ function Section({
                 ? "text-[2.5rem] leading-none font-bold min-[330px]:text-5xl min-[378px]:text-6xl"
                 : small
                 ? "text-3xl font-semibold"
+                : h3
+                ? "text-2xl font-semibold md:text-3xl"
                 : "text-4xl font-bold md:text-5xl"
             }`}
           >

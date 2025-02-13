@@ -70,6 +70,7 @@ export default function Home() {
         description="Creado por un programador con diplomado en aplicaciones informáticas y basado en fórmulas proporcionadas por un profesor experto en matemáticas, Mateory hace que la investigación deoperaciones sea más accesible y eficiente"
         contentClassName="flex flex-wrap gap-10 md:justify-center md:mx-auto md:max-w-7xl lg:gap-16"
         preTitle="Calcula más Rápido"
+        addMargin
       >
         {/* Fast and accurate results Benefit */}
         <Benefit
@@ -100,6 +101,7 @@ export default function Home() {
         title="Colaboradores"
         description="Mateory es posible gracias a quienes han contribuido con su conocimiento para crear una herramienta precisa, accesible y eficiente."
         contentClassName="flex flex-wrap gap-10 min-[685px]:justify-center min-[685px]:mx-auto min-[685px]:max-w-4xl lg:gap-16"
+        addMargin
       >
         {/* Ramsés Solano Container */}
         <div className="flex flex-col gap-5 min-[685px]:flex-row">

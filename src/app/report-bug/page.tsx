@@ -85,7 +85,7 @@ function ReportBug() {
       <Section
         title="Reporta un Problema"
         description="Ayuda a tener el sistema al día reportando los problemas que encuentres en Mateory"
-        contentClassName="flex flex-col justify-center gap-5"
+        contentClassName="flex flex-col justify-center gap-5 max-w-2xl"
         main
       >
         {/* Report Bug Form */}
@@ -128,7 +128,7 @@ function ReportBug() {
           <UploadFiles
             label="Evidencia"
             name="files"
-            help="Solo Archivos PNG, JPG y JPEG menores a 10 MB"
+            help="Solo Archivos PNG, JPG y JPEG. Los archivos juntos deben tener un peso menor a 4 MB. Esta es requerida para resolver con la mayor brevedad posible"
           />
         </Form>
         {/* Or Separation */}

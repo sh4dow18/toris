@@ -33,26 +33,6 @@ export async function POST(request: Request) {
   const MESSAGE = formData.get("message");
   const FILES = formData.getAll("files") as File[];
   let invalidFiles = false;
-  // // Check if all files sent are real images, if not, throw an error
-  // await Promise.all(FILES.map(IsValidImage))
-  //   .then((results) => {
-  //     const INVALID_FILES_LIST = FILES.filter((_, index) => !results[index]);
-  //     if (INVALID_FILES_LIST.length !== 0) {
-  //       invalidFiles = true;
-  //     }
-  //   })
-  //   // If catch an error, sends an email with the error and returns a internal server error response
-  //   .catch((error) => {
-  //     emailTemplate = emailTemplate
-  //       .replace("{{name}}", "Sistema de Reportes de Problemas de Mateory")
-  //       .replace("{{email}}", "(No Posee)")
-  //       .replace("{{message}}", error.message);
-  //     SendEmail(emailTemplate);
-  //     return new Response(
-  //       "El Mensaje no se ha podido enviar, inténtelo nuevamente.",
-  //       { status: 500 }
-  //     );
-  //   });
   // Check if all files sent are real images, if not, throw an error
   try {
     const VALID_IMAGES_LIST = await Promise.all(FILES.map(IsValidImage));
@@ -62,7 +42,9 @@ export async function POST(request: Request) {
     if (INVALID_FILES_LIST.length !== 0) {
       invalidFiles = true;
     }
-  } catch (error) {
+  } 
+  // If any errors were detected, send a report about that error
+  catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Error desconocido";
     emailTemplate = emailTemplate

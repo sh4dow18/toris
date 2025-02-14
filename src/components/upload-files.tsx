@@ -1,75 +1,103 @@
+// Set this component as a client component
 "use client";
+// Upload Files Requirements
 import { useRef, useState } from "react";
-
+// Upload Files Props
 interface Props {
   label: string;
   name: string;
   help: string;
 }
-
+// Upload Files Main Function
 function UploadFiles({ label, name, help }: Props) {
+  // Upload Files Hooks
   const [state, SetState] = useState<"Valid" | "Neutral" | "Invalid">(
     "Neutral"
   );
-  const [files, setFiles] = useState<File[]>([]);
-  const [isDragging, setIsDragging] = useState(false);
+  const [errorMessage, SetErrorMessage] = useState<string | null>(null);
+  const [files, SetFiles] = useState<File[]>([]);
+  const [isDragging, SetIsDragging] = useState(false);
   const REFERENCE = useRef<HTMLInputElement | null>(null);
-
-  const validateFiles = (files: File[]) => {
+  // Upload Files Validate Files Function
+  const ValidateFiles = (files: File[]) => {
+    // If have no files, return false
     if (files.length === 0) {
-      return false;
+      SetErrorMessage("No hay Archivos para Enviar");
+      return -1;
     }
-    let badFile = false;
+    // Check if have an invalid file
+    let validFileState = true;
+    let totalfilesSize = 0;
     files.filter((file) => {
-      if (
-        file.size > 10 * 1024 * 1024 ||
-        (!file.name.endsWith(".png") &&
-          !file.name.endsWith(".jpg") &&
-          !file.name.endsWith(".jpeg"))
-      ) {
-        badFile = true;
+      if (file.size > 4 * 1024 * 1024) {
+        SetErrorMessage(`El Archivo ${file.name} es mayor a 4 MB`);
+        validFileState = false;
+        return;
       }
+      if (
+        !file.name.endsWith(".png") &&
+        !file.name.endsWith(".jpg") &&
+        !file.name.endsWith(".jpeg")
+      ) {
+        SetErrorMessage(`El Archivo ${file.name} es no es una imagen válida`);
+        validFileState = false;
+        return;
+      }
+      totalfilesSize += file.size;
     });
-    if (badFile) {
-      return false;
+    if (totalfilesSize > 4 * 1024 * 1024) {
+      SetErrorMessage("Los Archivos juntos no pueden superar los 4 MB");
+      validFileState = false;
     }
-    return true;
+    // If have an invalid file, return false, else true
+    return validFileState;
   };
-
+  // Upload Files On Change Function
   const OnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // If the files exists, set the files and check if the are valid
     if (event.target.files) {
-      setFiles(Array.from(event.target.files));
+      SetFiles(Array.from(event.target.files));
       SetState(
-        validateFiles(Array.from(event.target.files)) ? "Valid" : "Invalid"
+        ValidateFiles(Array.from(event.target.files)) ? "Valid" : "Invalid"
       );
     }
   };
-
+  // Upload Files On Drag Over Function
   const OnDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    // Avoid open image in browser
     event.preventDefault();
-    setIsDragging(true);
+    // Set Dragging as true
+    SetIsDragging(true);
   };
-
-  // Manejar Drag & Drop en el label
+  // Upload Files On Drop Function
   const OnDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    // Avoid open image in browser
     event.preventDefault();
-    setIsDragging(false);
-    const droppedFiles = event.dataTransfer.files;
-    setFiles([...droppedFiles]);
+    // Set Dragging as true
+    SetIsDragging(false);
+    // Get dropped files
+    const DROPPED_FILES = event.dataTransfer.files;
+    // Set the files
+    SetFiles([...DROPPED_FILES]);
+    // If Reference current exists, check if there are valid, then add the files to input file
     if (REFERENCE.current) {
-      SetState(validateFiles(Array.from(droppedFiles)) ? "Valid" : "Invalid");
-      REFERENCE.current.files = droppedFiles;
+      SetState(ValidateFiles(Array.from(DROPPED_FILES)) ? "Valid" : "Invalid");
+      REFERENCE.current.files = DROPPED_FILES;
     }
   };
+  // Returns Upload Files Component
   return (
+    // Upload Files Main Container
     <div className="flex flex-col gap-1">
+      {/* Main Label */}
       <label htmlFor={name} className="text-white font-medium">
         {label}
       </label>
+      {/* Drag and Drop Container */}
       <div
         onDragOver={OnDragOver}
         onDragLeave={() => {
-          setIsDragging(false);
+          SetIsDragging(false);
         }}
         onDrop={OnDrop}
         onClick={() => {
@@ -79,7 +107,7 @@ function UploadFiles({ label, name, help }: Props) {
         }}
         className={`cursor-pointer text-center rounded-md outline-2 py-8 px-1 min-[344px]:px-3 ${
           files.length > 0
-            ? validateFiles(files)
+            ? state === "Valid"
               ? "bg-gray-700"
               : "bg-red-900"
             : isDragging
@@ -87,17 +115,19 @@ function UploadFiles({ label, name, help }: Props) {
             : "bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple"
         }`}
       >
+        {/* Drag and Drop Line */}
         <span
           className={files.length > 0 || isDragging ? "text-white" : undefined}
         >
           {files.length > 0
-            ? validateFiles(files)
+            ? state === "Valid"
               ? `¡Hay ${files.length} Archivos listos para subir!`
-              : "Hay un Archivo que no cumple con los requisitos"
+              : errorMessage
             : isDragging
             ? "¡Suelta los archivos aquí!"
             : "Haz clic o arrastra archivos aquí"}
         </span>
+        {/* Main Input */}
         <input
           id={name}
           ref={REFERENCE}
@@ -109,6 +139,7 @@ function UploadFiles({ label, name, help }: Props) {
           className="hidden"
         />
       </div>
+      {/* Main Help */}
       <small>{help}</small>
     </div>
   );

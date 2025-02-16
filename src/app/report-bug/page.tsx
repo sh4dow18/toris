@@ -165,11 +165,16 @@ function ReportBug() {
           if (REPORTS_MADE !== "3") {
             // If Reports Made is not defined, it is the first time it has reported, if it is, init Reports Made
             if (REPORTS_MADE === undefined) {
-              SetReportsMade(0);
+              SetReportsMade(1);
             }
             // Else, add 1 to the number of reports
             else {
-              SetReportsMade(Number.parseInt(REPORTS_MADE) + 1);
+              const NEXT_NUMBER = Number.parseInt(REPORTS_MADE) + 1;
+              SetReportsMade(NEXT_NUMBER);
+              // If next number is 3, set reports made date
+              if (NEXT_NUMBER === 3) {
+                SetReportsMadeDate();
+              }
             }
           }
           // Set init settings to modal

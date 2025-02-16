@@ -2,7 +2,7 @@
 import "@/stylesheets/globals.css";
 // Main Layout Requirements
 import Link from "next/link";
-import { Light, Nav } from "@/components";
+import { Light, Logo, Nav } from "@/components";
 import Image from "next/image";
 // Main Layout Main Function
 export default function RootLayout({
@@ -25,27 +25,21 @@ export default function RootLayout({
         </main>
         <footer className="bg-gray-950 text-gray-400 text-center py-8 sm:flex sm:place-content-between sm:items-center sm:px-8">
           {/* Logos Container */}
-          <div className="flex justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">
+          <div className="flex gap-4 justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">
             {/* Github Logo */}
-            <Link href="https://github.com/sh4dow18/mateory" target="_blank">
-              <Image
-                src="/logos/github.svg"
-                alt="Github Logo"
-                width={24}
-                height={24}
-                className="mx-4"
-              />
-            </Link>
+            <Logo
+              href="https://github.com/sh4dow18/mateory"
+              icon="github"
+              width={24}
+              height={24}
+            />
             {/* MIT License Logo */}
-            <Link href="https://opensource.org/license/mit" target="_blank">
-              <Image
-                src="/logos/mit.svg"
-                alt="MIT License Logo"
-                width={24}
-                height={24}
-                className="mx-4"
-              />
-            </Link>
+            <Logo
+              href="https://opensource.org/license/mit"
+              icon="mit"
+              width={24}
+              height={24}
+            />
           </div>
           {/* Copyright Text */}
           <p className="text-xs sm:order-2 md:text-sm">

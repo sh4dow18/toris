@@ -3,7 +3,6 @@ import "@/stylesheets/globals.css";
 // Main Layout Requirements
 import Link from "next/link";
 import { Light, Logo, Nav } from "@/components";
-import Image from "next/image";
 // Main Layout Main Function
 export default function RootLayout({
   children,

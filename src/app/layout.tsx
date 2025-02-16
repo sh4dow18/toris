@@ -1,5 +1,5 @@
 // Main Layout Stylesheets
-import "@/stylesheets/globals.css";
+import "@/globals.css";
 // Main Layout Requirements
 import { Link, ViewTransitions } from "next-view-transitions";
 // import Link from "next/link";

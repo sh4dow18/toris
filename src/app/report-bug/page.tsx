@@ -15,8 +15,8 @@ import {
   SetReportsMade,
   SetReportsMadeDate,
 } from "@/libs/session";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
-import Link from "next/link";
 import { FormEvent, useState } from "react";
 // Report Bug Necessary types
 type ModalSettings = {

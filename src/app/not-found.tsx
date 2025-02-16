@@ -1,7 +1,7 @@
 // Not Found Requirements
 import { Section } from "@/components";
 import { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 // Not Found Constants
 const TITLE = "Página No Encontrada";
 const DESCRIPTION =

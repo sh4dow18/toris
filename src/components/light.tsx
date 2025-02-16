@@ -1,8 +1,10 @@
+// Light Props
 interface Props {
   direction: "tl" | "br";
 }
-
+// Light Main Function
 function Light({ direction }: Props) {
+  // Returns Light Component
   return (
     // Light Diffusion Container
     <div

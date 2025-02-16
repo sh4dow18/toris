@@ -9,7 +9,7 @@ type Props = {
   message: string;
   Close: () => void;
 };
-// Status Titles Record
+// Modal Status Titles Record
 const STATUS_TITLES: Record<string, string> = {
   success: "¡Éxito!",
   error: "¡Error!",

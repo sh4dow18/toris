@@ -48,7 +48,7 @@ export default function RootLayout({
               <Link
                 href="https://github.com/sh4dow18"
                 target="_blank"
-                className="text-gray-300"
+                className="text-gray-300 hover:text-white"
               >
                 Ramsés Solano
               </Link>
@@ -56,7 +56,7 @@ export default function RootLayout({
             </p>
             {/* Last Update */}
             <p className="text-xs sm:order-1 md:text-sm">
-              24 de Enero del 2025
+              16 de Febrero del 2025
             </p>
           </footer>
         </body>

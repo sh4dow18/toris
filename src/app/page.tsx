@@ -1,7 +1,6 @@
 // Home Page Requirements
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import {
   AcademicCapIcon,
   ArrowRightIcon,
@@ -10,6 +9,7 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/16/solid";
 import { Benefit, Logo, Section } from "@/components";
+import { Link } from "next-view-transitions";
 // Home Page Metadata
 export const metadata: Metadata = {
   title: "Mateory",

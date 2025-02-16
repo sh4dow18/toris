@@ -15,8 +15,8 @@ import {
   SetReportsMade,
   SetReportsMadeDate,
 } from "@/libs/session";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
-import Link from "next/link";
 import { FormEvent, useState } from "react";
 // Report Bug Necessary types
 type ModalSettings = {
@@ -85,7 +85,7 @@ function ReportBug() {
       <Section
         title="Reporta un Problema"
         description="Ayuda a tener el sistema al día reportando los problemas que encuentres en Mateory"
-        contentClassName="flex flex-col justify-center gap-5"
+        contentClassName="flex flex-col justify-center gap-5 max-w-2xl"
         main
       >
         {/* Report Bug Form */}
@@ -128,7 +128,7 @@ function ReportBug() {
           <UploadFiles
             label="Evidencia"
             name="files"
-            help="Solo Archivos PNG, JPG y JPEG menores a 10 MB"
+            help="Solo Archivos PNG, JPG y JPEG. Los archivos juntos deben tener un peso menor a 4 MB. Esta es requerida para resolver con la mayor brevedad posible"
           />
         </Form>
         {/* Or Separation */}
@@ -165,11 +165,16 @@ function ReportBug() {
           if (REPORTS_MADE !== "3") {
             // If Reports Made is not defined, it is the first time it has reported, if it is, init Reports Made
             if (REPORTS_MADE === undefined) {
-              SetReportsMade(0);
+              SetReportsMade(1);
             }
             // Else, add 1 to the number of reports
             else {
-              SetReportsMade(Number.parseInt(REPORTS_MADE) + 1);
+              const NEXT_NUMBER = Number.parseInt(REPORTS_MADE) + 1;
+              SetReportsMade(NEXT_NUMBER);
+              // If next number is 3, set reports made date
+              if (NEXT_NUMBER === 3) {
+                SetReportsMadeDate();
+              }
             }
           }
           // Set init settings to modal

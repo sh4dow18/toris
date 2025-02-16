@@ -6,7 +6,10 @@ interface CookieConfig {
   secure: boolean;
 }
 // Session Constants
-const COOKIES_CONFIGURATION: CookieConfig = { sameSite: "Strict", secure: true };
+const COOKIES_CONFIGURATION: CookieConfig = {
+  sameSite: "Strict",
+  secure: process.env.NODE_ENV === "production",
+};
 // Set Reports Made Function
 export function SetReportsMade(reportsDone: number) {
   Cookies.set("reportsMade", `${reportsDone}`, COOKIES_CONFIGURATION);

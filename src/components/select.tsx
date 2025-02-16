@@ -22,7 +22,7 @@ function Select({ name, label, optionsList }: Props) {
         <select
           id={name}
           name={name}
-          className="w-full appearance-none bg-gray-800 text-white rounded-md outline outline-2 py-2 pl-1 outline-gray-800 focus-within:outline-mateoryPurple min-[344px]:pl-3"
+          className="w-full appearance-none bg-gray-800 text-white rounded-md outline-2 py-2 pl-1 outline-gray-800 focus-within:outline-mateoryPurple min-[344px]:pl-3"
         >
           {optionsList.map((option, index) => (
             <option key={index} value={option.value}>

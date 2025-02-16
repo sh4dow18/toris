@@ -1,6 +1,6 @@
 // Logo Requirements
+import { Link } from "next-view-transitions";
 import Image from "next/image";
-import Link from "next/link";
 // Logo Props
 interface Props {
   href: string;

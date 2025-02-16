@@ -1,12 +1,14 @@
+// Light Props
 interface Props {
   direction: "tl" | "br";
 }
-
+// Light Main Function
 function Light({ direction }: Props) {
+  // Returns Light Component
   return (
     // Light Diffusion Container
     <div
-      className={`absolute inset-x-0 transform overflow-hidden blur-3xl lg:transform-gpu ${
+      className={`absolute inset-x-0 overflow-hidden blur-3xl lg:transform-gpu ${
         direction === "br" ? "bottom-28 min-[500px]:left-auto" : "top-12"
       }`.trimEnd()}
       aria-hidden="true"

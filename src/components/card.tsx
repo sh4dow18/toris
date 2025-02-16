@@ -1,5 +1,5 @@
+// Card Requirements
 import { CheckNumber } from "@/libs/general";
-
 // Card Props
 interface Props {
   name: string;

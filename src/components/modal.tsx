@@ -9,7 +9,7 @@ type Props = {
   message: string;
   Close: () => void;
 };
-// Status Titles Record
+// Modal Status Titles Record
 const STATUS_TITLES: Record<string, string> = {
   success: "¡Éxito!",
   error: "¡Error!",
@@ -49,7 +49,7 @@ function Modal({ open, status, message, Close }: Props) {
         <button
           onClick={Close}
           disabled={status === "loading"}
-          className="bg-mateoryPurple text-white py-2 rounded-md disabled:bg-gray-600 disabled:text-gray-400"
+          className="bg-mateoryPurple text-white py-2 rounded-md cursor-pointer hover:bg-mateoryPurpleLight disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed"
         >
           Cerrar
         </button>

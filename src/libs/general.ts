@@ -36,6 +36,7 @@ export function Percentage(number: number) {
   const RESULT = (number * 100).toFixed(2);
   return `${RESULT}%`;
 }
+// Check if it is a Valid Number
 export function CheckNumber(number: number) {
   // If Number is undefined, return Undefined
   if (Number.isNaN(number)) {

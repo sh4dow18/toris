@@ -83,7 +83,7 @@ function Input({
       {/* Input Content Container */}
       <div
         aria-disabled={disabled}
-        className="flex place-content-between rounded-md outline outline-2 py-2 px-1 bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple aria-disabled:bg-gray-900 aria-disabled:outline-gray-900 min-[344px]:px-3"
+        className="flex place-content-between rounded-md outline-2 py-2 px-1 bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple aria-disabled:bg-gray-900 aria-disabled:outline-gray-900 min-[344px]:px-3"
       >
         {/* Main Input */}
         <input

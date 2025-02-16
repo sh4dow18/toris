@@ -2,10 +2,10 @@
 "use client";
 // Nav Requirements
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import { Link } from "next-view-transitions";
 // Nav Main Function
 function Nav() {
   // Nav Hooks
@@ -81,6 +81,7 @@ function Nav() {
           <Link
             key={page.href}
             href={page.href}
+            onClick={() => SetOpen(false)}
             className={`mx-2 my-1 px-3 py-2 font-medium ${
               CURRENT_PAGE === page.href ? "bg-gray-700 rounded-md" : ""
             }`}

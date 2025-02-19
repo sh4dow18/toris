@@ -8,7 +8,7 @@ import {
   DocumentCheckIcon,
   QuestionMarkCircleIcon,
 } from "@heroicons/react/16/solid";
-import { Benefit, Logo, Section } from "@/components";
+import { Benefit, Collaborator, Section } from "@/components";
 import { Link } from "next-view-transitions";
 // Home Page Metadata
 export const metadata: Metadata = {
@@ -97,56 +97,29 @@ export default function Home() {
           description="No se necesita perder tiempo con fórmulas complejas: ingresa los datos y obtén resultados al instante."
         />
       </Section>
+      {/* Colab Section */}
       <Section
         title="Colaboradores"
         description="Mateory es posible gracias a quienes han contribuido con su conocimiento para crear una herramienta precisa, accesible y eficiente."
-        contentClassName="flex flex-wrap gap-10 min-[685px]:justify-center min-[685px]:mx-auto min-[685px]:max-w-4xl lg:gap-16"
+        contentClassName="flex flex-wrap gap-10 min-[685px]:justify-center min-[685px]:mx-auto min-[685px]:max-w-4xl mb-10 lg:gap-16"
         addMargin
       >
-        {/* Ramsés Solano Container */}
-        <div className="flex flex-col gap-5 min-[685px]:flex-row">
-          {/* Image container to use to reshape image */}
-          <div className="min-[685px]:w-[32rem] min-[685px]:h-56 min-[685px]:overflow-hidden min-[685px]:relative">
-            {/* Ramsés Solano Image */}
-            <Image
-              src="/profiles/ramses-solano.jpeg"
-              alt="Ramsés Solano"
-              width={300}
-              height={100}
-              priority
-              className="w-full rounded-lg min-[685px]:w-[150%] min-[685px]:h-full min-[685px]:object-cover min-[685px]:object-center"
-            />
-          </div>
-          {/* Ramsés Solano Information Container */}
-          <div className="flex flex-col gap-5 min-[685px]:max-w-xl">
-            {/* Ramsés Solano Main Information Container */}
-            <div className="flex flex-col gap-5">
-              {/* Ramsés Solano Primary Information Container */}
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-300 text-lg">
-                  Ramsés Solano
-                </span>
-                <span>Creador de Mateory</span>
-              </div>
-              {/* Ramsés Solano Profile Description */}
-              <p className="leading-8">
-                Profesional en Programación de Aplicaciones Informáticas
-                apasionado por resolver problemas y mejorar habilidades,
-                aportando liderazgo, innovación y compromiso en cada proyecto
-              </p>
-            </div>
-            {/* Ramsés Solano Social Media Links */}
-            <div className="flex gap-5">
-              {/* Github Logo */}
-              <Logo href="https://github.com/sh4dow18/mateory" icon="github" />
-              {/* Linkedin Logo */}
-              <Logo
-                href="https://www.linkedin.com/in/ramsés-solano-arias-981029227/"
-                icon="linkedin"
-              />
-            </div>
-          </div>
-        </div>
+        {/* Ramsés Solano */}
+        <Collaborator
+          image="ramses-solano"
+          name="Ramsés Solano"
+          role="Creador de Mateory"
+          description="Profesional en Programación de Aplicaciones Informáticas apasionado por resolver problemas y mejorar habilidades, aportando liderazgo, innovación y compromiso en cada proyecto."
+          github="sh4dow18"
+          linkedin="ramsés-solano-arias-981029227"
+        />
+        {/* Esteban Martinez */}
+        <Collaborator
+          image="esteban-martinez"
+          name="Esteban Martinez"
+          role="Desarrollador de Formulas"
+          description="Docente de matemática, formado en la UCR y Máster en Calificación curricular. Incursionado en investigaciones con didáctica de la matemáticas y uso de IA para el análisis político."
+        />
       </Section>
     </div>
   );

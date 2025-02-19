@@ -1,6 +1,7 @@
 // Components Barrel
 export { default as Benefit } from "./benefit";
 export { default as Card } from "./card";
+export { default as Collaborator } from "./collaborator";
 export { default as Form } from "./form";
 export { default as Input } from "./input";
 export { default as Light } from "./light";

@@ -53,7 +53,7 @@ export default function Home() {
             ¿Cómo Funciona?
           </Link>
           {/* View Docs Link Container */}
-          <div className="flex gap-1 sm:items-center">
+          <div className="flex gap-1 sm:items-center hover:text-white">
             <Link
               href="https://github.com/sh4dow18/mateory"
               target="_blank"
@@ -117,7 +117,7 @@ export default function Home() {
         <Collaborator
           image="esteban-martinez"
           name="Esteban Martinez"
-          role="Desarrollador de Formulas"
+          role="Desarrollador de Fórmulas"
           description="Docente de matemática, formado en la UCR y Máster en Calificación curricular. Incursionado en investigaciones con didáctica de la matemáticas y uso de IA para el análisis político."
         />
       </Section>

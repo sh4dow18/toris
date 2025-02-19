@@ -116,9 +116,10 @@ export default function Home() {
         {/* Esteban Martinez */}
         <Collaborator
           image="esteban-martinez"
-          name="Esteban Martinez"
+          name="Esteban Martínez"
           role="Desarrollador de Fórmulas"
           description="Docente de matemática, formado en la UCR y Máster en Calificación curricular. Incursionado en investigaciones con didáctica de la matemáticas y uso de IA para el análisis político."
+          linkedin="esteban-martínez-07aaa174"
         />
       </Section>
     </div>

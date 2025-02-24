@@ -13,18 +13,18 @@ export default function RootLayout({
   // Returns Main Layout
   return (
     <ViewTransitions>
-      <html lang="es" className="font-inter">
+      <html lang="es" className="font-inter dark">
         <body className="flex flex-col h-dvh">
           <header>
             <Nav />
           </header>
           {/* Page Container */}
-          <main className="bg-gray-950 flex flex-1">
+          <main className="bg-gray-50 flex flex-1 dark:bg-gray-950">
             <Light direction="tl" />
             {children}
             <Light direction="br" />
           </main>
-          <footer className="bg-gray-950 text-gray-400 text-center py-8 sm:flex sm:place-content-between sm:items-center sm:px-8">
+          <footer className="bg-gray-50 text-gray-800 text-center py-8 dark:bg-gray-950 dark:text-gray-400 sm:flex sm:place-content-between sm:items-center sm:px-8">
             {/* Logos Container */}
             <div className="flex gap-4 justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">
               {/* Github Logo */}
@@ -48,7 +48,7 @@ export default function RootLayout({
               <Link
                 href="https://github.com/sh4dow18"
                 target="_blank"
-                className="text-gray-300 hover:text-white"
+                className="hover:text-mateoryPurple dark:text-gray-300 dark:hover:text-white"
               >
                 Ramsés Solano
               </Link>

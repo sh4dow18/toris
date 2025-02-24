@@ -2,12 +2,14 @@
 "use client";
 // Settings Page Requirements
 import { Section, ToggleConfiguration } from "@/components";
-import { useState } from "react";
+import { GetTheme, SetTheme } from "@/libs/session";
+import { useEffect, useState } from "react";
 // Settings Page Main Function
 function Settings() {
+  const CURRENT_THEME = GetTheme();
   // Settings Page Hooks
   const [themes, SetThemes] = useState({
-    dark: true,
+    dark: false,
     highContrast: false,
     lowContrast: false,
     grayScale: false,
@@ -17,6 +19,13 @@ function Settings() {
     bigger: false,
     smaller: false,
   });
+  useEffect(() => {
+    // Check the current theme and set it
+    SetThemes({
+      ...themes,
+      dark: GetTheme() === "dark",
+    });
+  }, []);
   // Returns Settings Page
   return (
     // Main Section
@@ -32,14 +41,22 @@ function Settings() {
           title="Tema Oscuro"
           description="Puede cambiar el tema a un tono más oscuro. Desactiva esta opción si desea un tema más claro"
           enabled={themes.dark}
-          OnClick={() =>
+          OnClick={() => {
+            // If it is dark mode, change it to light mode and vice versa
+            if (themes.dark) {
+              document.documentElement.classList.remove("dark");
+              SetTheme("light");
+            } else {
+              document.documentElement.classList.add("dark");
+              SetTheme("dark");
+            }
             SetThemes({
               dark: !themes.dark,
               highContrast: false,
               lowContrast: false,
               grayScale: false,
-            })
-          }
+            });
+          }}
         />
         {/* High Contrast Theme Toggle Configuration */}
         <ToggleConfiguration

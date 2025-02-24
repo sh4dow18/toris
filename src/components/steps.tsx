@@ -16,7 +16,7 @@ function Steps({ list }: Props) {
         >
           {/* Step Container */}
           <p className="leading-8">
-            <strong className="text-gray-300">{item.title}</strong>: {item.description}
+            <strong className="text-gray-800 dark:text-gray-300">{item.title}</strong>: {item.description}
           </p>
         </li>
       ))}

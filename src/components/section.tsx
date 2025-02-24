@@ -43,7 +43,7 @@ function Section({
       <div
         className={
           main
-            ? "flex flex-col justify-center text-gray-400 z-10 px-8 mx-auto my-5 md:gap-3"
+            ? "flex flex-col justify-center text-gray-500 z-10 px-8 mx-auto my-5 md:gap-3 dark:text-gray-400"
             : small
             ? "flex flex-col gap-7 mt-10"
             : "md:text-center md:max-w-2xl md:mx-auto"
@@ -51,7 +51,7 @@ function Section({
       >
         {/* Helper Span */}
         {preTitle && (
-          <span className="text-mateoryPurpleLight font-semibold mb-1 text-center">
+          <span className="text-mateoryPurple dark:text-mateoryPurpleLight font-semibold mb-1 text-center">
             {preTitle}
           </span>
         )}
@@ -67,7 +67,7 @@ function Section({
         >
           {/* Main Section Title */}
           <TITLE
-            className={`text-gray-300 ${
+            className={`text-gray-900 dark:text-gray-300 ${
               main
                 ? "text-[2.5rem] leading-none font-bold min-[330px]:text-5xl min-[378px]:text-6xl"
                 : small

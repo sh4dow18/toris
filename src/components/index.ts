@@ -6,6 +6,7 @@ export { default as Form } from "./form";
 export { default as Input } from "./input";
 export { default as Light } from "./light";
 export { default as Logo } from "./logo";
+export { default as MateoryLogo } from "./mateory-logo";
 export { default as Modal } from "./modal";
 export { default as Nav } from "./nav";
 export { default as Picture } from "./picture";

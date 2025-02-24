@@ -38,3 +38,11 @@ export function CheckOneDayHasPassed() {
   // Check if one day has passed
   return DIFF >= 24 * 60 * 60 * 1000;
 }
+// Set Theme Function
+export function SetTheme(theme: string) {
+  Cookies.set("theme", theme, COOKIES_CONFIGURATION);
+}
+// Get Theme Function
+export function GetTheme() {
+  return Cookies.get("theme");
+}

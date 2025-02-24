@@ -6,6 +6,8 @@
   --color-mateoryPurple: #a72dbc;
   --color-mateoryPurpleLight: #a54ab5;
 }
+/* New Themes */
+@custom-variant dark (&:where(.dark, .dark *));
 /* Add Inter Font to use with Tailwind CSS */
 @font-face {
   font-family: "inter";
@@ -13,6 +15,13 @@
 }
 /* Change Autocomplete styles in Chrome */
 input:-webkit-autofill {
-  -webkit-text-fill-color: white;
+  -webkit-text-fill-color: black;
   transition: background-color 5000s ease-in-out 0s;
+}
+/* Change Autocomplete styles in Chrome in Dark Mode */
+.dark {
+  & input:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }

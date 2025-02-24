@@ -29,11 +29,13 @@ function UploadFiles({ label, name, help }: Props) {
     let validFileState = true;
     let totalfilesSize = 0;
     files.filter((file) => {
+      // Check if the file is bigger than 4 MB
       if (file.size > 4 * 1024 * 1024) {
         SetErrorMessage(`El Archivo ${file.name} es mayor a 4 MB`);
         validFileState = false;
         return;
       }
+      // Check if the file has an image extension
       if (
         !file.name.endsWith(".png") &&
         !file.name.endsWith(".jpg") &&
@@ -45,6 +47,7 @@ function UploadFiles({ label, name, help }: Props) {
       }
       totalfilesSize += file.size;
     });
+    // Check if the total size of the files is bigger than 4 MB
     if (totalfilesSize > 4 * 1024 * 1024) {
       SetErrorMessage("Los Archivos juntos no pueden superar los 4 MB");
       validFileState = false;
@@ -90,7 +93,7 @@ function UploadFiles({ label, name, help }: Props) {
     // Upload Files Main Container
     <div className="flex flex-col gap-1">
       {/* Main Label */}
-      <label htmlFor={name} className="text-white font-medium">
+      <label htmlFor={name} className="text-black font-medium dark:text-white">
         {label}
       </label>
       {/* Drag and Drop Container */}
@@ -108,16 +111,16 @@ function UploadFiles({ label, name, help }: Props) {
         className={`cursor-pointer text-center rounded-md outline-2 py-8 px-1 min-[344px]:px-3 ${
           files.length > 0
             ? state === "Valid"
-              ? "bg-gray-700"
-              : "bg-red-900"
+              ? "bg-gray-100 dark:bg-gray-700"
+              : "bg-red-700 dark:bg-red-900"
             : isDragging
             ? "bg-mateoryPurpleLight"
-            : "bg-gray-800 outline-gray-800 focus-within:outline-mateoryPurple"
+            : "bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800"
         }`}
       >
         {/* Drag and Drop Line */}
         <span
-          className={files.length > 0 || isDragging ? "text-white" : undefined}
+          className={files.length > 0 || isDragging ? "text-black dark:text-white" : undefined}
         >
           {files.length > 0
             ? state === "Valid"

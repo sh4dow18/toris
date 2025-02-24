@@ -1,6 +1,5 @@
 // Home Page Requirements
 import { Metadata } from "next";
-import Image from "next/image";
 import {
   AcademicCapIcon,
   ArrowRightIcon,
@@ -8,7 +7,7 @@ import {
   DocumentCheckIcon,
   QuestionMarkCircleIcon,
 } from "@heroicons/react/16/solid";
-import { Benefit, Collaborator, Section } from "@/components";
+import { Benefit, Collaborator, MateoryLogo, Section } from "@/components";
 import { Link } from "next-view-transitions";
 // Home Page Metadata
 export const metadata: Metadata = {
@@ -21,18 +20,14 @@ export default function Home() {
   // Returns Home Page
   return (
     // Main Container
-    <div className="block w-full text-gray-400 z-10 mt-5">
+    <div className="block w-full text-gray-600 dark:text-gray-400 z-10 mt-5">
       {/* H1 Hidden, because it is not used, but it is needed for SEO */}
       <h1 className="hidden">Mateory</h1>
       {/* Mateory Present Section */}
       <div className="flex flex-col justify-center items-center gap-8 z-10 mx-auto max-w-5xl mt-5">
-        {/* Mateory logo */}
-        <Image
-          src="/logo.svg"
-          alt="Mateory Logo"
+        <MateoryLogo
           width={250}
           height={250}
-          priority
           className="h-auto min-[375px]:w-[20rem] min-[560px]:w-[30rem]"
         />
         {/* Mateory Description */}
@@ -53,7 +48,7 @@ export default function Home() {
             ¿Cómo Funciona?
           </Link>
           {/* View Docs Link Container */}
-          <div className="flex gap-1 sm:items-center hover:text-white">
+          <div className="flex gap-1 sm:items-center hover:text-gray-400 dark:hover:text-white">
             <Link
               href="https://github.com/sh4dow18/mateory"
               target="_blank"

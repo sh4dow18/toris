@@ -249,7 +249,7 @@ function Queue() {
               className={`py-2 px-3 font-medium rounded-md text-center ${
                 selectedModel === model.id
                   ? "bg-mateoryPurple text-white"
-                  : "bg-gray-700 cursor-pointer"
+                  : "bg-gray-100 cursor-pointer text-gray-400 dark:bg-gray-700 dark:text-inherit"
               }`}
             >
               {model.name}

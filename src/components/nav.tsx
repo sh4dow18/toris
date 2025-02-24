@@ -1,8 +1,7 @@
 // Set this component as a client component
 "use client";
 // Nav Requirements
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import { Link } from "next-view-transitions";

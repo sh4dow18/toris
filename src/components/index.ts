@@ -14,5 +14,6 @@ export { default as Section } from "./section";
 export { default as Select } from "./select";
 export { default as Steps } from "./steps";
 export { default as Textarea } from "./textarea";
+export { default as ThemeHandler } from "./theme-handler";
 export { default as ToggleConfiguration } from "./toggle-configuration";
 export { default as UploadFiles } from "./upload-files";

@@ -6,7 +6,6 @@ import { GetTheme, SetTheme } from "@/libs/session";
 import { useEffect, useState } from "react";
 // Settings Page Main Function
 function Settings() {
-  const CURRENT_THEME = GetTheme();
   // Settings Page Hooks
   const [themes, SetThemes] = useState({
     dark: false,
@@ -21,10 +20,10 @@ function Settings() {
   });
   useEffect(() => {
     // Check the current theme and set it
-    SetThemes({
-      ...themes,
+    SetThemes((prevThemes) => ({
+      ...prevThemes,
       dark: GetTheme() === "dark",
-    });
+    }));
   }, []);
   // Returns Settings Page
   return (

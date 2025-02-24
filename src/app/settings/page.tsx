@@ -19,10 +19,12 @@ function Settings() {
     smaller: false,
   });
   useEffect(() => {
+    const CURRENT_THEME = GetTheme();
     // Check the current theme and set it
     SetThemes((prevThemes) => ({
       ...prevThemes,
-      dark: GetTheme() === "dark",
+      dark: CURRENT_THEME === "dark",
+      highContrast: CURRENT_THEME === "highContrast",
     }));
   }, []);
   // Returns Settings Page
@@ -41,12 +43,16 @@ function Settings() {
           description="Puede cambiar el tema a un tono más oscuro. Desactiva esta opción si desea un tema más claro"
           enabled={themes.dark}
           OnClick={() => {
+            const DOCUMENT_CLASS_LIST = document.documentElement.classList;
             // If it is dark mode, change it to light mode and vice versa
             if (themes.dark) {
-              document.documentElement.classList.remove("dark");
+              DOCUMENT_CLASS_LIST.remove("dark");
               SetTheme("light");
             } else {
-              document.documentElement.classList.add("dark");
+              if (DOCUMENT_CLASS_LIST.contains("highContrast")) {
+                DOCUMENT_CLASS_LIST.remove("highContrast");
+              }
+              DOCUMENT_CLASS_LIST.add("dark");
               SetTheme("dark");
             }
             SetThemes({
@@ -62,14 +68,26 @@ function Settings() {
           title="Contraste Alto"
           description="Puede cambiar el tema a un tono con mayor contraste. Desactiva esta opción si desea el tema predefinido"
           enabled={themes.highContrast}
-          OnClick={() =>
+          OnClick={() => {
+            const DOCUMENT_CLASS_LIST = document.documentElement.classList;
+            // If it is high contrast theme, change it to light mode and vice versa
+            if (themes.highContrast) {
+              DOCUMENT_CLASS_LIST.remove("highContrast");
+              SetTheme("light");
+            } else {
+              if (DOCUMENT_CLASS_LIST.contains("dark")) {
+                DOCUMENT_CLASS_LIST.remove("dark");
+              }
+              DOCUMENT_CLASS_LIST.add("highContrast");
+              SetTheme("highContrast");
+            }
             SetThemes({
               dark: false,
               highContrast: !themes.highContrast,
               lowContrast: false,
               grayScale: false,
-            })
-          }
+            });
+          }}
         />
         {/* Low Contrast Theme Toggle Configuration */}
         <ToggleConfiguration

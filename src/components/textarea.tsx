@@ -37,7 +37,7 @@ function Textarea({ label, name, placeholder, help, maxLength, rows }: Props) {
         {label}
       </label>
       {/* Textarea Second Container */}
-      <div className="rounded-md outline-2 py-2 px-1 bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800 min-[344px]:px-3">
+      <div className="rounded-md outline-2 py-2 px-1 bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800 highContrast:bg-white highContrast:outline-black min-[344px]:px-3">
         {/* Main Textarea */}
         <textarea
           id={name}

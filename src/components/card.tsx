@@ -14,7 +14,9 @@ function Card({ name, value, disabled, staticWidth }: Props) {
     // Card Container
     <article
       className={`flex flex-col gap-2 p-4 rounded-lg shadow-md ${
-        disabled ? "bg-gray-100 dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-800"
+        disabled
+          ? "bg-gray-100 dark:bg-gray-900 highContrast:bg-white"
+          : "bg-gray-50 dark:bg-gray-800 highContrast:bg-white"
       } ${staticWidth === true ? "md:w-[21rem]" : undefined}`.trimEnd()}
     >
       {/* Card Title */}
@@ -27,7 +29,7 @@ function Card({ name, value, disabled, staticWidth }: Props) {
       {/* Card Value */}
       <p
         aria-disabled={disabled}
-        className="font-bold text-2xl text-gray-700 aria-disabled:text-gray-300 dark:text-white dark:aria-disabled:text-gray-500"
+        className="font-bold text-2xl text-gray-700 aria-disabled:text-gray-300 dark:text-white dark:aria-disabled:text-gray-500 highContrast:text-black"
       >
         {disabled === true
           ? "No Aplica"

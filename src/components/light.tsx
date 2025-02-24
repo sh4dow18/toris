@@ -8,14 +8,14 @@ function Light({ direction }: Props) {
   return (
     // Light Diffusion Container
     <div
-      className={`absolute inset-x-0 overflow-hidden blur-3xl opacity-50 dark:opacity-100 lg:transform-gpu ${
+      className={`absolute inset-x-0 overflow-hidden blur-3xl opacity-50 dark:opacity-100 highContrast:opacity-100 lg:transform-gpu ${
         direction === "br" ? "bottom-28 min-[500px]:left-auto" : "top-12"
       }`.trimEnd()}
       aria-hidden="true"
     >
       {/* Polygon container for light */}
       <div
-        className={`relative aspect-1155/678 w-[36.125rem] bg-linear-to-tr from-[#f8a13c] to-mateoryPurple opacity-50 ${
+        className={`relative aspect-1155/678 w-[36.125rem] bg-linear-to-tr from-[#f8a13c] to-mateoryPurple opacity-50 highContrast:opacity-100 ${
           direction === "br"
             ? "translate-x-20"
             : "-translate-x-3/4 min-[500px]:-translate-x-1/2 md:-translate-x-1/4"

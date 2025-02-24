@@ -41,7 +41,9 @@ function Colaborator({
         <div className="flex flex-col gap-5">
           {/* Colaborator Primary Information Container */}
           <div className="flex flex-col">
-            <span className="font-semibold text-gray-800 text-lg dark:text-gray-300">{name}</span>
+            <span className="font-semibold text-gray-800 text-lg dark:text-gray-300 highContrast:text-black">
+              {name}
+            </span>
             <span>{role}</span>
           </div>
           {/* Colaborator Profile Description */}

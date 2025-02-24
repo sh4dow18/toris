@@ -1,9 +1,9 @@
 // Set this component as a client component
 "use client";
-import { XMarkIcon } from "@heroicons/react/16/solid";
 // Picture Requirements
 import Image from "next/image";
 import { useState } from "react";
+import { XMarkIcon } from "@heroicons/react/16/solid";
 // Picture Props
 interface Props {
   src: string;
@@ -38,7 +38,7 @@ function Picture({ src, alt, caption }: Props) {
           priority
           className="w-full h-auto rounded-lg min-[1351px]:max-w-[530px]"
         />
-        <figcaption className="text-xs mt-3 text-center">{caption}</figcaption>
+        <figcaption className="text-xs mt-3 text-center highContrast:text-black">{caption}</figcaption>
       </figure>
       {/* Picture Modal to view the Picture Bigger */}
       {open && (

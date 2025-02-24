@@ -16,13 +16,16 @@ function Benefit({ title, description, icon }: Props) {
       <div>
         {/* Benefit Icon */}
         {cloneElement(icon as ReactElement, {
-          className: "w-10 p-2 bg-mateoryPurple fill-gray-50 rounded-lg dark:fill-gray-200",
+          className:
+            "w-10 p-2 bg-mateoryPurple fill-gray-50 rounded-lg dark:fill-gray-200 highContrast:fill-white",
         })}
       </div>
       {/* Benefit Information Container */}
       <div className="flex flex-col gap-2">
         {/* Benefit Title */}
-        <span className="font-semibold text-gray-800 dark:text-gray-300">{title}</span>
+        <span className="font-semibold text-gray-800 dark:text-gray-300 highContrast:text-black">
+          {title}
+        </span>
         {/* Benefit Description */}
         <p className="leading-7">{description}</p>
       </div>

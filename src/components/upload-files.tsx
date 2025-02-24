@@ -111,16 +111,22 @@ function UploadFiles({ label, name, help }: Props) {
         className={`cursor-pointer text-center rounded-md outline-2 py-8 px-1 min-[344px]:px-3 ${
           files.length > 0
             ? state === "Valid"
-              ? "bg-gray-100 dark:bg-gray-700"
-              : "bg-red-700 dark:bg-red-900"
+              ? "bg-gray-100 dark:bg-gray-700 highContrast:bg-white"
+              : "bg-red-700 dark:bg-red-900 highContrast:bg-red-500"
             : isDragging
             ? "bg-mateoryPurpleLight"
-            : "bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800"
+            : "bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800 highContrast:bg-white highContrast:outline-black"
         }`}
       >
         {/* Drag and Drop Line */}
         <span
-          className={files.length > 0 || isDragging ? "text-black dark:text-white" : undefined}
+          className={
+            isDragging
+              ? "text-white"
+              : files.length > 0
+              ? "text-black dark:text-white"
+              : undefined
+          }
         >
           {files.length > 0
             ? state === "Valid"

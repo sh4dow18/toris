@@ -9,8 +9,10 @@ function ThemeHandler() {
   useEffect(() => {
     // Check which Theme is Enabled
     const CURRENT_THEME = GetTheme();
-    if (CURRENT_THEME === "light") {
-      document.documentElement.classList.remove("dark");
+    if (CURRENT_THEME !== "dark" && CURRENT_THEME !== undefined) {
+      const DOCUMENT_CLASS_LIST = document.documentElement.classList;
+      DOCUMENT_CLASS_LIST.remove("dark");
+      DOCUMENT_CLASS_LIST.add(CURRENT_THEME);
     }
   }, []);
   // Returns Null, because the theme handler has no TSX format

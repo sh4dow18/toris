@@ -28,7 +28,7 @@ function Modal({ open, status, message, Close }: Props) {
       {/* Modal Dialog */}
       <dialog
         open={open}
-        className="fixed inset-0 m-auto w-72 z-30 flex flex-col gap-5 text-center bg-gray-200 text-gray-700 px-3 pt-6 pb-3 rounded-lg dark:bg-gray-800 dark:text-gray-300 highContrast:bg-white highContrast:text-black lowContrast:bg-gray-100 lowContrast:text-gray-500 sm:w-96"
+        className="fixed inset-0 m-auto w-72 z-30 flex flex-col gap-5 text-center bg-gray-200 text-gray-700 px-3 pt-6 pb-3 rounded-lg dark:bg-gray-800 dark:text-gray-300 highContrast:bg-white highContrast:text-black lowContrast:bg-gray-100 lowContrast:text-gray-500 grayScale:grayscale sm:w-96"
       >
         {/* Modal Main Image */}
         {status === "success" ? (

@@ -117,7 +117,7 @@ function UploadFiles({ label, name, help }: Props) {
               ? "bg-gray-100 dark:bg-gray-700 highContrast:bg-white"
               : "bg-red-700 dark:bg-red-900 highContrast:bg-red-500 lowContrast:bg-red-800"
             : isDragging
-            ? "bg-mateoryPurpleLight"
+            ? "bg-mateoryPurpleLight grayScale:grayscale"
             : "bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800 highContrast:bg-white highContrast:outline-black lowContrast:bg-gray-100"
         }`}
       >

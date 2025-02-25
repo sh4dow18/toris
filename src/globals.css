@@ -10,6 +10,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant highContrast (&:where(.highContrast, .highContrast *));
 @custom-variant lowContrast (&:where(.lowContrast, .lowContrast *));
+@custom-variant grayScale (&:where(.grayScale, .grayScale *));
 /* Add Inter Font to use with Tailwind CSS */
 @font-face {
   font-family: "inter";

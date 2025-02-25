@@ -21,12 +21,12 @@ function Settings() {
   useEffect(() => {
     const CURRENT_THEME = GetTheme();
     // Check the current theme and set it
-    SetThemes((prevThemes) => ({
-      ...prevThemes,
+    SetThemes({
       dark: CURRENT_THEME === "dark",
       highContrast: CURRENT_THEME === "highContrast",
       lowContrast: CURRENT_THEME === "lowContrast",
-    }));
+      grayScale: CURRENT_THEME === "grayScale",
+    });
   }, []);
   const SetThemeInDOM = (theme: string) => {
     // Get HTML Class List
@@ -106,14 +106,15 @@ function Settings() {
           title="Escala de Grises"
           description="Puede cambiar el tema a únicamente grises, esto por personas que les cuesta distinguir ciertos colores. Desactiva esta opción si desea el tema predefinido"
           enabled={themes.grayScale}
-          OnClick={() =>
+          OnClick={() => {
+            SetThemeInDOM("grayScale");
             SetThemes({
               dark: false,
               highContrast: false,
               lowContrast: false,
               grayScale: !themes.grayScale,
-            })
-          }
+            });
+          }}
         />
       </Section>
       {/* Fonts Section */}

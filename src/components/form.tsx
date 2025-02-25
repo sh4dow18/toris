@@ -65,7 +65,7 @@ function Form({ children, submitButton, OnSubmit, className }: Props) {
   // Returns Form Component
   return (
     <form
-      className={className || "min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"}
+      className={className || "grayScale:grayscale min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"}
       ref={REFERENCE}
       onSubmit={OnSubmit}
     >

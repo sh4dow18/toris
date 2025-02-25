@@ -16,7 +16,7 @@ export default function RootLayout({
       <html lang="es" className="font-inter dark">
         <body className="flex flex-col h-dvh">
           <ThemeHandler />
-          <header>
+          <header className="grayScale:grayscale">
             <Nav />
           </header>
           {/* Page Container */}
@@ -25,7 +25,7 @@ export default function RootLayout({
             {children}
             <Light direction="br" />
           </main>
-          <footer className="bg-gray-50 text-gray-800 text-center py-8 dark:bg-gray-950 dark:text-gray-400 highContrast:bg-white highContrast:text-black lowContrast:bg-gray-100 lowContrast:text-gray-500 sm:flex sm:place-content-between sm:items-center sm:px-8">
+          <footer className="bg-gray-50 text-gray-800 text-center py-8 dark:bg-gray-950 dark:text-gray-400 highContrast:bg-white highContrast:text-black lowContrast:bg-gray-100 lowContrast:text-gray-500 grayScale:grayscale sm:flex sm:place-content-between sm:items-center sm:px-8">
             {/* Logos Container */}
             <div className="flex gap-4 justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">
               {/* Github Logo */}

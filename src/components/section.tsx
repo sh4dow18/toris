@@ -51,13 +51,13 @@ function Section({
       >
         {/* Helper Span */}
         {preTitle && (
-          <span className="text-mateoryPurple font-semibold mb-1 text-center dark:text-mateoryPurpleLight">
+          <span className="text-mateoryPurple font-semibold mb-1 text-center dark:text-mateoryPurpleLight grayScale:grayscale">
             {preTitle}
           </span>
         )}
         {/* Main Section */}
         <section
-          className={`flex flex-col ${
+          className={`flex flex-col grayScale:grayscale ${
             main
               ? "gap-5 text-center"
               : small

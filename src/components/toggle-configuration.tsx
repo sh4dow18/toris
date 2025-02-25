@@ -12,7 +12,7 @@ function ToggleConfiguration({ title, description, enabled, OnClick }: Props) {
   // Returns Toggle Configuration Component
   return (
     // Main Container
-    <div className="flex justify-between">
+    <div className="flex justify-between grayScale:grayscale">
       {/* Main Information Container */}
       <div className="w-40 min-[375px]:w-full min-[375px]:max-w-96">
         <span className="font-semibold text-gray-700 dark:text-gray-300 highContrast:text-black lowContrast:text-gray-500">

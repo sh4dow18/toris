@@ -132,7 +132,7 @@ function ReportBug() {
           />
         </Form>
         {/* Or Separation */}
-        <div className="flex items-center">
+        <div className="flex items-center grayScale:grayscale">
           <div className="grow border-t border-gray-500 highContrast:border-black lowContrast:border-gray-300" />
           <span className="mx-4 highContrast:text-black lowContrast:text-gray-500">
             ó
@@ -144,7 +144,7 @@ function ReportBug() {
           href="https://github.com/sh4dow18/mateory/issues/new"
           target="_blank"
         >
-          <div className="flex gap-2 place-content-center bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700">
+          <div className="flex gap-2 place-content-center bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 grayScale:grayscale">
             <Image
               src="/logos/github.svg"
               alt="Github Logo"

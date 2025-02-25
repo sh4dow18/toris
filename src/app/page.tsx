@@ -20,7 +20,7 @@ export default function Home() {
   // Returns Home Page
   return (
     // Main Container
-    <div className="block w-full text-gray-600 z-10 mt-5 dark:text-gray-400 highContrast:text-black lowContrast:text-gray-500">
+    <div className="block w-full text-gray-600 z-10 mt-5 dark:text-gray-400 highContrast:text-black lowContrast:text-gray-500 grayScale:grayscale">
       {/* H1 Hidden, because it is not used, but it is needed for SEO */}
       <h1 className="hidden">Mateory</h1>
       {/* Mateory Present Section */}

@@ -2,7 +2,7 @@
 "use client";
 // Settings Page Requirements
 import { Section, ToggleConfiguration } from "@/components";
-import { GetTheme, SetTheme } from "@/libs/session";
+import { GetFont, GetTheme, SetFont, SetTheme } from "@/libs/session";
 import { useEffect, useState } from "react";
 // Settings Page Main Function
 function Settings() {
@@ -20,6 +20,7 @@ function Settings() {
   });
   useEffect(() => {
     const CURRENT_THEME = GetTheme();
+    const CURRENT_FONT = GetFont();
     // Check the current theme and set it
     SetThemes({
       dark: CURRENT_THEME === "dark",
@@ -27,6 +28,8 @@ function Settings() {
       lowContrast: CURRENT_THEME === "lowContrast",
       grayScale: CURRENT_THEME === "grayScale",
     });
+    // Check the current font and set it
+    SetDyslexiaFont(CURRENT_FONT === "open-dyslexic")
   }, []);
   const SetThemeInDOM = (theme: string) => {
     // Get HTML Class List
@@ -44,6 +47,24 @@ function Settings() {
       }
       DOCUMENT_CLASS_LIST.add(theme);
       SetTheme(theme);
+    }
+  };
+  const ChangeFontInDOM = () => {
+    // Get HTML Class List
+    const DOCUMENT_CLASS_LIST = document.documentElement.classList;
+    // If it is dyslexia font, change it to normal font
+    if (dyslexiaFont) {
+      DOCUMENT_CLASS_LIST.remove("font-open-dyslexic");
+      DOCUMENT_CLASS_LIST.add("font-inter");
+      DOCUMENT_CLASS_LIST.remove("text-sm");
+      SetFont("inter");
+    }
+    // If it is not the dyslexia font, set it
+    else {
+      DOCUMENT_CLASS_LIST.remove("font-inter");
+      DOCUMENT_CLASS_LIST.add("font-open-dyslexic");
+      DOCUMENT_CLASS_LIST.add("text-sm");
+      SetFont("open-dyslexic");
     }
   };
   // Returns Settings Page
@@ -129,6 +150,7 @@ function Settings() {
           description="Puede cambiar la fuente a una que mejore la lectura para personas con una dislexia común. Desactiva esta opción si desea la fuente predefinida"
           enabled={dyslexiaFont}
           OnClick={() => {
+            ChangeFontInDOM();
             SetDyslexiaFont(!dyslexiaFont);
           }}
         />

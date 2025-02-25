@@ -3,6 +3,7 @@
 /* Tailwind CSS Theme Config */
 @theme {
   --font-inter: inter;
+  --font-open-dyslexic: open-dyslexic;
   --color-mateoryPurple: #a72dbc;
   --color-mateoryPurpleLight: #a54ab5;
 }
@@ -15,6 +16,11 @@
 @font-face {
   font-family: "inter";
   src: url(/fonts/Inter.ttf) format("truetype");
+}
+/* Add Open Dyslexia Font to use with Tailwind CSS */
+@font-face {
+  font-family: "open-dyslexic";
+  src: url(/fonts/open-dyslexic.ttf) format("truetype");
 }
 /* Change Autocomplete styles in Chrome */
 input:-webkit-autofill {

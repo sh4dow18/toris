@@ -85,7 +85,7 @@ function ReportBug() {
       <Section
         title="Reporta un Problema"
         description="Ayuda a tener el sistema al día reportando los problemas que encuentres en Mateory"
-        contentClassName="flex flex-col justify-center gap-5 max-w-2xl"
+        contentClassName="flex flex-col justify-center gap-5 max-w-2xl mx-auto"
         main
       >
         {/* Report Bug Form */}

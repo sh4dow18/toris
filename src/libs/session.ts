@@ -46,3 +46,11 @@ export function SetTheme(theme: string) {
 export function GetTheme() {
   return Cookies.get("theme");
 }
+// Set Theme Function
+export function SetFont(font: string) {
+  Cookies.set("font", font, COOKIES_CONFIGURATION);
+}
+// Get Theme Function
+export function GetFont() {
+  return Cookies.get("font");
+}

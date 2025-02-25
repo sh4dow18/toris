@@ -3,7 +3,7 @@ import "@/globals.css";
 // Main Layout Requirements
 import { Link, ViewTransitions } from "next-view-transitions";
 // import Link from "next/link";
-import { Light, Logo, Nav, ThemeHandler } from "@/components";
+import { Light, Logo, Nav, SessionHandler } from "@/components";
 // Main Layout Main Function
 export default function RootLayout({
   children,
@@ -15,7 +15,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="es" className="font-inter dark">
         <body className="flex flex-col h-dvh">
-          <ThemeHandler />
+          <SessionHandler />
           <header className="grayScale:grayscale">
             <Nav />
           </header>

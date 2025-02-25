@@ -28,20 +28,20 @@ function Modal({ open, status, message, Close }: Props) {
       {/* Modal Dialog */}
       <dialog
         open={open}
-        className="fixed inset-0 m-auto w-72 z-30 flex flex-col gap-5 text-center bg-gray-200 text-gray-700 px-3 pt-6 pb-3 rounded-lg dark:bg-gray-800 dark:text-gray-300 highContrast:bg-white highContrast:text-black sm:w-96"
+        className="fixed inset-0 m-auto w-72 z-30 flex flex-col gap-5 text-center bg-gray-200 text-gray-700 px-3 pt-6 pb-3 rounded-lg dark:bg-gray-800 dark:text-gray-300 highContrast:bg-white highContrast:text-black lowContrast:bg-gray-100 lowContrast:text-gray-500 sm:w-96"
       >
         {/* Modal Main Image */}
         {status === "success" ? (
-          <CheckIcon className="w-14 h-14 mx-auto bg-mateoryPurpleLight text-gray-200 rounded-full p-2 dark:bg-mateoryPurple dark:text-inherit highContrast:bg-mateoryPurple highContrast:text-white" />
+          <CheckIcon className="w-14 h-14 mx-auto bg-mateoryPurpleLight text-gray-200 rounded-full p-2 dark:bg-mateoryPurple dark:text-inherit highContrast:bg-mateoryPurple highContrast:text-white lowContrast:text-gray-100" />
         ) : status === "error" ? (
-          <XMarkIcon className="w-14 h-14 mx-auto bg-red-800 text-gray-200 rounded-full p-2 dark:text-inherit highContrast:bg-red-500 highContrast:text-white" />
+          <XMarkIcon className="w-14 h-14 mx-auto bg-red-800 text-gray-200 rounded-full p-2 dark:text-inherit highContrast:bg-red-500 highContrast:text-white lowContrast:text-gray-100" />
         ) : (
           <ArrowPathIcon className="w-14 h-14 mx-auto animate-spin" />
         )}
         {/* Modal Information */}
         <div className="flex flex-col gap-1 px-3">
           {/* Modal Title */}
-          <span className="text-black font-bold dark:text-white">
+          <span className="text-black font-bold dark:text-white lowContrast:text-gray-500">
             {STATUS_TITLES[status]}
           </span>
           {/* Modal Message */}

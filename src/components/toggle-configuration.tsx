@@ -15,7 +15,7 @@ function ToggleConfiguration({ title, description, enabled, OnClick }: Props) {
     <div className="flex justify-between">
       {/* Main Information Container */}
       <div className="w-40 min-[375px]:w-full min-[375px]:max-w-96">
-        <span className="font-semibold text-gray-700 dark:text-gray-300 highContrast:text-black">
+        <span className="font-semibold text-gray-700 dark:text-gray-300 highContrast:text-black lowContrast:text-gray-500">
           {title}
         </span>
         <p className="leading-6 mt-1">{description}</p>
@@ -23,11 +23,11 @@ function ToggleConfiguration({ title, description, enabled, OnClick }: Props) {
       {/* Toggle Button */}
       <button
         onClick={OnClick}
-        className={`flex w-16 h-8 rounded-full p-1 border-2 border-gray-700 cursor-pointer focus:outline-2 focus:outline-mateoryPurple
+        className={`flex w-16 h-8 rounded-full p-1 border-2 border-gray-300 cursor-pointer focus:outline-2 focus:outline-mateoryPurple highContrast:border-black
                   ${
                     enabled
                       ? "bg-mateoryPurple"
-                      : "bg-gray-600 dark:bg-gray-700 highContrast:bg-black"
+                      : "bg-gray-300 dark:bg-gray-700 highContrast:bg-black"
                   }`}
       >
         <div

@@ -76,14 +76,14 @@ function Input({
       <label
         htmlFor={name}
         aria-disabled={disabled}
-        className="text-black font-medium aria-disabled:text-gray-400 dark:text-white dark:aria-disabled:text-gray-700"
+        className="text-black font-medium aria-disabled:text-gray-400 dark:text-white dark:aria-disabled:text-gray-700 lowContrast:text-gray-500"
       >
         {label}
       </label>
       {/* Input Content Container */}
       <div
         aria-disabled={disabled}
-        className="flex place-content-between rounded-md outline-2 py-2 px-1 bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple aria-disabled:bg-gray-200 aria-disabled:outline-gray-200 dark:bg-gray-800 dark:outline-gray-800 dark:aria-disabled:bg-gray-900 dark:aria-disabled:outline-gray-900 highContrast:bg-white highContrast:outline-black min-[344px]:px-3"
+        className="flex place-content-between rounded-md outline-2 py-2 px-1 bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple aria-disabled:bg-gray-200 aria-disabled:outline-gray-200 dark:bg-gray-800 dark:outline-gray-800 dark:aria-disabled:bg-gray-900 dark:aria-disabled:outline-gray-900 highContrast:bg-white highContrast:outline-black lowContrast:bg-gray-100 lowContrast:outline-gray-300 min-[344px]:px-3"
       >
         {/* Main Input */}
         <input
@@ -96,7 +96,7 @@ function Input({
           disabled={disabled}
           autoComplete={autoComplete || "on"}
           maxLength={maxLength || 10}
-          className="bg-transparent outline-hidden text-black disabled:placeholder:text-gray-300 disabled:text-gray-600 dark:text-white dark:disabled:placeholder:text-gray-600 highContrast:placeholder:text-black"
+          className="bg-transparent outline-hidden text-black disabled:placeholder:text-gray-300 disabled:text-gray-600 dark:text-white dark:disabled:placeholder:text-gray-600 highContrast:placeholder:text-black lowContrast:placeholder:text-gray-500"
         />
         {/* Input Validation Icon */}
         {state === "Neutral" ? (

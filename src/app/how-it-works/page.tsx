@@ -130,7 +130,7 @@ function HowItWorks() {
         {/* How to solve problems about math theories pictures container */}
         <div className="flex flex-col gap-3 mx-auto mt-16">
           <span className="text-center">
-            <strong className="text-gray-600 dark:text-gray-400 highContrast:text-black">
+            <strong className="text-gray-600 dark:text-gray-400 highContrast:text-black lowContrast:text-gray-500">
               Puede hacer clíc a las imágenes para verlas más grandes
             </strong>
           </span>
@@ -262,7 +262,7 @@ function HowItWorks() {
         {/* How to report a problem in Mateory pictures container */}
         <div className="flex flex-col gap-3 mx-auto mt-16">
           <span className="text-center">
-            <strong className="text-gray-600 dark:text-gray-400 highContrast:text-black">
+            <strong className="text-gray-600 dark:text-gray-400 highContrast:text-black lowContrast:text-gray-500">
               Puede hacer clíc a las imágenes para verlas más grandes
             </strong>
           </span>

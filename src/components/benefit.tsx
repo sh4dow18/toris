@@ -23,7 +23,7 @@ function Benefit({ title, description, icon }: Props) {
       {/* Benefit Information Container */}
       <div className="flex flex-col gap-2">
         {/* Benefit Title */}
-        <span className="font-semibold text-gray-800 dark:text-gray-300 highContrast:text-black">
+        <span className="font-semibold text-gray-800 dark:text-gray-300 highContrast:text-black lowContrast:text-gray-500">
           {title}
         </span>
         {/* Benefit Description */}

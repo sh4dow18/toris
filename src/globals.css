@@ -9,6 +9,7 @@
 /* New Themes */
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant highContrast (&:where(.highContrast, .highContrast *));
+@custom-variant lowContrast (&:where(.lowContrast, .lowContrast *));
 /* Add Inter Font to use with Tailwind CSS */
 @font-face {
   font-family: "inter";

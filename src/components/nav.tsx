@@ -32,8 +32,8 @@ function Nav() {
       <div
         className={`p-2 grid grid-cols-3 items-center relative min-[973px]:flex min-[973px]:px-6 ${
           open
-            ? "bg-gray-100 dark:bg-gray-900 highContrast:bg-white"
-            : "bg-gray-50 dark:bg-gray-950 highContrast:bg-white"
+            ? "bg-gray-100 dark:bg-gray-900 highContrast:bg-white lowContrast:bg-gray-200"
+            : "bg-gray-50 dark:bg-gray-950 highContrast:bg-white lowContrast:bg-gray-100"
         }`}
       >
         {/* Burger Menu Button to Mobile Nav */}
@@ -60,8 +60,8 @@ function Nav() {
               href={page.href}
               className={`font-medium mx-2 px-3 py-2 rounded-md select-none ${
                 CURRENT_PAGE === page.href
-                  ? "bg-gray-200 text-black dark:bg-gray-800 dark:text-white highContrast:bg-gray-100"
-                  : "text-gray-700 hover:text-black hover:bg-gray-200 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-700 highContrast:text-black highContrast:bg-white"
+                  ? "bg-gray-200 text-black dark:bg-gray-800 dark:text-white highContrast:bg-gray-100 lowContrast:bg-gray-400"
+                  : "text-gray-700 hover:text-black hover:bg-gray-200 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-700 highContrast:text-black highContrast:bg-white lowContrast:text-gray-500"
               }`}
             >
               {page.name}
@@ -71,7 +71,7 @@ function Nav() {
       </div>
       {/* Mobile Nav */}
       <div
-        className={`flex flex-col text-black absolute bg-gray-100 w-full py-2 z-20 dark:text-white dark:bg-gray-900 highContrast:bg-white min-[973px]:hidden ${
+        className={`flex flex-col text-black absolute bg-gray-100 w-full py-2 z-20 dark:text-white dark:bg-gray-900 highContrast:bg-white lowContrast:bg-gray-200 min-[973px]:hidden ${
           open ? "" : "hidden"
         }`.trimEnd()}
       >
@@ -82,7 +82,7 @@ function Nav() {
             onClick={() => SetOpen(false)}
             className={`mx-2 my-1 px-3 py-2 font-medium ${
               CURRENT_PAGE === page.href
-                ? "bg-gray-300 rounded-md dark:bg-gray-700 highContrast:bg-gray-100"
+                ? "bg-gray-300 rounded-md dark:bg-gray-700 highContrast:bg-gray-100 lowContrast:bg-gray-400"
                 : ""
             }`}
           >

@@ -93,7 +93,10 @@ function UploadFiles({ label, name, help }: Props) {
     // Upload Files Main Container
     <div className="flex flex-col gap-1">
       {/* Main Label */}
-      <label htmlFor={name} className="text-black font-medium dark:text-white">
+      <label
+        htmlFor={name}
+        className="text-black font-medium dark:text-white lowContrast:text-gray-500"
+      >
         {label}
       </label>
       {/* Drag and Drop Container */}
@@ -112,10 +115,10 @@ function UploadFiles({ label, name, help }: Props) {
           files.length > 0
             ? state === "Valid"
               ? "bg-gray-100 dark:bg-gray-700 highContrast:bg-white"
-              : "bg-red-700 dark:bg-red-900 highContrast:bg-red-500"
+              : "bg-red-700 dark:bg-red-900 highContrast:bg-red-500 lowContrast:bg-red-800"
             : isDragging
             ? "bg-mateoryPurpleLight"
-            : "bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800 highContrast:bg-white highContrast:outline-black"
+            : "bg-gray-50 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:outline-gray-800 highContrast:bg-white highContrast:outline-black lowContrast:bg-gray-100"
         }`}
       >
         {/* Drag and Drop Line */}
@@ -124,7 +127,7 @@ function UploadFiles({ label, name, help }: Props) {
             isDragging
               ? "text-white"
               : files.length > 0
-              ? "text-black dark:text-white"
+              ? "text-black dark:text-white lowContrast:text-gray-500"
               : undefined
           }
         >

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // Settings Page Main Function
 function Settings() {
   // Settings Page Hooks
-  const [themes, SetThemes] = useState({
+  const [themes, SetThemes] = useState<Record<string, boolean>>({
     dark: false,
     highContrast: false,
     lowContrast: false,
@@ -25,8 +25,27 @@ function Settings() {
       ...prevThemes,
       dark: CURRENT_THEME === "dark",
       highContrast: CURRENT_THEME === "highContrast",
+      lowContrast: CURRENT_THEME === "lowContrast",
     }));
   }, []);
+  const SetThemeInDOM = (theme: string) => {
+    // Get HTML Class List
+    const DOCUMENT_CLASS_LIST = document.documentElement.classList;
+    // If it is theme, change it to light mode
+    if (themes[theme]) {
+      DOCUMENT_CLASS_LIST.remove(theme);
+      SetTheme("light");
+    }
+    // If it is not the theme, set it
+    else {
+      const CURRENT_THEME = GetTheme();
+      if (CURRENT_THEME) {
+        DOCUMENT_CLASS_LIST.remove(CURRENT_THEME);
+      }
+      DOCUMENT_CLASS_LIST.add(theme);
+      SetTheme(theme);
+    }
+  };
   // Returns Settings Page
   return (
     // Main Section
@@ -43,18 +62,7 @@ function Settings() {
           description="Puede cambiar el tema a un tono más oscuro. Desactiva esta opción si desea un tema más claro"
           enabled={themes.dark}
           OnClick={() => {
-            const DOCUMENT_CLASS_LIST = document.documentElement.classList;
-            // If it is dark mode, change it to light mode and vice versa
-            if (themes.dark) {
-              DOCUMENT_CLASS_LIST.remove("dark");
-              SetTheme("light");
-            } else {
-              if (DOCUMENT_CLASS_LIST.contains("highContrast")) {
-                DOCUMENT_CLASS_LIST.remove("highContrast");
-              }
-              DOCUMENT_CLASS_LIST.add("dark");
-              SetTheme("dark");
-            }
+            SetThemeInDOM("dark");
             SetThemes({
               dark: !themes.dark,
               highContrast: false,
@@ -69,18 +77,7 @@ function Settings() {
           description="Puede cambiar el tema a un tono con mayor contraste. Desactiva esta opción si desea el tema predefinido"
           enabled={themes.highContrast}
           OnClick={() => {
-            const DOCUMENT_CLASS_LIST = document.documentElement.classList;
-            // If it is high contrast theme, change it to light mode and vice versa
-            if (themes.highContrast) {
-              DOCUMENT_CLASS_LIST.remove("highContrast");
-              SetTheme("light");
-            } else {
-              if (DOCUMENT_CLASS_LIST.contains("dark")) {
-                DOCUMENT_CLASS_LIST.remove("dark");
-              }
-              DOCUMENT_CLASS_LIST.add("highContrast");
-              SetTheme("highContrast");
-            }
+            SetThemeInDOM("highContrast");
             SetThemes({
               dark: false,
               highContrast: !themes.highContrast,
@@ -94,14 +91,15 @@ function Settings() {
           title="Contraste Bajo"
           description="Puede cambiar el tema a un tono con menor contraste. Desactiva esta opción si desea el tema predefinido"
           enabled={themes.lowContrast}
-          OnClick={() =>
+          OnClick={() => {
+            SetThemeInDOM("lowContrast");
             SetThemes({
               dark: false,
               highContrast: false,
               lowContrast: !themes.lowContrast,
               grayScale: false,
-            })
-          }
+            });
+          }}
         />
         {/* Gray Scale Theme Toggle Configuration */}
         <ToggleConfiguration

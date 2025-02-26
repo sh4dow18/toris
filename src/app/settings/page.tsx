@@ -2,7 +2,14 @@
 "use client";
 // Settings Page Requirements
 import { Section, ToggleConfiguration } from "@/components";
-import { GetFont, GetTheme, SetFont, SetTheme } from "@/libs/session";
+import {
+  GetFont,
+  GetFontSize,
+  GetTheme,
+  SetFont,
+  SetFontSize,
+  SetTheme,
+} from "@/libs/session";
 import { useEffect, useState } from "react";
 // Settings Page Main Function
 function Settings() {
@@ -14,13 +21,15 @@ function Settings() {
     grayScale: false,
   });
   const [dyslexiaFont, SetDyslexiaFont] = useState<boolean>(false);
-  const [fontSize, SetFontSize] = useState({
-    bigger: false,
+  const [fontSizes, SetFontSizes] = useState<Record<string, boolean>>({
+    large: false,
     smaller: false,
   });
   useEffect(() => {
+    // Session Constants
     const CURRENT_THEME = GetTheme();
     const CURRENT_FONT = GetFont();
+    const CURRENT_FONT_SIZE = GetFontSize();
     // Check the current theme and set it
     SetThemes({
       dark: CURRENT_THEME === "dark",
@@ -29,7 +38,15 @@ function Settings() {
       grayScale: CURRENT_THEME === "grayScale",
     });
     // Check the current font and set it
-    SetDyslexiaFont(CURRENT_FONT === "open-dyslexic")
+    SetDyslexiaFont(CURRENT_FONT === "open-dyslexic");
+    // Check the current font size and set it
+    SetFontSizes({
+      large:
+        CURRENT_FONT_SIZE && CURRENT_FONT_SIZE.includes("large")
+          ? true
+          : false,
+      smaller: false,
+    });
   }, []);
   const SetThemeInDOM = (theme: string) => {
     // Get HTML Class List
@@ -50,6 +67,8 @@ function Settings() {
     }
   };
   const ChangeFontInDOM = () => {
+    // Get Current Font Size
+    const CURRENT_FONT_SIZE = GetFontSize();
     // Get HTML Class List
     const DOCUMENT_CLASS_LIST = document.documentElement.classList;
     // If it is dyslexia font, change it to normal font
@@ -57,14 +76,63 @@ function Settings() {
       DOCUMENT_CLASS_LIST.remove("font-open-dyslexic");
       DOCUMENT_CLASS_LIST.add("font-inter");
       DOCUMENT_CLASS_LIST.remove("text-sm");
+      DOCUMENT_CLASS_LIST.remove("text-md");
+      // If the font is large, convert it to the large inter font
+      if (CURRENT_FONT_SIZE && CURRENT_FONT_SIZE.includes("large")) {
+        DOCUMENT_CLASS_LIST.add("text-lg");
+        SetFontSize("large/text-lg");
+      }
       SetFont("inter");
     }
     // If it is not the dyslexia font, set it
     else {
       DOCUMENT_CLASS_LIST.remove("font-inter");
       DOCUMENT_CLASS_LIST.add("font-open-dyslexic");
-      DOCUMENT_CLASS_LIST.add("text-sm");
+      DOCUMENT_CLASS_LIST.remove("text-lg");
+      // Check if the current font size exists
+      if (CURRENT_FONT_SIZE) {
+        // If the current font size is large, added to DOM
+        if (CURRENT_FONT_SIZE.includes("large")) {
+          DOCUMENT_CLASS_LIST.add("text-md");
+          SetFontSize("large/text-md");
+        }
+        // If the current font size is normal, added to DOM
+        else {
+          DOCUMENT_CLASS_LIST.add("text-sm");
+          SetFontSize("normal");
+        }
+      }
       SetFont("open-dyslexic");
+    }
+  };
+  const SetFontSizeInDOM = (fontSize: string, className: string) => {
+    // Get Current Font
+    const CURRENT_FONT = GetFont();
+    // Get HTML Class List
+    const DOCUMENT_CLASS_LIST = document.documentElement.classList;
+    // If it is large or small font size, change it to normal font size
+    if (fontSizes[fontSize]) {
+      DOCUMENT_CLASS_LIST.remove(className);
+      // If it is the Open Dyslexyc Font, add smaller size
+      if (CURRENT_FONT === "open-dyslexic") {
+        DOCUMENT_CLASS_LIST.add("text-sm");
+      }
+      SetFontSize("normal");
+    }
+    // If it is not the normal font size, set it
+    else {
+      // Get Current Font Size
+      const CURRENT_FONT_SIZE = GetFontSize();
+      // If the current font size exists, remove the associated classname
+      if (CURRENT_FONT_SIZE) {
+        DOCUMENT_CLASS_LIST.remove(CURRENT_FONT_SIZE.split("/")[1]);
+      }
+      // If it is the Open Dyslexyc Font, remove smaller size
+      if (CURRENT_FONT === "open-dyslexic") {
+        DOCUMENT_CLASS_LIST.remove("text-sm");
+      }
+      DOCUMENT_CLASS_LIST.add(className);
+      SetFontSize(`${fontSize}/${className}`);
     }
   };
   // Returns Settings Page
@@ -158,10 +226,11 @@ function Settings() {
         <ToggleConfiguration
           title="Aumentar Tamaño de Letra"
           description="Puede aumentar el tamaño de la fuente. Desactiva esta opción si desea la fuente predefinida"
-          enabled={fontSize.bigger}
+          enabled={fontSizes.large}
           OnClick={() => {
-            SetFontSize({
-              bigger: !fontSize.bigger,
+            SetFontSizeInDOM("large", dyslexiaFont ? "text-md" : "text-lg");
+            SetFontSizes({
+              large: !fontSizes.large,
               smaller: false,
             });
           }}
@@ -170,11 +239,11 @@ function Settings() {
         <ToggleConfiguration
           title="Disminuir Tamaño de Letra"
           description="Puede disminuir el tamaño de la fuente. Desactiva esta opción si desea la fuente predefinida"
-          enabled={fontSize.smaller}
+          enabled={fontSizes.smaller}
           OnClick={() => {
-            SetFontSize({
-              bigger: false,
-              smaller: !fontSize.smaller,
+            SetFontSizes({
+              large: false,
+              smaller: !fontSizes.smaller,
             });
           }}
         />

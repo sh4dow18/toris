@@ -30,7 +30,7 @@ function Nav() {
   return (
     <nav>
       <div
-        className={`p-2 grid grid-cols-3 items-center relative min-[973px]:flex min-[973px]:px-6 ${
+        className={`p-2 grid grid-cols-3 items-center relative min-[1035px]:flex min-[1035px]:px-6 ${
           open
             ? "bg-gray-100 dark:bg-gray-900 highContrast:bg-white lowContrast:bg-gray-200"
             : "bg-gray-50 dark:bg-gray-950 highContrast:bg-white lowContrast:bg-gray-100"
@@ -38,7 +38,7 @@ function Nav() {
       >
         {/* Burger Menu Button to Mobile Nav */}
         <button
-          className="w-10 h-10 place-content-center text-gray-700 rounded-md focus:outline-hidden focus:ring-2 focus:ring-gray-700 dark:text-gray-300 dark:focus:ring-white min-[973px]:hidden"
+          className="w-10 h-10 place-content-center text-gray-700 rounded-md focus:outline-hidden focus:ring-2 focus:ring-gray-700 dark:text-gray-300 dark:focus:ring-white min-[1035px]:hidden"
           onClick={OnClickButton}
         >
           {/* If the burger menu is closed, it shows the bars icon; if open, shows the X Mark icon */}
@@ -49,11 +49,11 @@ function Nav() {
             className={`w-7 mx-auto ${open ? "" : "hidden"}`.trimEnd()}
           />
         </button>
-        <Link href="/" className="min-[973px]:m-3">
+        <Link href="/" className="min-[1035px]:m-3">
           <MateoryLogo width={120} height={20} className="mx-auto" />
         </Link>
         {/* Desktop Nav */}
-        <div className="hidden min-[973px]:block">
+        <div className="hidden min-[1035px]:block">
           {NAV_PAGES_LIST.map((page) => (
             <Link
               key={page.href}
@@ -71,7 +71,7 @@ function Nav() {
       </div>
       {/* Mobile Nav */}
       <div
-        className={`flex flex-col text-black absolute bg-gray-100 w-full py-2 z-20 dark:text-white dark:bg-gray-900 highContrast:bg-white lowContrast:bg-gray-200 min-[973px]:hidden ${
+        className={`flex flex-col text-black absolute bg-gray-100 w-full py-2 z-20 dark:text-white dark:bg-gray-900 highContrast:bg-white lowContrast:bg-gray-200 min-[1035px]:hidden ${
           open ? "" : "hidden"
         }`.trimEnd()}
       >

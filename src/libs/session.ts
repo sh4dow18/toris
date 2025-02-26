@@ -46,11 +46,19 @@ export function SetTheme(theme: string) {
 export function GetTheme() {
   return Cookies.get("theme");
 }
-// Set Theme Function
+// Set Font Function
 export function SetFont(font: string) {
   Cookies.set("font", font, COOKIES_CONFIGURATION);
 }
-// Get Theme Function
+// Get Font Function
 export function GetFont() {
   return Cookies.get("font");
+}
+// Set Font Size Function
+export function SetFontSize(fontSize: string) {
+  Cookies.set("fontSize", fontSize, COOKIES_CONFIGURATION);
+}
+// Get Font Size Function
+export function GetFontSize() {
+  return Cookies.get("fontSize");
 }

@@ -96,7 +96,7 @@ function Input({
           disabled={disabled}
           autoComplete={autoComplete || "on"}
           maxLength={maxLength || 10}
-          className="bg-transparent outline-hidden text-black disabled:placeholder:text-gray-300 disabled:text-gray-600 dark:text-white dark:disabled:placeholder:text-gray-600 highContrast:placeholder:text-black lowContrast:placeholder:text-gray-500"
+          className="w-full bg-transparent outline-hidden text-black disabled:placeholder:text-gray-300 disabled:text-gray-600 dark:text-white dark:disabled:placeholder:text-gray-600 highContrast:placeholder:text-black lowContrast:placeholder:text-gray-500"
         />
         {/* Input Validation Icon */}
         {state === "Neutral" ? (

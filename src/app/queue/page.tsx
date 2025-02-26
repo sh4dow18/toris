@@ -50,9 +50,9 @@ function Queue() {
   const [staticWidth, SetStaticWidth] = useState<boolean>(true);
   useEffect(() => {
     const CURRENT_FONT_SIZE = GetFontSize();
-    // Set Static Width Style if the current font size if bigger and has the inter font
+    // Set Static Width Style if the current font size if large and has the inter font
     SetStaticWidth(
-      CURRENT_FONT_SIZE && CURRENT_FONT_SIZE === "bigger/text-lg" ? false : true
+      CURRENT_FONT_SIZE && CURRENT_FONT_SIZE === "large/text-lg" ? false : true
     );
   }, []);
   // Submit Arrow Function to use in Form

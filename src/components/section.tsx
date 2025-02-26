@@ -69,12 +69,12 @@ function Section({
           <TITLE
             className={`text-gray-900 dark:text-gray-300 highContrast:text-black lowContrast:text-gray-500 ${
               main
-                ? "text-[2.5rem] leading-none font-bold min-[330px]:text-5xl min-[378px]:text-6xl"
+                ? "text-[2.5rem] leading-none font-bold min-[351px]:text-5xl min-[420px]:text-6xl"
                 : small
-                ? "text-3xl font-semibold"
+                ? "text-2xl font-semibold min-[361px]:text-3xl"
                 : h3
-                ? "text-2xl font-semibold md:text-3xl"
-                : "text-4xl font-bold md:text-5xl"
+                ? "text-xl font-semibold min-[361px]:text-2xl md:text-3xl"
+                : "text-3xl font-bold min-[361px]:text-4xl md:text-5xl"
             }`}
           >
             {title}
@@ -92,7 +92,7 @@ function Section({
                 ? contentClassName ||
                   "min-[1440px]:flex min-[1440px]:justify-center min-[1440px]:gap-10"
                 : contentClassName ||
-                  "flex flex-col gap-3 min-[768px]:flex-row min-[768px]:flex-wrap min-[768px]:justify-center min-[768px]:gap-5"
+                  "flex flex-col gap-3 min-[779px]:flex-row min-[779px]:flex-wrap min-[779px]:justify-center min-[779px]:gap-5"
             }
           >
             {children}

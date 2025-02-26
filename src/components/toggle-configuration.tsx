@@ -14,7 +14,7 @@ function ToggleConfiguration({ title, description, enabled, OnClick }: Props) {
     // Main Container
     <div className="flex justify-between grayScale:grayscale">
       {/* Main Information Container */}
-      <div className="w-40 min-[375px]:w-full min-[375px]:max-w-96">
+      <div className="w-36 min-[410px]:w-52 min-[500px]:w-72 min-[575px]:w-full min-[575px]:max-w-96">
         <span className="font-semibold text-gray-700 dark:text-gray-300 highContrast:text-black lowContrast:text-gray-500">
           {title}
         </span>

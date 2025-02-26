@@ -11,7 +11,7 @@ function Select({ name, label, optionsList }: Props) {
   // Returns Select Component
   return (
     // Select Container
-    <div className="flex flex-col gap-1 min-[768px]:w-1/3">
+    <div className="flex flex-col gap-1 min-[779px]:w-1/3">
       {/* Select Label */}
       <label
         htmlFor={name}

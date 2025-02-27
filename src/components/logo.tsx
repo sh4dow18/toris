@@ -20,7 +20,7 @@ function Logo({ href, icon, width, height }: Props) {
         alt={`${icon} logo`}
         width={width || 30}
         height={height || 30}
-        className="hover:filter hover:brightness-150"
+        className="filter brightness-0 hover:brightness-50 dark:brightness-100 dark:hover:brightness-150"
       />
     </Link>
   );

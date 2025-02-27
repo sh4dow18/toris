@@ -1,18 +1,36 @@
 /* Tailwind CSS Imports */
-@import 'tailwindcss';
+@import "tailwindcss";
 /* Tailwind CSS Theme Config */
 @theme {
   --font-inter: inter;
+  --font-open-dyslexic: open-dyslexic;
   --color-mateoryPurple: #a72dbc;
   --color-mateoryPurpleLight: #a54ab5;
 }
+/* New Themes */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant highContrast (&:where(.highContrast, .highContrast *));
+@custom-variant lowContrast (&:where(.lowContrast, .lowContrast *));
+@custom-variant grayScale (&:where(.grayScale, .grayScale *));
 /* Add Inter Font to use with Tailwind CSS */
 @font-face {
   font-family: "inter";
   src: url(/fonts/Inter.ttf) format("truetype");
 }
+/* Add Open Dyslexia Font to use with Tailwind CSS */
+@font-face {
+  font-family: "open-dyslexic";
+  src: url(/fonts/open-dyslexic.ttf) format("truetype");
+}
 /* Change Autocomplete styles in Chrome */
 input:-webkit-autofill {
-  -webkit-text-fill-color: white;
+  -webkit-text-fill-color: black;
   transition: background-color 5000s ease-in-out 0s;
+}
+/* Change Autocomplete styles in Chrome in Dark Mode */
+.dark {
+  & input:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }

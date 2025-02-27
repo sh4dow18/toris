@@ -11,9 +11,12 @@ function Select({ name, label, optionsList }: Props) {
   // Returns Select Component
   return (
     // Select Container
-    <div className="flex flex-col gap-1 min-[768px]:w-1/3">
+    <div className="flex flex-col gap-1 min-[779px]:w-1/3">
       {/* Select Label */}
-      <label htmlFor={name} className="text-white font-medium">
+      <label
+        htmlFor={name}
+        className="text-black font-medium dark:text-white lowContrast:text-gray-500"
+      >
         {label}
       </label>
       {/* Select Content Container */}
@@ -22,7 +25,7 @@ function Select({ name, label, optionsList }: Props) {
         <select
           id={name}
           name={name}
-          className="w-full appearance-none bg-gray-800 text-white rounded-md outline-2 py-2 pl-1 outline-gray-800 focus-within:outline-mateoryPurple min-[344px]:pl-3"
+          className="w-full appearance-none bg-gray-50 text-black rounded-md outline-2 py-2 pl-1 outline-gray-300 focus-within:outline-mateoryPurple dark:bg-gray-800 dark:text-white dark:outline-gray-800 highContrast:bg-white highContrast:outline-black lowContrast:bg-gray-100 lowContrast:outline-gray-300 lowContrast:text-gray-500 min-[344px]:pl-3"
         >
           {optionsList.map((option, index) => (
             <option key={index} value={option.value}>

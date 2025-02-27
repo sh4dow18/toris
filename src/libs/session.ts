@@ -38,3 +38,27 @@ export function CheckOneDayHasPassed() {
   // Check if one day has passed
   return DIFF >= 24 * 60 * 60 * 1000;
 }
+// Set Theme Function
+export function SetTheme(theme: string) {
+  Cookies.set("theme", theme, COOKIES_CONFIGURATION);
+}
+// Get Theme Function
+export function GetTheme() {
+  return Cookies.get("theme");
+}
+// Set Font Function
+export function SetFont(font: string) {
+  Cookies.set("font", font, COOKIES_CONFIGURATION);
+}
+// Get Font Function
+export function GetFont() {
+  return Cookies.get("font");
+}
+// Set Font Size Function
+export function SetFontSize(fontSize: string) {
+  Cookies.set("fontSize", fontSize, COOKIES_CONFIGURATION);
+}
+// Get Font Size Function
+export function GetFontSize() {
+  return Cookies.get("fontSize");
+}

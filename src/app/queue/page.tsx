@@ -20,7 +20,8 @@ import {
   GetProbabilityClientWillHaveToWait,
   GetAverageUnoccupiedServers,
 } from "@/libs/queue";
-import { FormEvent, useState } from "react";
+import { GetFontSize } from "@/libs/session";
+import { FormEvent, useEffect, useState } from "react";
 // Queue Page Main Function
 function Queue() {
   // Queue Page Constants
@@ -46,6 +47,14 @@ function Queue() {
   // Queue Page Hooks
   const [selectedModel, SetSelectedModel] = useState<number>(1);
   const [results, SetResults] = useState(INIT_RESULTS_VALUES);
+  const [staticWidth, SetStaticWidth] = useState<boolean>(true);
+  useEffect(() => {
+    const CURRENT_FONT_SIZE = GetFontSize();
+    // Set Static Width Style if the current font size if large and has the inter font
+    SetStaticWidth(
+      CURRENT_FONT_SIZE && CURRENT_FONT_SIZE === "large/text-lg" ? false : true
+    );
+  }, []);
   // Submit Arrow Function to use in Form
   const Submit = (event: FormEvent<HTMLFormElement>) => {
     // Avoid refreshing the page
@@ -249,7 +258,7 @@ function Queue() {
               className={`py-2 px-3 font-medium rounded-md text-center ${
                 selectedModel === model.id
                   ? "bg-mateoryPurple text-white"
-                  : "bg-gray-700 cursor-pointer"
+                  : "bg-gray-100 cursor-pointer text-gray-400 dark:bg-gray-700 dark:text-inherit highContrast:text-black highContrast:bg-gray-300 lowContrast:bg-gray-300 lowContrast:text-gray-500"
               }`}
             >
               {model.name}
@@ -352,85 +361,85 @@ function Queue() {
       <Section
         title="Resultados"
         description="Aquí se muestran los resultados obtenidos con base a lo puesto anteriormente"
-        contentClassName="flex flex-col gap-4 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:mx-auto"
+        contentClassName="flex flex-col gap-4 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:mx-auto lg:max-w-2xl"
         small
       >
         {/* System Utilization Factor Card */}
         <Card
           name="Factor de Utilización del Sistema"
           value={results.sysUtilFactor}
-          staticWidth
+          staticWidth={staticWidth}
         />
         {/* Expected Clients in System Card */}
         <Card
           name="Número Esperado de Clientes en el Sistema"
           value={results.clientsSys}
-          staticWidth
+          staticWidth={staticWidth}
         />
         {/* Expected Clients in Queue Card */}
         <Card
           name="Número Esperado de Clientes en Cola"
           value={results.clientsQueue}
-          staticWidth
+          staticWidth={staticWidth}
         />
         {/* Time of Clients In System Card */}
         <Card
-          name="Tiempo esperado de clientes en el sistema (1)"
+          name="Tiempo esperado de clientes en sistema (1)"
           value={results.timeClientsSys}
-          staticWidth
+          staticWidth={staticWidth}
         />
         {/* Time of Clients in Queue Card */}
         <Card
           name="Tiempo esperado de clientes en cola"
           value={results.timeClientsQueue}
-          staticWidth
+          staticWidth={staticWidth}
         />
         {/* Probability of N Clients in System Card */}
         <Card
           name="Probabilidad de n clientes en el sistema (1)"
           value={Percentage(results.probClientsSys)}
-          staticWidth
+          staticWidth={staticWidth}
         />
         {/* Probability of Having Queue of More than N Customers Card */}
         <Card
           name="Probabilidad de tener una cola de más de n clientes (2)"
           value={Percentage(results.probQueueMoreClients)}
-          staticWidth
+          staticWidth={staticWidth}
           disabled={selectedModel !== 1}
         />
         {/* Probability that it's more than N Time in System Card */}
         <Card
           name="Probabilidad de que este más de n unidades de tiempo en el sistema (3)"
           value={Percentage(results.probMoreTimeSys)}
-          staticWidth
+          staticWidth={staticWidth}
           disabled={selectedModel === 3}
         />
         {/* Probability that it's more than N Time in Queue Card */}
         <Card
           name="Probabilidad de que este más de n unidades de tiempo en cola (4)"
           value={Percentage(results.probMoreTimeQueue)}
-          staticWidth
+          staticWidth={staticWidth}
           disabled={selectedModel !== 1}
         />
         {/* Probability that the Client will have to wait Card */}
         <Card
           name="Probabilidad de que el cliente tenga que esperar"
           value={Percentage(results.probWait)}
-          staticWidth
+          staticWidth={staticWidth}
           disabled={selectedModel !== 2}
         />
         {/* Average Number of Unoccupied Servers Card */}
         <Card
           name="Cantidad promedio de servidores que se encuentran desocupados en el sistema"
           value={results.avgUnoccupiedServers}
-          staticWidth
+          staticWidth={staticWidth}
           disabled={selectedModel !== 2}
         />
         {/* Probability that there are the maximum number of clients that the queue supports in the system Card */}
         <Card
           name="Probabilidad de que estén el máximo de clientes que soporta la cola en el sistema"
           value={Percentage(results.probQueueClientsSys)}
-          staticWidth
+          staticWidth={staticWidth}
           disabled={selectedModel !== 3}
         />
       </Section>

@@ -12,11 +12,14 @@ function Steps({ list }: Props) {
         // Use CSS container increment to add the numbers in the list
         <li
           key={index}
-          className="relative pl-8 before:absolute before:left-0 before:top-1 before:counter-increment before:content-[counter(list-item)] before:bg-mateoryPurple before:w-6 before:h-6 before:rounded-full before:text-white before:font-medium before:text-center min-[340px]:pl-10"
+          className="relative mb-5 grayScale:grayscale before:px-2 before:py-1 before:counter-increment before:content-[counter(list-item)] before:bg-mateoryPurple before:rounded-full before:text-white before:font-medium before:text-center min-[361px]:pl-10 min-[361px]:mt-0 min-[361px]:before:p-0 min-[361px]:before:absolute min-[361px]:before:left-0 min-[361px]:before:top-1 min-[361px]:before:w-6 min-[361px]:before:h-6"
         >
           {/* Step Container */}
           <p className="leading-8">
-            <strong className="text-gray-300">{item.title}</strong>: {item.description}
+            <strong className="text-gray-800 dark:text-gray-300 highContrast:text-black lowContrast:text-gray-500">
+              {item.title}
+            </strong>
+            : {item.description}
           </p>
         </li>
       ))}

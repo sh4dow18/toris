@@ -65,7 +65,7 @@ function Form({ children, submitButton, OnSubmit, className }: Props) {
   // Returns Form Component
   return (
     <form
-      className={className || "min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"}
+      className={className || "grayScale:grayscale min-[1024px]:max-w-3xl min-[1440px]:max-w-2xl"}
       ref={REFERENCE}
       onSubmit={OnSubmit}
     >
@@ -75,7 +75,7 @@ function Form({ children, submitButton, OnSubmit, className }: Props) {
       <button
         type="submit"
         disabled={disabled}
-        className="w-full mt-5 py-2 px-3 font-medium rounded-md text-center text-white bg-mateoryPurple cursor-pointer hover:bg-mateoryPurpleLight disabled:bg-gray-500 disabled:cursor-not-allowed"
+        className="w-full mt-5 py-2 px-3 font-medium rounded-md text-center text-white bg-mateoryPurple cursor-pointer hover:bg-mateoryPurpleLight disabled:bg-gray-300 disabled:text-gray-400 disabled:cursor-not-allowed dark:disabled:bg-gray-500 dark:disabled:text-inherit highContrast:disabled:bg-gray-500 highContrast:disabled:text-white"
       >
         {submitButton}
       </button>

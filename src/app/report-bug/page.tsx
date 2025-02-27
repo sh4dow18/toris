@@ -85,7 +85,7 @@ function ReportBug() {
       <Section
         title="Reporta un Problema"
         description="Ayuda a tener el sistema al día reportando los problemas que encuentres en Mateory"
-        contentClassName="flex flex-col justify-center gap-5 max-w-2xl"
+        contentClassName="flex flex-col justify-center gap-5 max-w-2xl mx-auto"
         main
       >
         {/* Report Bug Form */}
@@ -132,17 +132,19 @@ function ReportBug() {
           />
         </Form>
         {/* Or Separation */}
-        <div className="flex items-center">
-          <div className="grow border-t border-gray-500" />
-          <span className="mx-4">ó</span>
-          <div className="grow border-t border-gray-500" />
+        <div className="flex items-center grayScale:grayscale">
+          <div className="grow border-t border-gray-500 highContrast:border-black lowContrast:border-gray-300" />
+          <span className="mx-4 highContrast:text-black lowContrast:text-gray-500">
+            ó
+          </span>
+          <div className="grow border-t border-gray-500 highContrast:border-black lowContrast:border-gray-300" />
         </div>
         {/* Report on Github Button */}
         <Link
           href="https://github.com/sh4dow18/mateory/issues/new"
           target="_blank"
         >
-          <div className="flex gap-2 place-content-center bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700">
+          <div className="flex gap-2 place-content-center bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 grayScale:grayscale">
             <Image
               src="/logos/github.svg"
               alt="Github Logo"

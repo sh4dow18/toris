@@ -3,7 +3,7 @@ import "@/globals.css";
 // Main Layout Requirements
 import { Link, ViewTransitions } from "next-view-transitions";
 // import Link from "next/link";
-import { Light, Logo, Nav } from "@/components";
+import { Light, Logo, Nav, SessionHandler } from "@/components";
 // Main Layout Main Function
 export default function RootLayout({
   children,
@@ -13,18 +13,19 @@ export default function RootLayout({
   // Returns Main Layout
   return (
     <ViewTransitions>
-      <html lang="es" className="font-inter">
+      <html lang="es" className="font-inter dark">
         <body className="flex flex-col h-dvh">
-          <header>
+          <SessionHandler />
+          <header className="grayScale:grayscale">
             <Nav />
           </header>
           {/* Page Container */}
-          <main className="bg-gray-950 flex flex-1">
+          <main className="bg-gray-50 flex flex-1 dark:bg-gray-950 highContrast:bg-white lowContrast:bg-gray-100">
             <Light direction="tl" />
             {children}
             <Light direction="br" />
           </main>
-          <footer className="bg-gray-950 text-gray-400 text-center py-8 sm:flex sm:place-content-between sm:items-center sm:px-8">
+          <footer className="bg-gray-50 text-gray-800 text-center py-8 dark:bg-gray-950 dark:text-gray-400 highContrast:bg-white highContrast:text-black lowContrast:bg-gray-100 lowContrast:text-gray-500 grayScale:grayscale sm:flex sm:place-content-between sm:items-center sm:px-8">
             {/* Logos Container */}
             <div className="flex gap-4 justify-center max-w-fit mx-auto mb-5 sm:order-3 sm:m-0">
               {/* Github Logo */}
@@ -48,7 +49,7 @@ export default function RootLayout({
               <Link
                 href="https://github.com/sh4dow18"
                 target="_blank"
-                className="text-gray-300 hover:text-white"
+                className="hover:text-mateoryPurple dark:text-gray-300 dark:hover:text-white"
               >
                 Ramsés Solano
               </Link>
@@ -56,7 +57,7 @@ export default function RootLayout({
             </p>
             {/* Last Update */}
             <p className="text-xs sm:order-1 md:text-sm">
-              19 de Febrero del 2025
+              26 de Febrero del 2025
             </p>
           </footer>
         </body>

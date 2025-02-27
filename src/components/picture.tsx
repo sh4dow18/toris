@@ -1,9 +1,9 @@
 // Set this component as a client component
 "use client";
-import { XMarkIcon } from "@heroicons/react/16/solid";
 // Picture Requirements
 import Image from "next/image";
 import { useState } from "react";
+import { XMarkIcon } from "@heroicons/react/16/solid";
 // Picture Props
 interface Props {
   src: string;
@@ -28,7 +28,7 @@ function Picture({ src, alt, caption }: Props) {
       {/* Main Figure */}
       <figure
         onClick={HandleImage}
-        className="cursor-pointer min-[875px]:w-96 min-[1351px]:w-full"
+        className="cursor-pointer grayScale:grayscale min-[875px]:w-96 min-[1351px]:w-full"
       >
         <Image
           src={src}
@@ -38,11 +38,13 @@ function Picture({ src, alt, caption }: Props) {
           priority
           className="w-full h-auto rounded-lg min-[1351px]:max-w-[530px]"
         />
-        <figcaption className="text-xs mt-3 text-center">{caption}</figcaption>
+        <figcaption className="text-xs mt-3 text-center highContrast:text-black lowContrast:text-gray-500">
+          {caption}
+        </figcaption>
       </figure>
       {/* Picture Modal to view the Picture Bigger */}
       {open && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 grayScale:grayscale">
           <div className="relative">
             <XMarkIcon
               onClick={HandleImage}

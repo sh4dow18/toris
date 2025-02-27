@@ -57,7 +57,7 @@ export default function RootLayout({
             </p>
             {/* Last Update */}
             <p className="text-xs sm:order-1 md:text-sm">
-              19 de Febrero del 2025
+              26 de Febrero del 2025
             </p>
           </footer>
         </body>

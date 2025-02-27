@@ -23,7 +23,7 @@ function Settings() {
   const [dyslexiaFont, SetDyslexiaFont] = useState<boolean>(false);
   const [fontSizes, SetFontSizes] = useState<Record<string, boolean>>({
     large: false,
-    smaller: false,
+    small: false,
   });
   useEffect(() => {
     // Session Constants
@@ -42,10 +42,9 @@ function Settings() {
     // Check the current font size and set it
     SetFontSizes({
       large:
-        CURRENT_FONT_SIZE && CURRENT_FONT_SIZE.includes("large")
-          ? true
-          : false,
-      smaller: false,
+        CURRENT_FONT_SIZE && CURRENT_FONT_SIZE.includes("large") ? true : false,
+      small:
+        CURRENT_FONT_SIZE && CURRENT_FONT_SIZE.includes("small") ? true : false,
     });
   }, []);
   const SetThemeInDOM = (theme: string) => {
@@ -77,10 +76,18 @@ function Settings() {
       DOCUMENT_CLASS_LIST.add("font-inter");
       DOCUMENT_CLASS_LIST.remove("text-sm");
       DOCUMENT_CLASS_LIST.remove("text-md");
-      // If the font is large, convert it to the large inter font
-      if (CURRENT_FONT_SIZE && CURRENT_FONT_SIZE.includes("large")) {
-        DOCUMENT_CLASS_LIST.add("text-lg");
-        SetFontSize("large/text-lg");
+      DOCUMENT_CLASS_LIST.remove("text-xs");
+      if (CURRENT_FONT_SIZE) {
+        // If the font is large, convert it to the large inter font
+        if (CURRENT_FONT_SIZE.includes("large")) {
+          DOCUMENT_CLASS_LIST.add("text-lg");
+          SetFontSize("large/text-lg");
+        }
+        // If the font is small, convert it to the small inter font
+        else if (CURRENT_FONT_SIZE.includes("small")) {
+          DOCUMENT_CLASS_LIST.add("text-sm");
+          SetFontSize("small/text-sm");
+        }
       }
       SetFont("inter");
     }
@@ -89,12 +96,18 @@ function Settings() {
       DOCUMENT_CLASS_LIST.remove("font-inter");
       DOCUMENT_CLASS_LIST.add("font-open-dyslexic");
       DOCUMENT_CLASS_LIST.remove("text-lg");
+      DOCUMENT_CLASS_LIST.remove("text-sm");
       // Check if the current font size exists
       if (CURRENT_FONT_SIZE) {
         // If the current font size is large, added to DOM
         if (CURRENT_FONT_SIZE.includes("large")) {
           DOCUMENT_CLASS_LIST.add("text-md");
           SetFontSize("large/text-md");
+        }
+        // If the current font size is small, added to DOM
+        else if (CURRENT_FONT_SIZE.includes("small")) {
+          DOCUMENT_CLASS_LIST.add("text-xs");
+          SetFontSize("small/text-xs");
         }
         // If the current font size is normal, added to DOM
         else {
@@ -231,7 +244,7 @@ function Settings() {
             SetFontSizeInDOM("large", dyslexiaFont ? "text-md" : "text-lg");
             SetFontSizes({
               large: !fontSizes.large,
-              smaller: false,
+              small: false,
             });
           }}
         />
@@ -239,11 +252,12 @@ function Settings() {
         <ToggleConfiguration
           title="Disminuir Tamaño de Letra"
           description="Puede disminuir el tamaño de la fuente. Desactiva esta opción si desea la fuente predefinida"
-          enabled={fontSizes.smaller}
+          enabled={fontSizes.small}
           OnClick={() => {
+            SetFontSizeInDOM("small", dyslexiaFont ? "text-xs" : "text-sm");
             SetFontSizes({
               large: false,
-              smaller: !fontSizes.smaller,
+              small: !fontSizes.small,
             });
           }}
         />

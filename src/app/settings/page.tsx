@@ -32,7 +32,7 @@ function Settings() {
     const CURRENT_FONT_SIZE = GetFontSize();
     // Check the current theme and set it
     SetThemes({
-      dark: CURRENT_THEME === "dark",
+      dark: CURRENT_THEME === "dark" || CURRENT_THEME === undefined,
       highContrast: CURRENT_THEME === "highContrast",
       lowContrast: CURRENT_THEME === "lowContrast",
       grayScale: CURRENT_THEME === "grayScale",
